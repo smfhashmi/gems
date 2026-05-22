@@ -1,0 +1,147 @@
+{{ define "main" }}
+  <section class="mx-auto w-full max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-8 lg:pt-16">
+    <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div class="space-y-8">
+        <span class="section-label">{{ .Site.Params.hero.eyebrow }}</span>
+        <div class="space-y-6">
+          <h1 class="hero-title">{{ .Site.Params.hero.headline }}</h1>
+          <p class="hero-lead">{{ .Site.Params.hero.lead }}</p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a href="{{ "/academics/" | relURL }}" class="btn-primary">{{ .Site.Params.hero.primaryButton }}</a>
+          <a href="{{ "/blogs/" | relURL }}" class="btn-secondary">{{ .Site.Params.hero.secondaryButton }}</a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="stat-card">
+            <p class="text-sm font-semibold text-brand-200">Balanced curriculum</p>
+            <p class="mt-2 text-sm leading-6 text-slate-300">Academics, arts, sports, and life skills woven together.</p>
+          </div>
+          <div class="stat-card">
+            <p class="text-sm font-semibold text-brand-200">Warm community</p>
+            <p class="mt-2 text-sm leading-6 text-slate-300">Friendly communication between teachers, students, and families.</p>
+          </div>
+          <div class="stat-card">
+            <p class="text-sm font-semibold text-brand-200">Future-ready learning</p>
+            <p class="mt-2 text-sm leading-6 text-slate-300">Projects and digital confidence from the earliest years.</p>
+          </div>
+        </div>
+      </div>
+      <div class="site-panel p-4 md:p-6">
+        <div class="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,185,129,0.15),rgba(8,16,26,0.75))] p-6">
+          <div class="grid gap-4 md:grid-cols-2">
+            <div class="rounded-3xl bg-slate-950/50 p-5">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Location</p>
+              <p class="mt-3 text-lg font-semibold text-white">SRT Colony</p>
+              <p class="text-sm text-slate-300">Sanathnagar, Hyderabad</p>
+            </div>
+            <div class="rounded-3xl bg-slate-950/50 p-5">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Admission help</p>
+              <p class="mt-3 text-lg font-semibold text-white">Parent-friendly guidance</p>
+              <p class="text-sm text-slate-300">Simple steps, clear answers, and a warm campus visit.</p>
+            </div>
+          </div>
+          <div class="mt-4 rounded-3xl border border-white/10 bg-white/5 p-5">
+            <p class="text-xs uppercase tracking-[0.3em] text-brand-200">Our promise</p>
+            <p class="mt-3 max-w-xl text-2xl font-semibold leading-tight text-white">
+              We build strong basics, gentle confidence, and curiosity that lasts well beyond the classroom.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="grid gap-6 md:grid-cols-3">
+      <article class="info-card">
+        <p class="section-label">About</p>
+        <h2 class="mt-5 text-3xl">A school that feels personal</h2>
+        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.about.intro }}</p>
+        <a href="{{ "/about/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Learn more about us</a>
+      </article>
+      <article class="info-card">
+        <p class="section-label">Academics</p>
+        <h2 class="mt-5 text-3xl">Clear learning pathways</h2>
+        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.academics.intro }}</p>
+        <a href="{{ "/academics/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">See our programs</a>
+      </article>
+      <article class="info-card">
+        <p class="section-label">Contact</p>
+        <h2 class="mt-5 text-3xl">Easy to reach</h2>
+        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.contact.intro }}</p>
+        <a href="{{ "/contact/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Plan a visit</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+      <div class="content-panel">
+        <p class="section-label">Campus life</p>
+        <h2 class="mt-5 text-4xl">A balanced day for every learner</h2>
+        <p class="mt-4 text-sm leading-7 text-slate-300">
+          From morning routines to classroom projects, our students move through the day with structure, encouragement, and room to explore.
+        </p>
+        <ul class="mt-6 space-y-4 text-sm text-slate-300">
+          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-400"></span>Foundational literacy and numeracy through gentle, consistent practice.</li>
+          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-sun-400"></span>Creative lessons, assemblies, and activities that build expression and teamwork.</li>
+          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300"></span>Clear communication for parents and regular support from teachers.</li>
+        </ul>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div class="info-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Pre-primary</p>
+          <h3 class="mt-4 text-2xl">Play-based beginnings</h3>
+          <p class="mt-3 text-sm leading-7 text-slate-300">Early learning focused on language, movement, social skills, and curiosity.</p>
+        </div>
+        <div class="info-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Primary</p>
+          <h3 class="mt-4 text-2xl">Strong core skills</h3>
+          <p class="mt-3 text-sm leading-7 text-slate-300">Reading, writing, numeracy, and hands-on projects taught with care and consistency.</p>
+        </div>
+        <div class="info-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Upper classes</p>
+          <h3 class="mt-4 text-2xl">Confidence and depth</h3>
+          <p class="mt-3 text-sm leading-7 text-slate-300">Deeper subject understanding, study habits, presentations, and independent thinking.</p>
+        </div>
+        <div class="info-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Activities</p>
+          <h3 class="mt-4 text-2xl">Beyond the textbook</h3>
+          <p class="mt-3 text-sm leading-7 text-slate-300">Sports, arts, cultural events, and celebrations that make school memorable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="content-panel">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="section-label">Blog</p>
+          <h2 class="mt-5 text-4xl">Updates, ideas, and school moments</h2>
+        </div>
+        <a href="{{ "/blogs/" | relURL }}" class="text-sm font-bold text-brand-200 hover:text-brand-100">Visit the blog archive</a>
+      </div>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        {{ range first 2 (where .Site.RegularPages "Section" "blogs") }}
+          <article class="blog-card">
+            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">{{ .Date.Format "02 Jan 2006" }}</p>
+            <h3 class="mt-4 text-2xl">{{ .Title }}</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-300">{{ .Summary }}</p>
+            <a href="{{ .RelPermalink }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Read post</a>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{ with .Content }}
+    <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <div class="content-panel max-w-3xl">
+        <div class="max-w-none text-slate-300 [&>p]:leading-8">
+          {{ . }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

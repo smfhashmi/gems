@@ -1,0 +1,32 @@
+<footer class="mt-16 border-t border-white/10 bg-slate-950/40">
+  <div class="mx-auto grid w-full max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:px-8">
+    <div>
+      <h3 class="text-2xl">Deccan Gems School</h3>
+      <p class="mt-4 max-w-md text-sm leading-7 text-slate-300">
+        A bright school community in SRT Colony, Sanathnagar, Hyderabad, designed for steady learning, joyful discovery, and respectful partnership with families.
+      </p>
+    </div>
+    <div>
+      <h4 class="text-lg">Visit</h4>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li>{{ .Site.Params.address }}</li>
+        <li>{{ .Site.Params.hours }}</li>
+        <li><a class="hover:text-white" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-lg">Quick Links</h4>
+      <div class="mt-4 flex flex-wrap gap-3">
+        {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}" class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white">{{ .Name }}</a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-4 text-sm text-slate-500 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <p>© {{ now.Year }} Deccan Gems School. All rights reserved.</p>
+      <p>Built with Hugo and Tailwind CSS.</p>
+    </div>
+  </div>
+</footer>

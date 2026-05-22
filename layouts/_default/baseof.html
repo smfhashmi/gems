@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#08101a" />
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_top,_rgba(52,211,153,0.18),_transparent_36%),radial-gradient(circle_at_20%_10%,rgba(245,158,11,0.12),transparent_24%)]"></div>
+      {{ partial "navbar.html" . }}
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+  </body>
+</html>

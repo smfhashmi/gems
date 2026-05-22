@@ -1,0 +1,70 @@
+{{ define "main" }}
+  <section class="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+    <div class="content-panel">
+      <p class="section-label">{{ .Title }}</p>
+      <h1 class="mt-5 text-5xl">{{ .Title }}</h1>
+      {{ with .Params.description }}<p class="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{{ . }}</p>{{ end }}
+    </div>
+
+    <div class="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="space-y-6">
+        <div class="info-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Visit us</p>
+          <h2 class="mt-4 text-3xl">School Address</h2>
+          <p class="mt-3 text-sm leading-7 text-slate-300">{{ .Site.Params.address }}</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+          <div class="info-card">
+            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Phone</p>
+            <a class="mt-3 block text-xl font-semibold text-white hover:text-brand-200" href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a>
+          </div>
+          <div class="info-card">
+            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Email</p>
+            <a class="mt-3 block text-xl font-semibold text-white hover:text-brand-200" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Office hours</p>
+          <p class="mt-3 text-lg font-semibold text-white">{{ .Site.Params.hours }}</p>
+        </div>
+      </div>
+
+      <div class="content-panel">
+        <h2 class="text-3xl">Send an enquiry</h2>
+        <p class="mt-3 text-sm leading-7 text-slate-300">
+          Use the form below to ask about admissions, campus visits, or general school information. This starter routes messages through your email client.
+        </p>
+
+        <form class="mt-8 space-y-5" action="mailto:{{ .Site.Params.email }}" method="post" enctype="text/plain">
+          <div>
+            <label class="form-label" for="name">Full name</label>
+            <input class="form-input" id="name" name="name" type="text" placeholder="Your name" />
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" id="email" name="email" type="email" placeholder="you@example.com" />
+            </div>
+            <div>
+              <label class="form-label" for="phone">Phone</label>
+              <input class="form-input" id="phone" name="phone" type="tel" placeholder="+91..." />
+            </div>
+          </div>
+          <div>
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-input min-h-40" id="message" name="message" rows="6" placeholder="How can we help?"></textarea>
+          </div>
+          <button class="btn-primary" type="submit">Send enquiry</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="mt-8 content-panel">
+      <div class="max-w-3xl text-slate-300 [&>p]:leading-8">
+        {{ .Content }}
+      </div>
+    </div>
+  </section>
+{{ end }}

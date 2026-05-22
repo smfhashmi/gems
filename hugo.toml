@@ -1,0 +1,57 @@
+baseURL = 'https://deccangemsschool.example/'
+languageCode = 'en-us'
+title = 'Deccan Gems School'
+enableRobotsTXT = true
+
+[params]
+schoolName = 'Deccan Gems School'
+tagline = 'Learning that sparkles with confidence, curiosity, and care.'
+address = 'SRT Colony, Sanathnagar, Hyderabad'
+phone = '+91 98765 43210'
+email = 'admissions@deccangemsschool.example'
+hours = 'Mon - Sat, 8:00 AM - 4:00 PM'
+
+[params.hero]
+eyebrow = 'SRT Colony, Sanathnagar, Hyderabad'
+headline = 'A warm, modern school community for ambitious young learners.'
+lead = 'Deccan Gems School blends strong academics, creative exploration, and character-building into a calm, family-friendly campus experience.'
+primaryButton = 'Explore Academics'
+secondaryButton = 'Read the Blog'
+
+[params.about]
+intro = 'We design each day around clear routines, attentive teaching, and joyful learning so every child is seen, supported, and stretched.'
+
+[params.academics]
+intro = 'Our academic program balances fundamentals, language confidence, project work, and extracurricular opportunities from the earliest years onward.'
+
+[params.contact]
+intro = 'We welcome school visits, admissions enquiries, and parent conversations throughout the week.'
+
+[menu]
+[[menu.main]]
+name = 'Home'
+url = '/'
+weight = 10
+
+[[menu.main]]
+name = 'About'
+url = '/about/'
+weight = 20
+
+[[menu.main]]
+name = 'Academics'
+url = '/academics/'
+weight = 30
+
+[[menu.main]]
+name = 'Contact'
+url = '/contact/'
+weight = 40
+
+[[menu.main]]
+name = 'Blogs'
+url = '/blogs/'
+weight = 50
+
+[permalinks]
+blogs = '/blogs/:slug/'

@@ -1,0 +1,32 @@
+<header class="relative z-20">
+  <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <a href="{{ "/" | relURL }}" class="group flex items-center gap-3">
+      <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-brand-400/30 bg-brand-400/15 text-brand-200 shadow-glow">
+        <span class="text-lg font-black">DG</span>
+      </div>
+      <div>
+        <p class="text-lg font-extrabold tracking-wide text-white">{{ .Site.Params.schoolName }}</p>
+        <p class="text-xs uppercase tracking-[0.25em] text-slate-400">Hyderabad</p>
+      </div>
+    </a>
+
+    <nav class="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 p-2 backdrop-blur md:flex">
+      {{ $current := .RelPermalink }}
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" class="nav-link{{ if eq $current .URL }} nav-link-active{{ end }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+
+    <details class="relative md:hidden">
+      <summary class="cursor-pointer list-none rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white">
+        Menu
+      </summary>
+      <div class="absolute right-0 mt-3 w-52 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-card backdrop-blur-xl">
+        {{ $current := .RelPermalink }}
+        {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-slate-200 hover:bg-white/10{{ if eq $current .URL }} bg-white/10 text-white{{ end }}">{{ .Name }}</a>
+        {{ end }}
+      </div>
+    </details>
+  </div>
+</header>
