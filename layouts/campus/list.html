@@ -1,0 +1,323 @@
+{{ define "main" }}
+  <!-- Hero -->
+  <header class="relative flex min-h-[700px] h-[85vh] max-h-[1024px] w-full items-center justify-center overflow-hidden">
+    <img
+      alt="Students on campus"
+      class="absolute inset-0 h-full w-full object-cover"
+      src="{{ index site.Data.images "campusHero" }}"
+    />
+    <div class="hero-gradient absolute inset-0"></div>
+    <div class="relative z-10 max-w-4xl px-4 text-center">
+      <span class="mb-6 inline-block rounded-full border border-secondary/30 bg-secondary-container/20 px-4 py-1 font-label-caps text-label-caps text-secondary-fixed backdrop-blur-md">Life beyond the classroom</span>
+      <h1 class="mb-8 font-display-lg text-display-lg-mobile text-white md:text-display-lg">Where learning meets exploration</h1>
+      <p class="mx-auto mb-10 max-w-2xl font-body-lg text-body-lg text-white/80">
+        {{ with .Site.Params.campus.intro }}{{ . }}{{ else }}Discover a warm community where curiosity, creativity, and teamwork help every child shine.{{ end }}
+      </p>
+      <div class="flex flex-col items-center justify-center gap-4 md:flex-row">
+        <a href="#video-tour" class="flex items-center gap-2 rounded-full bg-white px-8 py-4 font-sans text-button text-primary transition hover:scale-105">
+          <span class="material-symbols-outlined">play_circle</span>
+          A day at school
+        </a>
+        <a href="#facilities" class="flex items-center gap-2 rounded-full border border-white/40 px-8 py-4 font-sans text-button text-white transition hover:bg-white/10">
+          Explore campus
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sports & athletics -->
+  <section class="py-24" id="facilities">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-16 grid grid-cols-1 items-end gap-gutter md:grid-cols-12">
+        <div class="md:col-span-6">
+          <span class="mb-4 block font-label-caps text-label-caps text-secondary">Athletics</span>
+          <h2 class="font-headline-md text-headline-md text-primary">Sports &amp; play</h2>
+        </div>
+        <div class="md:col-span-6 md:text-right">
+          <p class="ml-auto max-w-md font-body-md text-body-md text-on-surface-variant">Building fitness, teamwork, and sportsmanship through structured games and outdoor activity.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-bento-gap md:grid-cols-3">
+        <div class="group relative h-[400px] overflow-hidden rounded-xl border border-outline-variant/20 bento-card-shadow md:col-span-2">
+          <img class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Sports ground" src="{{ index site.Data.images "sportsOutdoor" }}" />
+          <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/80 to-transparent p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <h3 class="mb-2 font-headline-sm text-headline-sm text-white">Outdoor sports ground</h3>
+            <p class="font-body-md text-white/70">Cricket, football, athletics, and inter-house matches throughout the year.</p>
+          </div>
+        </div>
+        <div class="group flex h-[400px] flex-col justify-between overflow-hidden rounded-xl border border-outline-variant/20 bg-white p-8 bento-card-shadow">
+          <div>
+            <span class="material-symbols-outlined mb-4 text-4xl text-secondary">fitness_center</span>
+            <h3 class="mb-2 font-headline-sm text-headline-sm text-primary">Indoor activities</h3>
+            <p class="font-body-md text-on-surface-variant">Yoga, drills, and fitness sessions in our multipurpose hall.</p>
+          </div>
+          <img class="h-40 w-full rounded-lg object-cover transition-transform group-hover:scale-105" alt="Indoor sports" src="{{ index site.Data.images "sportsIndoor" }}" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clubs & societies -->
+  <section class="bg-surface-container py-24">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-16 text-center">
+        <h2 class="mb-4 font-headline-md text-headline-md text-primary">Clubs &amp; societies</h2>
+        <p class="mx-auto max-w-2xl font-body-md text-body-md text-on-surface-variant">From debate and science club to arts and leadership—students find teams that match their interests.</p>
+      </div>
+      <div class="grid grid-cols-1 gap-bento-gap sm:grid-cols-2 lg:grid-cols-4">
+        <div class="group rounded-xl border border-outline-variant/10 bg-white p-6 bento-card-shadow transition-transform hover:-translate-y-1">
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+            <span class="material-symbols-outlined">gavel</span>
+          </div>
+          <h4 class="mb-3 font-headline-sm text-headline-sm text-primary">Debate &amp; elocution</h4>
+          <p class="mb-6 text-sm text-on-surface-variant">Confidence in public speaking and structured argument.</p>
+          <a class="flex items-center gap-2 font-label-caps text-label-caps text-secondary" href="{{ "/gallery/" | relURL }}">
+            See moments
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <div class="group rounded-xl border border-outline-variant/10 bg-white p-6 bento-card-shadow transition-transform hover:-translate-y-1">
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+            <span class="material-symbols-outlined">language</span>
+          </div>
+          <h4 class="mb-3 font-headline-sm text-headline-sm text-primary">Language &amp; culture</h4>
+          <p class="mb-6 text-sm text-on-surface-variant">Reading circles, festivals, and multilingual enrichment.</p>
+          <a class="flex items-center gap-2 font-label-caps text-label-caps text-secondary" href="{{ "/gallery/" | relURL }}">
+            See moments
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <div class="group relative col-span-1 overflow-hidden rounded-xl bg-primary p-8 text-white lg:col-span-2">
+          <img class="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-1000 group-hover:scale-105" alt="House activities" src="{{ index site.Data.images "houseSystem" }}" />
+          <div class="relative z-10 flex h-full flex-col justify-between">
+            <div>
+              <span class="mb-4 block font-label-caps text-label-caps text-secondary-fixed">Tradition</span>
+              <h3 class="mb-4 font-headline-md text-headline-md">House system</h3>
+              <p class="max-w-xs text-white/70">Friendly competition, team spirit, and recognition across sports and academics.</p>
+            </div>
+            <a href="{{ "/about/" | relURL }}" class="mt-8 w-fit rounded-full bg-secondary px-6 py-2 font-sans text-button text-on-secondary">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arts & music -->
+  <section class="overflow-hidden py-24">
+    <div class="mx-auto flex max-w-container-max flex-col items-center gap-16 px-margin-mobile md:flex-row md:px-margin-desktop">
+      <div class="relative w-full md:w-1/2">
+        <div class="relative z-10 overflow-hidden rounded-2xl bento-card-shadow">
+          <img class="aspect-[4/5] w-full object-cover" alt="Music and arts" src="{{ index site.Data.images "musicArts" }}" />
+        </div>
+        <div class="glass absolute -bottom-8 -right-8 hidden max-w-[280px] rounded-2xl border border-white/20 p-8 bento-card-shadow md:block">
+          <span class="material-symbols-outlined mb-4 text-3xl text-secondary">palette</span>
+          <h4 class="mb-2 font-headline-sm text-headline-sm text-primary">Visual arts studio</h4>
+          <p class="text-sm text-on-surface-variant">Natural light, craft materials, and space for painting, drawing, and display.</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2">
+        <span class="mb-4 block font-label-caps text-label-caps text-secondary">Creative expression</span>
+        <h2 class="mb-8 font-headline-md text-headline-md text-primary">Where creativity grows</h2>
+        <div class="space-y-8">
+          <div class="flex items-start gap-6">
+            <div class="font-headline-sm text-2xl font-bold text-primary opacity-20">01</div>
+            <div>
+              <h5 class="mb-2 font-headline-sm text-headline-sm text-primary">Music &amp; performance</h5>
+              <p class="font-body-md text-on-surface-variant">Vocal training, instruments, and stage opportunities at assemblies and annual day.</p>
+            </div>
+          </div>
+          <div class="h-px w-full bg-outline-variant/20"></div>
+          <div class="flex items-start gap-6">
+            <div class="font-headline-sm text-2xl font-bold text-primary opacity-20">02</div>
+            <div>
+              <h5 class="mb-2 font-headline-sm text-headline-sm text-primary">Art &amp; craft</h5>
+              <p class="font-body-md text-on-surface-variant">Hands-on projects that build fine motor skills and visual thinking.</p>
+            </div>
+          </div>
+          <div class="h-px w-full bg-outline-variant/20"></div>
+          <div class="flex items-start gap-6">
+            <div class="font-headline-sm text-2xl font-bold text-primary opacity-20">03</div>
+            <div>
+              <h5 class="mb-2 font-headline-sm text-headline-sm text-primary">Drama &amp; presentation</h5>
+              <p class="font-body-md text-on-surface-variant">Skits, storytelling, and confidence on stage for every age group.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A day in the life -->
+  <section class="bg-primary py-24 text-white" id="video-tour">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-16 text-center">
+        <h2 class="mb-4 font-headline-md text-headline-md">A day in the life</h2>
+        <p class="font-body-md text-white/60">From morning assembly to activities—a rhythm that balances study and play.</p>
+      </div>
+      <div class="group relative mx-auto aspect-video max-w-5xl overflow-hidden rounded-3xl border border-white/10 bento-card-shadow">
+        <img class="h-full w-full object-cover brightness-50" alt="Students collaborating" src="{{ index site.Data.images "dayInLife" }}" />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <button type="button" class="flex h-24 w-24 items-center justify-center rounded-full bg-white text-primary shadow-xl transition hover:scale-110 active:scale-95" aria-label="Play video">
+            <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+          </button>
+        </div>
+        <div class="absolute bottom-8 left-8 right-8 flex items-end justify-between">
+          <div>
+            <p class="mb-2 font-label-caps text-label-caps text-secondary-fixed">Student voice</p>
+            <h4 class="font-headline-sm text-headline-sm">Life at {{ .Site.Params.schoolName }}</h4>
+          </div>
+          <div class="flex gap-2">
+            <button type="button" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition hover:bg-white/10" aria-label="Previous">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button type="button" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition hover:bg-white/10" aria-label="Next">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Innovation & STEM -->
+  <section class="py-24">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
+        <div class="max-w-xl">
+          <span class="mb-4 block font-label-caps text-label-caps text-secondary">Future-ready</span>
+          <h2 class="font-headline-md text-headline-md text-primary">Learning labs &amp; discovery</h2>
+          <p class="mt-4 font-body-md text-body-md text-on-surface-variant">Hands-on science, coding basics, and project work that make concepts real.</p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <span class="rounded-full border border-outline-variant/30 px-6 py-2 font-label-caps text-label-caps text-primary">Science lab</span>
+          <span class="rounded-full border border-outline-variant/30 px-6 py-2 font-label-caps text-label-caps text-primary">Computer lab</span>
+          <span class="rounded-full border border-outline-variant/30 px-6 py-2 font-label-caps text-label-caps text-primary">Projects</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-bento-gap md:grid-cols-4 md:auto-rows-fr">
+        <div class="group relative min-h-[320px] overflow-hidden rounded-xl border border-outline-variant/20 bento-card-shadow md:col-span-2 md:row-span-2">
+          <img class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" alt="Robotics and STEM" src="{{ index site.Data.images "robotics" }}" />
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
+            <h3 class="mb-2 font-headline-sm text-headline-sm text-white">STEM &amp; tinkering</h3>
+            <p class="font-body-md text-white/60">Build, experiment, and present ideas with teacher guidance.</p>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between rounded-xl border border-outline-variant/20 bg-surface-container-high p-8 transition-colors duration-300 hover:bg-surface-container-highest">
+          <div>
+            <span class="material-symbols-outlined mb-6 text-4xl text-secondary">science</span>
+            <h4 class="mb-4 font-headline-sm text-headline-sm text-primary">Science laboratory</h4>
+            <p class="text-sm text-on-surface-variant">Safe, supervised experiments for middle and upper grades.</p>
+          </div>
+        </div>
+        <div class="group flex flex-col justify-between rounded-xl bg-primary p-8 text-white">
+          <div class="flex items-start justify-between">
+            <span class="material-symbols-outlined text-4xl text-secondary-fixed">memory</span>
+            <span class="material-symbols-outlined opacity-30 transition-opacity group-hover:opacity-100">arrow_outward</span>
+          </div>
+          <div>
+            <h4 class="mb-2 font-headline-sm text-headline-sm">Digital skills</h4>
+            <p class="text-sm text-white/50">Keyboarding, presentations, and responsible use of technology.</p>
+          </div>
+        </div>
+        <div class="flex flex-col overflow-hidden rounded-xl border border-outline-variant/20 bg-white bento-card-shadow md:col-span-2 md:flex-row">
+          <div class="flex-1 p-8">
+            <h4 class="mb-4 font-headline-sm text-headline-sm text-primary">Eco &amp; sustainability</h4>
+            <p class="mb-6 text-sm text-on-surface-variant">Gardening, recycling drives, and awareness projects led by students.</p>
+            <a class="flex items-center gap-2 font-label-caps text-label-caps text-secondary" href="{{ "/gallery/" | relURL }}">
+              View projects
+              <span class="material-symbols-outlined text-sm">trending_flat</span>
+            </a>
+          </div>
+          <div class="w-full bg-secondary-container/10 md:w-1/3">
+            <img class="h-full min-h-[200px] w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" alt="School garden" src="{{ index site.Data.images "garden" }}" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wellness -->
+  <section class="border-y border-outline-variant/10 bg-background py-24">
+    <div class="mx-auto grid max-w-container-max grid-cols-1 items-center gap-16 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div>
+        <span class="mb-4 block font-label-caps text-label-caps text-secondary">Well-being</span>
+        <h2 class="mb-6 font-headline-md text-headline-md text-primary">Mind, body, and spirit</h2>
+        <p class="mb-8 font-body-lg text-body-lg text-on-surface-variant">We care for the whole child—emotional safety, healthy routines, and adults students can trust.</p>
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+              <span class="material-symbols-outlined text-xl">self_improvement</span>
+            </div>
+            <div>
+              <h5 class="mb-1 font-label-caps text-label-caps text-primary">Mindfulness</h5>
+              <p class="text-xs text-on-surface-variant">Short calm-down practices and reflection time.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+              <span class="material-symbols-outlined text-xl">nutrition</span>
+            </div>
+            <div>
+              <h5 class="mb-1 font-label-caps text-label-caps text-primary">Healthy meals</h5>
+              <p class="text-xs text-on-surface-variant">Balanced canteen options and hydration breaks.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+              <span class="material-symbols-outlined text-xl">psychology</span>
+            </div>
+            <div>
+              <h5 class="mb-1 font-label-caps text-label-caps text-primary">Counselling support</h5>
+              <p class="text-xs text-on-surface-variant">A listening ear for students and families when needed.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+              <span class="material-symbols-outlined text-xl">spa</span>
+            </div>
+            <div>
+              <h5 class="mb-1 font-label-caps text-label-caps text-primary">First aid</h5>
+              <p class="text-xs text-on-surface-variant">Trained staff and clear protocols on campus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="aspect-[4/3] overflow-hidden rounded-3xl bento-card-shadow">
+          <img class="h-full w-full object-cover" alt="Wellness space" src="{{ index site.Data.images "wellness" }}" />
+        </div>
+        <div class="glass absolute -left-12 -top-12 hidden items-center gap-4 rounded-full border border-white/20 p-6 bento-card-shadow lg:flex">
+          <div class="h-12 w-12 overflow-hidden rounded-full border-2 border-white">
+            <img class="h-full w-full object-cover" alt="{{ .Site.Params.principal.name }}" src="{{ index site.Data.images "principal" }}" />
+          </div>
+          <div>
+            <p class="text-xs font-bold text-primary">{{ .Site.Params.principal.name }}</p>
+            <p class="text-[10px] text-on-surface-variant">{{ .Site.Params.principal.title }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit CTA -->
+  <section class="py-24">
+    <div class="relative mx-auto max-w-container-max overflow-hidden rounded-3xl bg-primary px-12 py-24 text-center px-margin-mobile md:px-margin-desktop">
+      <div class="relative z-10 mx-auto max-w-3xl">
+        <h2 class="mb-8 font-display-lg text-display-lg-mobile text-white md:text-display-lg">See it for yourself</h2>
+        <p class="mb-12 font-body-lg text-body-lg text-white/70">Walk our campus in Sanathnagar, meet teachers, and picture your child in our community.</p>
+        <a href="{{ "/contact/" | relURL }}" class="mx-auto flex w-fit items-center gap-3 rounded-full bg-secondary px-10 py-5 font-sans text-button text-on-secondary transition hover:scale-105">
+          <span class="material-symbols-outlined">explore</span>
+          Book a campus visit
+        </a>
+      </div>
+      <div class="absolute left-0 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-white/5 blur-3xl"></div>
+      <div class="absolute right-0 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-secondary/10 blur-3xl"></div>
+    </div>
+  </section>
+
+  {{ with .Content }}
+    <section class="mx-auto max-w-container-max px-margin-mobile pb-24 md:px-margin-desktop">
+      <div class="content-panel max-w-3xl prose-school">{{ . }}</div>
+    </section>
+  {{ end }}
+{{ end }}

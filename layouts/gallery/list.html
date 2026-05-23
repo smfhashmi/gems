@@ -1,0 +1,228 @@
+{{ define "main" }}
+  <!-- Hero -->
+  <section class="relative flex h-screen w-full items-center justify-center overflow-hidden">
+    <img
+      alt="Deccan Gems School campus at dusk"
+      class="absolute inset-0 z-0 h-full w-full object-cover brightness-[0.7]"
+      src="{{ index site.Data.images "galleryHero" }}"
+    />
+    <div class="relative z-10 max-w-3xl px-margin-mobile text-center md:px-margin-desktop">
+      <span class="mb-4 inline-block font-label-caps text-label-caps uppercase tracking-[0.2em] text-secondary-fixed">Visual journey</span>
+      <h1 class="mb-6 font-display-lg text-display-lg-mobile text-white md:text-display-lg">Moments of learning, joy, and growth</h1>
+      <p class="mx-auto mb-10 max-w-xl font-body-lg text-body-lg text-white/80">
+        Step inside our world through a curated lens—from classroom discovery and labs to celebrations on campus.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="#videos" class="flex items-center gap-2 rounded-full bg-white px-8 py-4 font-label-caps text-label-caps text-primary transition hover:scale-105 active:scale-95">
+          <span class="material-symbols-outlined">play_circle</span>
+          Watch highlights
+        </a>
+      </div>
+    </div>
+    <a href="#campus-photos" class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce text-white" aria-label="Scroll to gallery">
+      <span class="material-symbols-outlined text-4xl">keyboard_arrow_down</span>
+    </a>
+  </section>
+
+  <!-- Campus photography -->
+  <section class="py-24" id="campus-photos">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
+        <div>
+          <h2 class="mb-2 font-headline-md text-headline-md text-primary">Campus perspectives</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant">Life at {{ .Site.Params.schoolName }} through everyday moments.</p>
+        </div>
+        <div class="flex flex-wrap gap-4" data-gallery-filters>
+          <button type="button" class="gallery-filter-btn gallery-filter-active rounded-full border border-outline px-4 py-2 font-label-caps text-label-caps transition-colors" data-filter="all">All</button>
+          <button type="button" class="gallery-filter-btn rounded-full border border-outline px-4 py-2 font-label-caps text-label-caps transition-colors hover:bg-surface-container-high" data-filter="campus">Campus</button>
+          <button type="button" class="gallery-filter-btn rounded-full border border-outline px-4 py-2 font-label-caps text-label-caps transition-colors hover:bg-surface-container-high" data-filter="learning">Learning</button>
+          <button type="button" class="gallery-filter-btn rounded-full border border-outline px-4 py-2 font-label-caps text-label-caps transition-colors hover:bg-surface-container-high" data-filter="sports">Sports</button>
+        </div>
+      </div>
+
+      <div class="masonry-grid" data-gallery-grid>
+        <div class="gallery-photo group relative cursor-pointer overflow-hidden rounded-xl border border-white/20 bg-white shadow-sm bento-card" data-category="learning">
+          <img class="w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105" alt="Students in the library" src="{{ index site.Data.images "library" }}" />
+          <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/60 to-transparent p-6 opacity-0 transition-opacity group-hover:opacity-100">
+            <span class="font-label-caps text-label-caps text-white">Library &amp; reading</span>
+          </div>
+        </div>
+        <div class="gallery-photo group relative cursor-pointer overflow-hidden rounded-xl border border-white/20 bg-white shadow-sm bento-card" data-category="learning">
+          <img class="w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105" alt="Science laboratory" src="{{ index site.Data.images "science" }}" />
+        </div>
+        <div class="gallery-photo group relative cursor-pointer overflow-hidden rounded-xl border border-white/20 bg-white shadow-sm bento-card" data-category="campus">
+          <img class="h-80 w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105" alt="School courtyard" src="{{ index site.Data.images "campusAerial" }}" />
+        </div>
+        <div class="gallery-photo group relative cursor-pointer overflow-hidden rounded-xl border border-white/20 bg-white shadow-sm bento-card" data-category="sports">
+          <img class="w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105" alt="Sports on the field" src="{{ index site.Data.images "sports" }}" />
+        </div>
+        <div class="gallery-photo group relative cursor-pointer overflow-hidden rounded-xl border border-white/20 bg-white shadow-sm bento-card" data-category="learning">
+          <img class="w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105" alt="Collaborative project work" src="{{ index site.Data.images "collaboration" }}" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signature events -->
+  <section class="bg-surface-container-low py-24">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-12">
+        <h2 class="font-headline-md text-headline-md text-primary">Signature events</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">Highlights from our annual calendar.</p>
+      </div>
+      <div class="grid auto-rows-[300px] grid-cols-1 gap-bento-gap md:grid-cols-12">
+        <div class="gallery-photo group relative col-span-1 overflow-hidden rounded-xl bento-card md:col-span-8">
+          <img class="absolute inset-0 h-full w-full object-cover" alt="Annual day celebration" src="{{ index site.Data.images "annualDay" }}" />
+          <div class="absolute inset-0 bg-black/40 transition-all group-hover:bg-black/20"></div>
+          <div class="absolute bottom-8 left-8 text-white">
+            <span class="mb-3 inline-block rounded-full bg-secondary px-3 py-1 font-label-caps text-label-caps">Featured</span>
+            <h3 class="font-headline-sm text-headline-sm">Annual Day 2025</h3>
+            <p class="font-body-md text-body-md text-white/80">A celebration of talent, teamwork, and school spirit.</p>
+          </div>
+        </div>
+        <div class="gallery-photo group relative col-span-1 overflow-hidden rounded-xl bento-card md:col-span-4">
+          <img class="absolute inset-0 h-full w-full object-cover" alt="Sports day" src="{{ index site.Data.images "sportsDay" }}" />
+          <div class="absolute inset-0 bg-primary/20 transition-all group-hover:bg-primary/10"></div>
+          <div class="absolute bottom-6 left-6 text-white">
+            <h3 class="font-headline-sm text-headline-sm">Sports day</h3>
+          </div>
+        </div>
+        <div class="gallery-photo group relative col-span-1 overflow-hidden rounded-xl bento-card md:col-span-4">
+          <img class="absolute inset-0 h-full w-full object-cover" alt="Arts showcase" src="{{ index site.Data.images "artsShow" }}" />
+          <div class="absolute inset-0 bg-primary/20 transition-all group-hover:bg-primary/10"></div>
+          <div class="absolute bottom-6 left-6 text-white">
+            <h3 class="font-headline-sm text-headline-sm">Arts showcase</h3>
+          </div>
+        </div>
+        <div class="gallery-photo group relative col-span-1 overflow-hidden rounded-xl bento-card md:col-span-8">
+          <img class="absolute inset-0 h-full w-full object-cover" alt="Science exhibition" src="{{ index site.Data.images "scienceFair" }}" />
+          <div class="absolute inset-0 bg-black/30 transition-all group-hover:bg-black/10"></div>
+          <div class="absolute bottom-8 left-8 text-white">
+            <h3 class="font-headline-sm text-headline-sm">Science &amp; innovation fair</h3>
+            <p class="font-body-md text-body-md text-white/80">Student projects, experiments, and creative problem-solving.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video highlights -->
+  <section class="overflow-hidden py-24" id="videos">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-12 flex items-center justify-between">
+        <h2 class="font-headline-md text-headline-md text-primary">Cinematic highlights</h2>
+        <a class="flex items-center gap-1 font-label-caps text-label-caps text-secondary hover:underline" href="{{ "/contact/" | relURL }}">
+          Request campus videos
+          <span class="material-symbols-outlined text-sm">open_in_new</span>
+        </a>
+      </div>
+      <div class="flex snap-x gap-gutter overflow-x-auto hide-scrollbar pb-8">
+        <div class="min-w-[85vw] snap-center md:min-w-[600px]">
+          <div class="group relative aspect-video cursor-pointer overflow-hidden rounded-xl shadow-lg">
+            <img class="h-full w-full object-cover" alt="Campus overview video thumbnail" src="{{ index site.Data.images "video1" }}" />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full border border-white/40 bg-white/20 backdrop-blur-md transition group-hover:scale-110">
+                <span class="material-symbols-outlined text-3xl text-white" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-headline-sm text-headline-sm text-primary">Welcome to Deccan Gems</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant">Our philosophy, campus, and community.</p>
+          </div>
+        </div>
+        <div class="min-w-[85vw] snap-center md:min-w-[600px]">
+          <div class="group relative aspect-video cursor-pointer overflow-hidden rounded-xl shadow-lg">
+            <img class="h-full w-full object-cover" alt="Student life video thumbnail" src="{{ index site.Data.images "video2" }}" />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full border border-white/40 bg-white/20 backdrop-blur-md transition group-hover:scale-110">
+                <span class="material-symbols-outlined text-3xl text-white" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-headline-sm text-headline-sm text-primary">Student stories</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant">Voices from classrooms, clubs, and activities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Virtual tour -->
+  <section class="bg-primary py-24 text-on-primary">
+    <div class="mx-auto grid max-w-container-max grid-cols-1 items-center gap-16 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div class="relative h-[400px] overflow-hidden rounded-2xl md:h-[500px]">
+        <img class="h-full w-full object-cover opacity-60" alt="Campus map preview" src="{{ index site.Data.images "virtualTour" }}" />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <span class="material-symbols-outlined mb-4 text-6xl">360</span>
+            <p class="font-label-caps text-label-caps tracking-widest">Plan your visit</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="mb-6 font-headline-md text-headline-md">Explore from anywhere</h2>
+        <p class="mb-8 font-body-lg text-body-lg text-white/70">
+          Schedule a campus walk-through in Sanathnagar. See classrooms, labs, play areas, and meet our team in person.
+        </p>
+        <ul class="mb-10 space-y-4">
+          <li class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+            <span class="font-body-md text-body-md">Guided campus tours</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+            <span class="font-body-md text-body-md">Open days during admissions season</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+            <span class="font-body-md text-body-md">Meet teachers and leadership</span>
+          </li>
+        </ul>
+        <a href="{{ "/contact/" | relURL }}" class="inline-block rounded-full bg-secondary px-8 py-4 font-label-caps text-label-caps text-on-secondary shadow-lg transition hover:bg-secondary/90">Book a campus visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social feed -->
+  <section class="py-24">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-16 text-center">
+        <h2 class="mb-2 font-headline-md text-headline-md text-primary">Follow us online</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">Daily stories, events, and student moments.</p>
+        <p class="mt-2 font-bold text-secondary">@deccangemsschool</p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
+        {{ range site.Data.images.gallerySocial }}
+          <div class="gallery-photo group relative aspect-square cursor-pointer overflow-hidden rounded-lg">
+            <img class="h-full w-full object-cover" alt="School life moment" src="{{ . }}" />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
+              <span class="material-symbols-outlined text-white">favorite</span>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div
+    id="gallery-lightbox"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/95 p-8 opacity-0 backdrop-blur-xl transition-all duration-500"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image preview"
+  >
+    <button type="button" id="gallery-lightbox-close" class="absolute right-8 top-8 text-white transition hover:scale-110" aria-label="Close">
+      <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <img id="gallery-lightbox-img" class="max-h-[870px] max-w-full rounded-lg object-contain shadow-2xl" alt="" src="" />
+  </div>
+
+  {{ with .Content }}
+    <section class="mx-auto max-w-container-max px-margin-mobile pb-24 md:px-margin-desktop">
+      <div class="content-panel max-w-3xl prose-school">{{ . }}</div>
+    </section>
+  {{ end }}
+{{ end }}

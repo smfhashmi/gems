@@ -1,147 +1,278 @@
 {{ define "main" }}
-  <section class="mx-auto w-full max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-8 lg:pt-16">
-    <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+  <!-- Hero -->
+  <section class="relative flex h-screen w-full items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img alt="Deccan Gems School campus at golden hour" class="h-full w-full object-cover" src="{{ index site.Data.images "hero" }}" />
+      <div class="absolute inset-0 bg-primary/20 backdrop-brightness-75"></div>
+    </div>
+    <div class="relative z-10 px-margin-mobile text-center md:px-0">
+      <span class="animate-fade-up mb-6 block font-label-caps text-label-caps tracking-[0.4em] text-white/90">{{ .Site.Params.hero.eyebrow }}</span>
+      <h1 class="animate-fade-up mb-8 font-display-lg text-display-lg-mobile text-white md:text-display-lg" style="animation-delay: 0.2s">{{ .Site.Params.hero.headline }}</h1>
+      <div class="animate-fade-up flex flex-col justify-center gap-4 md:flex-row" style="animation-delay: 0.4s">
+        <a href="{{ "/about/" | relURL }}" class="rounded-full bg-white px-10 py-4 font-sans text-button text-primary transition hover:bg-secondary-container">{{ .Site.Params.hero.primaryButton }}</a>
+        <a href="{{ "/contact/" | relURL }}" class="rounded-full border border-white/40 px-10 py-4 font-sans text-button text-white backdrop-blur-md transition hover:bg-white/10">{{ .Site.Params.hero.secondaryButton }}</a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <span class="material-symbols-outlined text-4xl text-white">keyboard_double_arrow_down</span>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-surface-bright py-24">
+    <div class="mx-auto grid max-w-container-max grid-cols-2 gap-12 px-margin-mobile text-center md:grid-cols-4 md:px-margin-desktop">
+      <div class="space-y-2">
+        <div class="font-display-lg text-headline-md text-primary" data-counter data-suffix="+" data-target="15">15+</div>
+        <p class="font-label-caps text-label-caps text-secondary">Years of Excellence</p>
+      </div>
+      <div class="space-y-2">
+        <div class="font-display-lg text-headline-md text-primary" data-counter data-suffix="+" data-target="8">8+</div>
+        <p class="font-label-caps text-label-caps text-secondary">Programs &amp; Activities</p>
+      </div>
+      <div class="space-y-2">
+        <div class="font-display-lg text-headline-md text-primary" data-counter data-suffix="%" data-target="100">100%</div>
+        <p class="font-label-caps text-label-caps text-secondary">Parent Communication</p>
+      </div>
+      <div class="space-y-2">
+        <div class="font-display-lg text-headline-md text-primary" data-counter data-suffix=":1" data-target="12">12:1</div>
+        <p class="font-label-caps text-label-caps text-secondary">Student-Teacher Ratio</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About legacy -->
+  <section class="py-32">
+    <div class="mx-auto grid max-w-container-max items-center gap-24 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div class="relative">
+        <div class="aspect-[4/5] overflow-hidden rounded-xl shadow-2xl">
+          <img alt="Student in the school library" class="h-full w-full object-cover" src="{{ index site.Data.images "legacy" }}" />
+        </div>
+        <div class="absolute -bottom-10 -right-10 hidden h-64 w-64 overflow-hidden rounded-xl border-[12px] border-white shadow-xl md:block">
+          <img alt="Learning materials" class="h-full w-full object-cover" src="{{ index site.Data.images "legacySmall" }}" />
+        </div>
+      </div>
       <div class="space-y-8">
-        <span class="section-label">{{ .Site.Params.hero.eyebrow }}</span>
-        <div class="space-y-6">
-          <h1 class="hero-title">{{ .Site.Params.hero.headline }}</h1>
-          <p class="hero-lead">{{ .Site.Params.hero.lead }}</p>
+        <h2 class="font-headline-md text-headline-md leading-tight text-primary">Tradition Meets the Future of Education.</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">{{ .Site.Params.about.intro }}</p>
+        <div class="space-y-4">
+          <div class="group flex cursor-pointer items-center gap-4">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-secondary-container text-primary transition group-hover:scale-110">
+              <span class="material-symbols-outlined">history_edu</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary">A Community of Learners</h4>
+              <p class="text-sm text-on-surface-variant">Families, teachers, and students growing together in Sanathnagar.</p>
+            </div>
+          </div>
+          <div class="group flex cursor-pointer items-center gap-4">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-secondary-container text-primary transition group-hover:scale-110">
+              <span class="material-symbols-outlined">public</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary">Well-Rounded Growth</h4>
+              <p class="text-sm text-on-surface-variant">Academics, arts, sports, and life skills in one calm campus rhythm.</p>
+            </div>
+          </div>
         </div>
+        <a href="{{ "/about/" | relURL }}" class="inline-flex items-center gap-2 font-label-caps text-label-caps text-secondary">
+          Our story
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic bento -->
+  <section class="bg-surface-container-low py-32">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-16 space-y-4 text-center">
+        <span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary">Our Schools</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Nurturing Excellence at Every Stage</h2>
+      </div>
+      <div class="grid h-auto grid-cols-1 gap-bento-gap md:h-[600px] md:grid-cols-12">
+        <div class="bento-card group relative overflow-hidden rounded-xl bg-white md:col-span-8">
+          <img alt="Primary classroom" class="h-full w-full object-cover" src="{{ index site.Data.images "curriculumPrimary" }}" />
+          <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/80 to-transparent p-8">
+            <h3 class="mb-2 font-headline-sm text-white">Pre-Primary &amp; Primary</h3>
+            <p class="max-w-md text-white/80">Play-based and inquiry-driven learning that builds curiosity, language, and social confidence.</p>
+          </div>
+        </div>
+        <div class="bento-card flex flex-col justify-between rounded-xl border border-outline-variant/30 bg-white p-8 md:col-span-4">
+          <div class="space-y-4">
+            <span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1">psychology</span>
+            <h3 class="font-headline-sm text-primary">Middle School</h3>
+            <p class="text-on-surface-variant">Developing critical thinking and independence during the crucial formative years.</p>
+          </div>
+          <a class="group flex items-center gap-2 font-bold text-secondary" href="{{ "/academics/" | relURL }}">
+            Explore curriculum
+            <span class="material-symbols-outlined transition group-hover:translate-x-2">arrow_forward</span>
+          </a>
+        </div>
+        <div class="bento-card flex flex-col justify-between rounded-xl bg-secondary p-8 text-on-secondary md:col-span-4">
+          <div class="space-y-4">
+            <h3 class="font-headline-sm">Upper School</h3>
+            <p class="text-on-secondary/80">Deeper subject mastery, study habits, and preparation for the next chapter.</p>
+          </div>
+          <a href="{{ "/academics/" | relURL }}" class="rounded-full bg-white py-3 text-center font-sans text-button text-secondary transition hover:bg-secondary-container">View pathways</a>
+        </div>
+        <div class="bento-card relative overflow-hidden rounded-xl bg-white md:col-span-8">
+          <img alt="Senior students collaborating" class="h-full w-full object-cover" src="{{ index site.Data.images "curriculumMiddle" }}" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campus showcase -->
+  <section class="bg-primary py-32 text-on-primary">
+    <div class="mx-auto grid max-w-container-max items-center gap-24 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div class="space-y-8">
+        <span class="font-label-caps text-label-caps tracking-widest text-secondary-fixed">CAMPUS LIFE</span>
+        <h2 class="font-headline-md text-headline-md">Immerse Yourself in Our World.</h2>
+        <p class="font-body-lg text-body-lg text-on-primary-container">From morning assemblies to creative clubs and sports, our campus offers a calm, structured day with room for exploration and joy.</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-xl border border-white/10 p-6 transition hover:bg-white/10">
+            <span class="material-symbols-outlined mb-4 text-secondary-fixed">sports_soccer</span>
+            <h4 class="font-bold">Sports &amp; Play</h4>
+          </div>
+          <div class="rounded-xl border border-white/10 p-6 transition hover:bg-white/10">
+            <span class="material-symbols-outlined mb-4 text-secondary-fixed">theater_comedy</span>
+            <h4 class="font-bold">Arts &amp; Culture</h4>
+          </div>
+        </div>
+        <a href="{{ "/campus/" | relURL }}" class="inline-flex items-center gap-2 font-label-caps text-label-caps text-secondary-fixed">
+          Explore campus life
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+      <a href="{{ "/campus/" | relURL }}" class="group relative block cursor-pointer">
+        <div class="aspect-video overflow-hidden rounded-2xl shadow-2xl">
+          <img alt="Aerial view of school campus" class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="{{ index site.Data.images "campusAerial" }}" />
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="flex h-20 w-20 items-center justify-center rounded-full bg-white text-primary shadow-2xl transition group-hover:scale-110">
+            <span class="material-symbols-outlined text-4xl">play_arrow</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Principal message -->
+  <section class="bg-white py-32">
+    <div class="mx-auto max-w-[1000px] px-margin-mobile md:px-margin-desktop">
+      <div class="grid items-start gap-16 md:grid-cols-[1fr_2fr]">
+        <div class="space-y-4">
+          <div class="aspect-[3/4] overflow-hidden rounded-xl grayscale">
+            <img alt="{{ .Site.Params.principal.name }}" class="h-full w-full object-cover" src="{{ index site.Data.images "principal" }}" />
+          </div>
+          <div class="text-center">
+            <h4 class="font-bold text-primary">{{ .Site.Params.principal.name }}</h4>
+            <p class="font-label-caps text-label-caps text-sm text-on-surface-variant">{{ .Site.Params.principal.title }}</p>
+          </div>
+        </div>
+        <div class="relative">
+          <span class="material-symbols-outlined absolute -left-8 -top-12 text-8xl text-secondary-fixed-dim opacity-40">format_quote</span>
+          <div class="relative space-y-6">
+            <h3 class="font-headline-md text-headline-sm italic leading-snug text-primary">"{{ .Site.Params.principal.quote }}"</h3>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">{{ .Site.Params.principal.bio }}</p>
+            <div class="pt-8">
+              <img alt="Principal signature" class="h-16 w-auto opacity-30" src="{{ index site.Data.images "legacySmall" }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why choose us -->
+  <section class="bg-surface-bright py-32">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
+        <div class="max-w-2xl space-y-4">
+          <span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary">The Deccan Gems Advantage</span>
+          <h2 class="font-headline-md text-headline-md text-primary">Why Discerning Families Choose Us</h2>
+        </div>
+        <a href="{{ "/about/" | relURL }}" class="border-b-2 border-primary pb-1 font-sans text-button text-primary transition hover:border-secondary hover:text-secondary">Learn about our approach</a>
+      </div>
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+        <div class="space-y-6 rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm transition hover:shadow-md">
+          <span class="material-symbols-outlined text-5xl text-secondary">workspace_premium</span>
+          <h3 class="font-headline-sm text-primary">Strong Foundations</h3>
+          <p class="text-on-surface-variant">Clear routines, attentive teaching, and steady practice in literacy, numeracy, and communication.</p>
+        </div>
+        <div class="space-y-6 rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm transition hover:shadow-md">
+          <span class="material-symbols-outlined text-5xl text-secondary">military_tech</span>
+          <h3 class="font-headline-sm text-primary">Warm Community</h3>
+          <p class="text-on-surface-variant">A neighborhood school where teachers know students and families stay closely connected.</p>
+        </div>
+        <div class="space-y-6 rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm transition hover:shadow-md">
+          <span class="material-symbols-outlined text-5xl text-secondary">verified_user</span>
+          <h3 class="font-headline-sm text-primary">Holistic Wellbeing</h3>
+          <p class="text-on-surface-variant">Creative exploration, sports, and character-building woven into every school day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="overflow-hidden py-32">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-24 text-center">
+        <h2 class="font-headline-md text-headline-md text-primary">Our Journey Through Time</h2>
+      </div>
+      <div class="relative flex items-center justify-between px-4 before:absolute before:left-0 before:top-1/2 before:-z-10 before:h-[2px] before:w-full before:bg-outline-variant/20 md:px-12">
+        <div class="group space-y-4 text-center">
+          <div class="mx-auto h-6 w-6 rounded-full border-4 border-white bg-secondary shadow-lg transition group-hover:scale-150"></div>
+          <div>
+            <span class="block font-bold text-primary">2008</span>
+            <span class="font-label-caps text-label-caps text-xs text-on-surface-variant">FOUNDATION</span>
+          </div>
+        </div>
+        <div class="group space-y-4 text-center">
+          <div class="mx-auto h-6 w-6 rounded-full border-4 border-white bg-secondary shadow-lg transition group-hover:scale-150"></div>
+          <div>
+            <span class="block font-bold text-primary">2015</span>
+            <span class="font-label-caps text-label-caps text-xs text-on-surface-variant">NEW CAMPUS</span>
+          </div>
+        </div>
+        <div class="group space-y-4 text-center">
+          <div class="mx-auto h-6 w-6 rounded-full border-4 border-white bg-secondary shadow-lg transition group-hover:scale-150"></div>
+          <div>
+            <span class="block font-bold text-primary">2020</span>
+            <span class="font-label-caps text-label-caps text-xs text-on-surface-variant">DIGITAL LEARNING</span>
+          </div>
+        </div>
+        <div class="group space-y-4 text-center">
+          <div class="mx-auto h-6 w-6 rounded-full border-4 border-white bg-secondary shadow-lg transition group-hover:scale-150"></div>
+          <div>
+            <span class="block font-bold text-primary">2026</span>
+            <span class="font-label-caps text-label-caps text-xs text-on-surface-variant">FUTURE READY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admissions CTA -->
+  <section class="px-margin-mobile py-24">
+    <div class="relative mx-auto max-w-container-max overflow-hidden rounded-3xl bg-primary p-12 md:p-24">
+      <div class="pointer-events-none absolute right-0 top-0 h-full w-1/2 opacity-20">
+        <img alt="" class="h-full w-full object-cover" src="{{ index site.Data.images "admissionsCta" }}" />
+      </div>
+      <div class="relative z-10 max-w-2xl">
+        <h2 class="mb-8 font-display-lg text-display-lg-mobile text-white md:text-headline-md">Ready to begin your child's journey?</h2>
+        <p class="mb-12 font-body-lg text-body-lg text-on-primary-container">Admissions enquiries and campus visits are open throughout the week. We would love to meet your family.</p>
         <div class="flex flex-wrap gap-4">
-          <a href="{{ "/academics/" | relURL }}" class="btn-primary">{{ .Site.Params.hero.primaryButton }}</a>
-          <a href="{{ "/blogs/" | relURL }}" class="btn-secondary">{{ .Site.Params.hero.secondaryButton }}</a>
+          <a href="{{ "/admissions/" | relURL }}" class="rounded-full bg-secondary-container px-10 py-4 font-sans text-button text-primary transition hover:bg-secondary-fixed">Start application</a>
+          <a href="{{ "/contact/" | relURL }}" class="rounded-full border border-white/20 px-10 py-4 font-sans text-button text-white transition hover:bg-white/10">Book a visit</a>
         </div>
-        <div class="grid gap-4 sm:grid-cols-3">
-          <div class="stat-card">
-            <p class="text-sm font-semibold text-brand-200">Balanced curriculum</p>
-            <p class="mt-2 text-sm leading-6 text-slate-300">Academics, arts, sports, and life skills woven together.</p>
-          </div>
-          <div class="stat-card">
-            <p class="text-sm font-semibold text-brand-200">Warm community</p>
-            <p class="mt-2 text-sm leading-6 text-slate-300">Friendly communication between teachers, students, and families.</p>
-          </div>
-          <div class="stat-card">
-            <p class="text-sm font-semibold text-brand-200">Future-ready learning</p>
-            <p class="mt-2 text-sm leading-6 text-slate-300">Projects and digital confidence from the earliest years.</p>
-          </div>
-        </div>
-      </div>
-      <div class="site-panel p-4 md:p-6">
-        <div class="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,185,129,0.15),rgba(8,16,26,0.75))] p-6">
-          <div class="grid gap-4 md:grid-cols-2">
-            <div class="rounded-3xl bg-slate-950/50 p-5">
-              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Location</p>
-              <p class="mt-3 text-lg font-semibold text-white">SRT Colony</p>
-              <p class="text-sm text-slate-300">Sanathnagar, Hyderabad</p>
-            </div>
-            <div class="rounded-3xl bg-slate-950/50 p-5">
-              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Admission help</p>
-              <p class="mt-3 text-lg font-semibold text-white">Parent-friendly guidance</p>
-              <p class="text-sm text-slate-300">Simple steps, clear answers, and a warm campus visit.</p>
-            </div>
-          </div>
-          <div class="mt-4 rounded-3xl border border-white/10 bg-white/5 p-5">
-            <p class="text-xs uppercase tracking-[0.3em] text-brand-200">Our promise</p>
-            <p class="mt-3 max-w-xl text-2xl font-semibold leading-tight text-white">
-              We build strong basics, gentle confidence, and curiosity that lasts well beyond the classroom.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <div class="grid gap-6 md:grid-cols-3">
-      <article class="info-card">
-        <p class="section-label">About</p>
-        <h2 class="mt-5 text-3xl">A school that feels personal</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.about.intro }}</p>
-        <a href="{{ "/about/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Learn more about us</a>
-      </article>
-      <article class="info-card">
-        <p class="section-label">Academics</p>
-        <h2 class="mt-5 text-3xl">Clear learning pathways</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.academics.intro }}</p>
-        <a href="{{ "/academics/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">See our programs</a>
-      </article>
-      <article class="info-card">
-        <p class="section-label">Contact</p>
-        <h2 class="mt-5 text-3xl">Easy to reach</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.contact.intro }}</p>
-        <a href="{{ "/contact/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Plan a visit</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-      <div class="content-panel">
-        <p class="section-label">Campus life</p>
-        <h2 class="mt-5 text-4xl">A balanced day for every learner</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          From morning routines to classroom projects, our students move through the day with structure, encouragement, and room to explore.
-        </p>
-        <ul class="mt-6 space-y-4 text-sm text-slate-300">
-          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-400"></span>Foundational literacy and numeracy through gentle, consistent practice.</li>
-          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-sun-400"></span>Creative lessons, assemblies, and activities that build expression and teamwork.</li>
-          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300"></span>Clear communication for parents and regular support from teachers.</li>
-        </ul>
-      </div>
-      <div class="grid gap-6 sm:grid-cols-2">
-        <div class="info-card">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Pre-primary</p>
-          <h3 class="mt-4 text-2xl">Play-based beginnings</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-300">Early learning focused on language, movement, social skills, and curiosity.</p>
-        </div>
-        <div class="info-card">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Primary</p>
-          <h3 class="mt-4 text-2xl">Strong core skills</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-300">Reading, writing, numeracy, and hands-on projects taught with care and consistency.</p>
-        </div>
-        <div class="info-card">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Upper classes</p>
-          <h3 class="mt-4 text-2xl">Confidence and depth</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-300">Deeper subject understanding, study habits, presentations, and independent thinking.</p>
-        </div>
-        <div class="info-card">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Activities</p>
-          <h3 class="mt-4 text-2xl">Beyond the textbook</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-300">Sports, arts, cultural events, and celebrations that make school memorable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <div class="content-panel">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p class="section-label">Blog</p>
-          <h2 class="mt-5 text-4xl">Updates, ideas, and school moments</h2>
-        </div>
-        <a href="{{ "/blogs/" | relURL }}" class="text-sm font-bold text-brand-200 hover:text-brand-100">Visit the blog archive</a>
-      </div>
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
-        {{ range first 2 (where .Site.RegularPages "Section" "blogs") }}
-          <article class="blog-card">
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">{{ .Date.Format "02 Jan 2006" }}</p>
-            <h3 class="mt-4 text-2xl">{{ .Title }}</h3>
-            <p class="mt-3 text-sm leading-7 text-slate-300">{{ .Summary }}</p>
-            <a href="{{ .RelPermalink }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Read post</a>
-          </article>
-        {{ end }}
       </div>
     </div>
   </section>
 
   {{ with .Content }}
-    <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <div class="content-panel max-w-3xl">
-        <div class="max-w-none text-slate-300 [&>p]:leading-8">
-          {{ . }}
-        </div>
-      </div>
+    <section class="mx-auto max-w-container-max px-margin-mobile pb-24 md:px-margin-desktop">
+      <div class="content-panel max-w-3xl prose-school">{{ . }}</div>
     </section>
   {{ end }}
 {{ end }}

@@ -4,6 +4,7 @@ title = 'Deccan Gems School'
 enableRobotsTXT = true
 
 [params]
+logo = '/images/logo.jpg'
 schoolName = 'Deccan Gems School'
 tagline = 'Learning that sparkles with confidence, curiosity, and care.'
 address = 'SRT Colony, Sanathnagar, Hyderabad'
@@ -12,20 +13,36 @@ email = 'admissions@deccangemsschool.example'
 hours = 'Mon - Sat, 8:00 AM - 4:00 PM'
 
 [params.hero]
-eyebrow = 'SRT Colony, Sanathnagar, Hyderabad'
-headline = 'A warm, modern school community for ambitious young learners.'
-lead = 'Deccan Gems School blends strong academics, creative exploration, and character-building into a calm, family-friendly campus experience.'
-primaryButton = 'Explore Academics'
-secondaryButton = 'Read the Blog'
+eyebrow = 'SRT COLONY, SANATHNAGAR'
+headline = 'Forging Future Leaders.'
+primaryButton = 'Discover Our Legacy'
+secondaryButton = 'Plan a Campus Visit'
+image = '/images/hero.jpg'
 
 [params.about]
-intro = 'We design each day around clear routines, attentive teaching, and joyful learning so every child is seen, supported, and stretched.'
+intro = 'Founded on the principles of holistic development, Deccan Gems School combines timeless values of character and integrity with a thoughtful curriculum designed for confident young learners in Hyderabad.'
 
 [params.academics]
 intro = 'Our academic program balances fundamentals, language confidence, project work, and extracurricular opportunities from the earliest years onward.'
 
 [params.contact]
 intro = 'We welcome school visits, admissions enquiries, and parent conversations throughout the week.'
+
+[params.campus]
+intro = 'Beyond classrooms, students discover sports, arts, clubs, and friendships that shape character and confidence.'
+
+[params.founder]
+name = 'Mohammed Fareed Uddin'
+title = 'Founder'
+image = '/images/founder.jpeg'
+quote = 'When we started Deccan Gems School, our aim was simple: give every child in our community a place to learn with dignity, discipline, and joy. That promise guides us still.'
+bio = 'Mohammed Fareed Uddin founded Deccan Gems School to serve families in Sanathnagar with steady academics, strong values, and a school culture built on trust.'
+
+[params.principal]
+name = 'Mrs. Priya Reddy'
+title = 'School Principal'
+quote = 'Education at Deccan Gems is not just about the curriculum; it is about the whole child. We nurture thinkers, dreamers, and doers who will grow with confidence and care.'
+bio = 'Our mission is to provide an environment where every student feels seen, heard, and challenged. We focus on empathy, adaptability, and strong foundations alongside academic mastery.'
 
 [menu]
 [[menu.main]]
@@ -44,14 +61,24 @@ url = '/academics/'
 weight = 30
 
 [[menu.main]]
-name = 'Contact'
-url = '/contact/'
+name = 'Campus'
+url = '/campus/'
 weight = 40
 
 [[menu.main]]
-name = 'Blogs'
-url = '/blogs/'
+name = 'Admissions'
+url = '/admissions/'
 weight = 50
+
+[[menu.main]]
+name = 'Gallery'
+url = '/gallery/'
+weight = 60
+
+[[menu.main]]
+name = 'Contact'
+url = '/contact/'
+weight = 70
 
 [permalinks]
 blogs = '/blogs/:slug/'
