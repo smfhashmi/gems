@@ -1,315 +1,137 @@
 {{ define "main" }}
-  <!-- Hero -->
-  <section class="relative flex h-screen items-center justify-center overflow-hidden pt-24">
-    <div class="absolute inset-0 z-0">
-      <img
-        alt="Deccan Gems School campus"
-        class="h-full w-full object-cover brightness-[0.9]"
-        src="{{ index site.Data.images "admissionsHero" }}"
-      />
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background"></div>
-    </div>
-    <div class="relative z-10 max-w-4xl px-margin-mobile text-center">
-      <span class="mb-4 block font-label-caps text-label-caps uppercase tracking-widest text-secondary">Admissions 2026–27</span>
-      <h1 class="mb-8 font-display-lg text-display-lg-mobile text-primary md:text-display-lg">Start Your Journey to Excellence.</h1>
-      <p class="mx-auto mb-10 max-w-2xl font-body-lg text-body-lg leading-relaxed text-on-surface-variant">
-        {{ .Site.Params.contact.intro }} Our admissions process is designed to be clear, warm, and family-friendly.
-      </p>
-      <div class="flex flex-col justify-center gap-4 md:flex-row">
-        <a href="#enquiry" class="rounded-full bg-primary px-10 py-4 font-sans text-button text-on-primary shadow-lg transition hover:scale-105">Begin enquiry</a>
-        <a href="#brochure" class="rounded-full border border-primary/10 bg-white/80 px-10 py-4 font-sans text-button text-primary shadow-sm backdrop-blur-md transition hover:bg-white">Download information</a>
+  {{ $images := site.Data.images }}
+
+  <!-- 1. Hero -->
+  <section class="relative isolate min-h-[640px] overflow-hidden bg-primary px-margin-mobile pt-28 text-white md:px-margin-desktop md:pt-32">
+    <img alt="Indian students in class" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "admissionsHero" }}" />
+    <div class="hero-primary-overlay absolute inset-0 -z-20"></div>
+    <div class="hero-grid-overlay absolute inset-0 -z-10 opacity-50"></div>
+    <div class="creative-orb creative-orb-secondary -right-20 top-24 h-80 w-80"></div>
+    <div class="creative-orb creative-orb-primary bottom-16 left-10 h-64 w-64"></div>
+    <div class="mx-auto flex min-h-[500px] max-w-container-max items-center">
+      <div class="max-w-3xl">
+        <span class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 font-label-caps text-label-caps text-secondary-fixed backdrop-blur">Admissions 2026-27</span>
+        <h1 class="text-balance font-display-lg text-display-lg-mobile text-white md:text-display-lg">A clean, calm path from enquiry to first day.</h1>
+        <p class="mt-7 max-w-2xl font-body-lg text-body-lg leading-8 text-white/82">No confusion, no pressure. Meet us, understand the fit, complete the essentials, and begin your child's Deccan Gems journey with clarity.</p>
+        <a class="mt-8 btn-minimal" href="#admission-enquiry">Begin enquiry</a>
       </div>
     </div>
   </section>
 
-  <!-- Application process -->
-  <section class="py-24">
+  <!-- 2. Process -->
+  <section class="minimal-section">
     <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <div class="mb-16 text-center">
-        <h2 class="mb-4 font-headline-md text-headline-md text-primary">Application Process</h2>
-        <div class="mx-auto h-1 w-20 rounded-full bg-secondary"></div>
+      <div class="mb-10 text-center">
+        <span class="minimal-kicker">Admission Flow</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Four steps. One helpful team.</h2>
       </div>
-      <div class="grid grid-cols-1 gap-bento-gap md:grid-cols-4">
-        <div class="glass-card bento-hover relative rounded-xl border-l-4 border-l-secondary p-8 transition-all">
-          <span class="absolute right-6 top-4 select-none font-display-lg font-bold text-secondary/10">01</span>
-          <span class="material-symbols-outlined mb-6 text-4xl text-secondary">description</span>
-          <h3 class="mb-3 font-headline-sm text-headline-sm">Enquiry</h3>
-          <p class="text-on-surface-variant">Submit an online enquiry or visit our campus for an initial conversation with our admissions team.</p>
-        </div>
-        <div class="glass-card bento-hover relative rounded-xl p-8 transition-all">
-          <span class="absolute right-6 top-4 select-none font-display-lg font-bold text-secondary/10">02</span>
-          <span class="material-symbols-outlined mb-6 text-4xl text-secondary">edit_document</span>
-          <h3 class="mb-3 font-headline-sm text-headline-sm">Assessment</h3>
-          <p class="text-on-surface-variant">A gentle readiness check covering basics, communication, and classroom comfort for the grade applied.</p>
-        </div>
-        <div class="glass-card bento-hover relative rounded-xl p-8 transition-all">
-          <span class="absolute right-6 top-4 select-none font-display-lg font-bold text-secondary/10">03</span>
-          <span class="material-symbols-outlined mb-6 text-4xl text-secondary">groups</span>
-          <h3 class="mb-3 font-headline-sm text-headline-sm">Interaction</h3>
-          <p class="text-on-surface-variant">A meeting with teachers and leadership to understand your child's needs and your family's goals.</p>
-        </div>
-        <div class="glass-card bento-hover relative rounded-xl p-8 transition-all">
-          <span class="absolute right-6 top-4 select-none font-display-lg font-bold text-secondary/10">04</span>
-          <span class="material-symbols-outlined mb-6 text-4xl text-secondary">verified</span>
-          <h3 class="mb-3 font-headline-sm text-headline-sm">Admission</h3>
-          <p class="text-on-surface-variant">On confirmation, an offer is shared. Secure the seat by completing fee formalities and documentation.</p>
-        </div>
+      <div class="responsive-card-grid">
+        {{ range slice
+          (dict "n" "01" "icon" "chat" "title" "Enquire" "text" "Tell us the grade, age, and what you want for your child.")
+          (dict "n" "02" "icon" "location_on" "title" "Visit" "text" "Walk through the school and meet the admissions team.")
+          (dict "n" "03" "icon" "psychology" "title" "Understand Fit" "text" "A gentle interaction helps us place the child thoughtfully.")
+          (dict "n" "04" "icon" "verified" "title" "Confirm" "text" "Submit documents, complete formalities, and receive onboarding details.")
+        }}
+          <article class="minimal-card relative overflow-hidden">
+            <span class="absolute right-5 top-4 font-display-lg text-6xl text-secondary/10">{{ .n }}</span>
+            <span class="material-symbols-outlined text-4xl text-secondary">{{ .icon }}</span>
+            <h3 class="mt-6 font-headline-sm text-headline-sm text-primary">{{ .title }}</h3>
+            <p class="mt-3 text-on-surface-variant">{{ .text }}</p>
+          </article>
+        {{ end }}
       </div>
     </div>
   </section>
 
-  <!-- Eligibility -->
-  <section class="bg-surface-container-low py-24">
-    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <div class="flex flex-col items-center gap-16 md:flex-row">
-        <div class="w-full md:w-1/2">
-          <h2 class="mb-6 font-headline-md text-headline-md text-primary">Eligibility &amp; Age Criteria</h2>
-          <p class="mb-8 font-body-md text-body-md text-on-surface-variant">We follow age guidelines so each child is developmentally ready for their grade. Age is calculated as of 1 June of the academic year.</p>
-          <div class="space-y-4">
-            <div class="flex items-center gap-4 rounded-lg bg-white p-4 shadow-sm">
-              <span class="material-symbols-outlined text-secondary">info</span>
-              <p class="font-medium text-on-surface">Valid birth certificate required for all grades.</p>
-            </div>
-            <div class="flex items-center gap-4 rounded-lg bg-white p-4 shadow-sm">
-              <span class="material-symbols-outlined text-secondary">history_edu</span>
-              <p class="font-medium text-on-surface">Transfer certificate required from Grade 2 onward.</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-1/2">
-          <div class="overflow-hidden rounded-xl border border-outline-variant/30 bg-white shadow-sm">
-            <table class="w-full border-collapse text-left">
-              <thead>
-                <tr class="bg-primary text-on-primary">
-                  <th class="p-5 font-label-caps text-label-caps">Grade / Level</th>
-                  <th class="p-5 font-label-caps text-label-caps">Age Criteria</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-outline-variant/20">
-                <tr class="transition hover:bg-surface-container">
-                  <td class="p-5 font-medium">Pre-Primary / Nursery</td>
-                  <td class="p-5 text-on-surface-variant">3 years+</td>
-                </tr>
-                <tr class="transition hover:bg-surface-container">
-                  <td class="p-5 font-medium">Kindergarten</td>
-                  <td class="p-5 text-on-surface-variant">4 years+</td>
-                </tr>
-                <tr class="transition hover:bg-surface-container">
-                  <td class="p-5 font-medium">Grade 1</td>
-                  <td class="p-5 text-on-surface-variant">5.5 – 6 years+</td>
-                </tr>
-                <tr class="transition hover:bg-surface-container">
-                  <td class="p-5 font-medium">Grade 5</td>
-                  <td class="p-5 text-on-surface-variant">10 years+</td>
-                </tr>
-                <tr class="transition hover:bg-surface-container">
-                  <td class="p-5 font-medium">Grade 9</td>
-                  <td class="p-5 text-on-surface-variant">14 years+</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Fee structure -->
-  <section class="py-24">
-    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <div class="mb-16 text-center">
-        <h2 class="mb-4 font-headline-md text-headline-md text-primary">Investment in Your Child's Future</h2>
-        <p class="text-on-surface-variant">Transparent fee guidance. Contact admissions for the latest schedule and payment plans.</p>
-      </div>
-      <div class="grid grid-cols-1 gap-bento-gap md:grid-cols-3">
-        <div class="glass-card flex flex-col rounded-xl border border-outline-variant/20 p-10">
-          <span class="mb-2 font-label-caps text-label-caps text-secondary">Foundation</span>
-          <h3 class="mb-6 font-headline-sm text-headline-sm">Pre-Primary &amp; Primary</h3>
-          <div class="mb-8">
-            <span class="text-4xl font-bold text-primary">₹85,000</span>
-            <span class="text-on-surface-variant"> / annual</span>
-          </div>
-          <ul class="mb-10 flex-grow space-y-4">
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary">check_circle</span> Core academics &amp; language</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary">check_circle</span> Arts &amp; music enrichment</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary">check_circle</span> Sports &amp; activities</li>
-          </ul>
-          <a href="#enquiry" class="w-full rounded-full border border-primary py-3 text-center font-sans text-button text-primary transition hover:bg-primary hover:text-on-primary">Request breakdown</a>
-        </div>
-        <div class="relative flex scale-105 flex-col overflow-hidden rounded-xl bg-primary p-10 text-on-primary shadow-2xl">
-          <div class="absolute right-0 top-0 rounded-bl-xl bg-secondary p-4 font-label-caps text-[10px] uppercase tracking-tighter text-on-secondary">Popular</div>
-          <span class="mb-2 font-label-caps text-label-caps text-secondary-fixed">Middle years</span>
-          <h3 class="mb-6 font-headline-sm text-headline-sm">Middle School</h3>
-          <div class="mb-8">
-            <span class="text-4xl font-bold">₹1,20,000</span>
-            <span class="text-primary-fixed/60"> / annual</span>
-          </div>
-          <ul class="mb-10 flex-grow space-y-4">
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary-fixed">check_circle</span> Deeper subject mastery</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary-fixed">check_circle</span> Project-based learning</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary-fixed">check_circle</span> Labs &amp; digital resources</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary-fixed">check_circle</span> Competitive activities</li>
-          </ul>
-          <a href="#enquiry" class="w-full rounded-full bg-secondary py-3 text-center font-sans text-button text-on-secondary transition hover:bg-secondary-fixed">Apply now</a>
-        </div>
-        <div class="glass-card flex flex-col rounded-xl border border-outline-variant/20 p-10">
-          <span class="mb-2 font-label-caps text-label-caps text-secondary">Senior</span>
-          <h3 class="mb-6 font-headline-sm text-headline-sm">Upper School</h3>
-          <div class="mb-8">
-            <span class="text-4xl font-bold text-primary">₹1,55,000</span>
-            <span class="text-on-surface-variant"> / annual</span>
-          </div>
-          <ul class="mb-10 flex-grow space-y-4">
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary">check_circle</span> Board exam preparation</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary">check_circle</span> Career &amp; study guidance</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary">check_circle</span> Leadership programs</li>
-          </ul>
-          <a href="#enquiry" class="w-full rounded-full border border-primary py-3 text-center font-sans text-button text-primary transition hover:bg-primary hover:text-on-primary">Request breakdown</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Scholarships -->
-  <section class="bg-surface-container-highest py-24">
-    <div class="mx-auto grid max-w-container-max grid-cols-1 items-center gap-16 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
-      <div class="order-2 md:order-1">
-        <img alt="Students at Deccan Gems School" class="aspect-square rounded-2xl object-cover shadow-xl" src="{{ index site.Data.images "scholarship" }}" />
-      </div>
-      <div class="order-1 md:order-2">
-        <h2 class="mb-6 font-headline-md text-headline-md text-primary">Scholarships &amp; Support</h2>
-        <p class="mb-8 font-body-lg text-body-lg text-on-surface-variant">We believe talent should be encouraged. Merit-based and need-based support may be available for deserving students—ask our admissions team for current programs.</p>
-        <div class="space-y-6">
-          <div class="flex gap-4">
-            <div class="h-fit rounded-lg bg-white p-3 shadow-sm">
-              <span class="material-symbols-outlined text-secondary">workspace_premium</span>
-            </div>
-            <div>
-              <h4 class="font-bold text-primary">Merit recognition</h4>
-              <p class="text-on-surface-variant">Support for students with strong academic performance and conduct.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="h-fit rounded-lg bg-white p-3 shadow-sm">
-              <span class="material-symbols-outlined text-secondary">palette</span>
-            </div>
-            <div>
-              <h4 class="font-bold text-primary">Creative arts support</h4>
-              <p class="text-on-surface-variant">Encouragement for students with exceptional talent in visual or performing arts.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="h-fit rounded-lg bg-white p-3 shadow-sm">
-              <span class="material-symbols-outlined text-secondary">fitness_center</span>
-            </div>
-            <div>
-              <h4 class="font-bold text-primary">Sports stewardship</h4>
-              <p class="text-on-surface-variant">Recognition for students active in district or state-level sports.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Brochure CTA -->
-  <section class="relative overflow-hidden bg-primary px-margin-mobile py-20" id="brochure">
-    <div class="relative z-10 mx-auto flex max-w-container-max flex-col items-center justify-between gap-8 md:flex-row">
-      <div class="text-white">
-        <h2 class="mb-4 font-headline-md text-headline-md">Discover the Deccan Gems difference</h2>
-        <p class="max-w-xl text-primary-fixed/80">Request our admissions pack for details on curriculum, campus life, fees, and how to apply.</p>
-      </div>
-      <a href="{{ "/contact/" | relURL }}" class="group flex items-center gap-3 rounded-full bg-secondary px-10 py-5 font-sans text-button text-on-secondary transition hover:bg-secondary-fixed">
-        <span class="material-symbols-outlined">mail</span>
-        Request information pack
-      </a>
-    </div>
-    <div class="absolute right-0 top-0 h-96 w-96 -translate-y-1/2 translate-x-1/2 rounded-full bg-white/5 blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 h-64 w-64 -translate-x-1/2 translate-y-1/2 rounded-full bg-secondary/10 blur-2xl"></div>
-  </section>
-
-  <!-- FAQ & enquiry -->
-  <section class="py-24" id="enquiry">
-    <div class="mx-auto grid max-w-container-max grid-cols-1 gap-24 px-margin-mobile lg:grid-cols-2 md:px-margin-desktop">
+  <!-- 3. Readiness -->
+  <section class="minimal-section bg-surface-container-low">
+    <div class="mx-auto grid max-w-container-max items-center gap-8 px-margin-mobile lg:grid-cols-2 md:px-margin-desktop">
       <div>
-        <h2 class="mb-10 font-headline-md text-headline-md text-primary">Frequently Asked Questions</h2>
-        <div class="space-y-4">
-          <details class="glass-card group overflow-hidden rounded-xl border border-outline-variant/20" open>
-            <summary class="flex cursor-pointer list-none items-center justify-between p-6 transition hover:bg-surface-container">
-              <span class="font-bold text-primary">When does the academic session begin?</span>
-              <span class="material-symbols-outlined transition group-open:rotate-180">expand_more</span>
-            </summary>
-            <div class="px-6 pb-6 pt-0 text-on-surface-variant">
-              Our academic year typically begins in June. Mid-year admissions may be considered subject to seat availability and grade readiness.
-            </div>
-          </details>
-          <details class="glass-card group overflow-hidden rounded-xl border border-outline-variant/20">
-            <summary class="flex cursor-pointer list-none items-center justify-between p-6 transition hover:bg-surface-container">
-              <span class="font-bold text-primary">What curriculum do you follow?</span>
-              <span class="material-symbols-outlined transition group-open:rotate-180">expand_more</span>
-            </summary>
-            <div class="px-6 pb-6 pt-0 text-on-surface-variant">
-              We offer a balanced program with strong fundamentals in literacy, numeracy, sciences, and enrichment through arts, sports, and life skills.
-            </div>
-          </details>
-          <details class="glass-card group overflow-hidden rounded-xl border border-outline-variant/20">
-            <summary class="flex cursor-pointer list-none items-center justify-between p-6 transition hover:bg-surface-container">
-              <span class="font-bold text-primary">Is there a sibling discount?</span>
-              <span class="material-symbols-outlined transition group-open:rotate-180">expand_more</span>
-            </summary>
-            <div class="px-6 pb-6 pt-0 text-on-surface-variant">
-              Yes, a sibling concession on tuition may apply for the second child onward. Please ask admissions for current details.
-            </div>
-          </details>
-        </div>
+        <span class="minimal-kicker">Ready Checklist</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Bring the basics. We will guide the rest.</h2>
+        <p class="mt-6 font-body-lg text-body-lg text-on-surface-variant">Grade placement depends on age, previous schooling, interaction, and seat availability. The admissions desk will confirm the latest details for your child's class.</p>
       </div>
-
-      <div class="rounded-2xl border border-outline-variant/10 bg-white p-10 shadow-xl">
-        <h2 class="mb-2 font-headline-sm text-headline-sm text-primary">Admission enquiry</h2>
-        <p class="mb-8 text-on-surface-variant">Leave your details and our admissions team will contact you within one working day.</p>
-        <form class="space-y-6" action="mailto:{{ .Site.Params.email }}" method="post" enctype="text/plain">
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div>
-              <label class="mb-2 block font-label-caps text-label-caps text-on-surface-variant">Parent's name</label>
-              <input class="form-input-underline" name="parent_name" type="text" placeholder="Full name" required />
-            </div>
-            <div>
-              <label class="mb-2 block font-label-caps text-label-caps text-on-surface-variant">Email address</label>
-              <input class="form-input-underline" name="email" type="email" placeholder="you@example.com" required />
-            </div>
+      <div class="grid gap-4">
+        {{ range slice
+          (dict "label" "Pre-Primary" "detail" "Birth certificate, child photos, parent details")
+          (dict "label" "Primary" "detail" "Previous report card if applicable, address proof")
+          (dict "label" "Middle School" "detail" "Report card, transfer certificate, interaction")
+          (dict "label" "All Families" "detail" "A campus conversation to understand expectations")
+        }}
+          <div class="minimal-card mobile-stack-card p-5">
+            <p class="font-bold text-primary">{{ .label }}</p>
+            <p class="max-w-xs text-sm text-on-surface-variant sm:text-right">{{ .detail }}</p>
           </div>
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div>
-              <label class="mb-2 block font-label-caps text-label-caps text-on-surface-variant">Phone number</label>
-              <input class="form-input-underline" name="phone" type="tel" placeholder="+91..." />
-            </div>
-            <div>
-              <label class="mb-2 block font-label-caps text-label-caps text-on-surface-variant">Grade of interest</label>
-              <select class="form-input-underline" name="grade">
-                <option value="">Select grade</option>
-                <option>Nursery / Pre-Primary</option>
-                <option>Kindergarten</option>
-                <option>Grade 1–5</option>
-                <option>Grade 6–8</option>
-                <option>Grade 9+</option>
-              </select>
-            </div>
-          </div>
-          <div>
-            <label class="mb-2 block font-label-caps text-label-caps text-on-surface-variant">Message / questions</label>
-            <textarea class="form-input-underline" name="message" rows="3" placeholder="How can we help?"></textarea>
-          </div>
-          <button class="w-full rounded-xl bg-primary py-4 font-sans text-button text-on-primary shadow-lg transition hover:bg-primary-container" type="submit">
-            Submit enquiry
-          </button>
-        </form>
+        {{ end }}
       </div>
     </div>
   </section>
 
-  {{ with .Content }}
-    <section class="mx-auto max-w-container-max px-margin-mobile pb-24 md:px-margin-desktop">
-      <div class="content-panel max-w-3xl prose-school">{{ . }}</div>
-    </section>
-  {{ end }}
+  <!-- 4. Parent Support -->
+  <section class="minimal-section">
+    <div class="mx-auto grid max-w-container-max items-center gap-8 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div class="image-frame">
+        <img alt="Indian students learning together" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" src="{{ index $images "admissionsSupport" }}" />
+      </div>
+      <div>
+        <span class="minimal-kicker">For Parents</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Transparent guidance without overwhelming forms.</h2>
+        <p class="mt-6 font-body-lg text-body-lg text-on-surface-variant">We keep the admission conversation practical: school routine, grade expectations, fee guidance, transport questions, sibling support, and how your child will settle in.</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <div class="minimal-card p-5">
+            <span class="material-symbols-outlined text-secondary">payments</span>
+            <p class="mt-3 font-bold text-primary">Grade-wise fee guidance</p>
+          </div>
+          <div class="minimal-card p-5">
+            <span class="material-symbols-outlined text-secondary">family_restroom</span>
+            <p class="mt-3 font-bold text-primary">Sibling and transition help</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Enquiry -->
+  <section class="minimal-section bg-primary text-on-primary" id="admission-enquiry">
+    <div class="mx-auto grid max-w-container-max gap-8 px-margin-mobile lg:grid-cols-[0.8fr_1.2fr] md:px-margin-desktop">
+      <div>
+        <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">Start Here</span>
+        <h2 class="font-headline-md text-headline-md text-white">Send one note. We will help you choose the next step.</h2>
+        <p class="mt-6 text-on-primary-container">The form opens your mail app. You can also call during office hours for a faster response.</p>
+        <a class="mt-8 btn-ghost-on-dark" href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a>
+      </div>
+      <form class="rounded-[2rem] bg-white p-6 text-primary shadow-2xl md:p-8" action="https://formspree.io/f/xeedldaz" method="post">
+        <input type="hidden" name="form" value="Admissions enquiry" />
+        <div class="grid gap-6 md:grid-cols-2">
+          <label class="block">
+            <span class="form-label">Parent name</span>
+            <input class="form-input" name="parent_name" type="text" placeholder="Full name" required />
+          </label>
+          <label class="block">
+            <span class="form-label">Phone</span>
+            <input class="form-input" name="phone" type="tel" placeholder="+91..." required />
+          </label>
+          <label class="block">
+            <span class="form-label">Child name</span>
+            <input class="form-input" name="child_name" type="text" placeholder="Student name" />
+          </label>
+          <label class="block">
+            <span class="form-label">Grade</span>
+            <select class="form-input" name="grade">
+              <option>Nursery / Pre-Primary</option>
+              <option>Kindergarten</option>
+              <option>Grade 1-5</option>
+              <option>Grade 6-8</option>
+              <option>Grade 9+</option>
+            </select>
+          </label>
+        </div>
+        <label class="mt-6 block">
+          <span class="form-label">Message</span>
+          <textarea class="form-input" name="message" rows="4" placeholder="Preferred visit date or questions"></textarea>
+        </label>
+        <button class="mt-8 w-full btn-minimal" type="submit">Send admission enquiry</button>
+      </form>
+    </div>
+  </section>
 {{ end }}

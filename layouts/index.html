@@ -1,278 +1,176 @@
 {{ define "main" }}
-  <!-- Hero -->
-  <section class="relative flex h-screen w-full items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <img alt="Deccan Gems School campus at golden hour" class="h-full w-full object-cover" src="{{ index site.Data.images "hero" }}" />
-      <div class="absolute inset-0 bg-primary/20 backdrop-brightness-75"></div>
-    </div>
-    <div class="relative z-10 px-margin-mobile text-center md:px-0">
-      <span class="animate-fade-up mb-6 block font-label-caps text-label-caps tracking-[0.4em] text-white/90">{{ .Site.Params.hero.eyebrow }}</span>
-      <h1 class="animate-fade-up mb-8 font-display-lg text-display-lg-mobile text-white md:text-display-lg" style="animation-delay: 0.2s">{{ .Site.Params.hero.headline }}</h1>
-      <div class="animate-fade-up flex flex-col justify-center gap-4 md:flex-row" style="animation-delay: 0.4s">
-        <a href="{{ "/about/" | relURL }}" class="rounded-full bg-white px-10 py-4 font-sans text-button text-primary transition hover:bg-secondary-container">{{ .Site.Params.hero.primaryButton }}</a>
-        <a href="{{ "/contact/" | relURL }}" class="rounded-full border border-white/40 px-10 py-4 font-sans text-button text-white backdrop-blur-md transition hover:bg-white/10">{{ .Site.Params.hero.secondaryButton }}</a>
-      </div>
-    </div>
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-      <span class="material-symbols-outlined text-4xl text-white">keyboard_double_arrow_down</span>
-    </div>
-  </section>
+  {{ $images := site.Data.images }}
 
-  <!-- Stats -->
-  <section class="bg-surface-bright py-24">
-    <div class="mx-auto grid max-w-container-max grid-cols-2 gap-12 px-margin-mobile text-center md:grid-cols-4 md:px-margin-desktop">
-      <div class="space-y-2">
-        <div class="font-display-lg text-headline-md text-primary" data-counter data-suffix="+" data-target="15">15+</div>
-        <p class="font-label-caps text-label-caps text-secondary">Years of Excellence</p>
-      </div>
-      <div class="space-y-2">
-        <div class="font-display-lg text-headline-md text-primary" data-counter data-suffix="+" data-target="8">8+</div>
-        <p class="font-label-caps text-label-caps text-secondary">Programs &amp; Activities</p>
-      </div>
-      <div class="space-y-2">
-        <div class="font-display-lg text-headline-md text-primary" data-counter data-suffix="%" data-target="100">100%</div>
-        <p class="font-label-caps text-label-caps text-secondary">Parent Communication</p>
-      </div>
-      <div class="space-y-2">
-        <div class="font-display-lg text-headline-md text-primary" data-counter data-suffix=":1" data-target="12">12:1</div>
-        <p class="font-label-caps text-label-caps text-secondary">Student-Teacher Ratio</p>
-      </div>
+  <!-- 1. Hero -->
+  <section class="relative isolate min-h-[100svh] overflow-hidden bg-primary px-margin-mobile pb-8 pt-24 text-white sm:pb-10 sm:pt-28 md:px-margin-desktop lg:pb-0 lg:pt-32" data-home-hero-slider>
+    <div
+      class="home-hero-carousel-track"
+      style="position:absolute; inset:0; z-index:0; display:flex; width:100%; height:100%;"
+      data-home-hero-track
+    >
+      <img alt="Indian students learning in class" class="home-hero-carousel-slide" style="min-width:100%; width:100%; height:100%; object-fit:cover; object-position:center;" src="{{ index $images "hero" }}" data-home-hero-slide />
+      <img alt="School children studying together" class="home-hero-carousel-slide" style="min-width:100%; width:100%; height:100%; object-fit:cover; object-position:center;" src="{{ index $images "homeLearning" }}" data-home-hero-slide />
+      <img alt="Children in a classroom discussion" class="home-hero-carousel-slide" style="min-width:100%; width:100%; height:100%; object-fit:cover; object-position:center;" src="{{ index $images "homeCommunity" }}" data-home-hero-slide />
     </div>
-  </section>
+    <div class="hero-primary-overlay absolute inset-0 z-[1]"></div>
+    <div class="hero-grid-overlay absolute inset-0 z-[2] opacity-50"></div>
+    <div class="creative-orb creative-orb-secondary -right-24 top-20 z-[3] h-72 w-72"></div>
+    <div class="creative-orb creative-orb-primary bottom-20 left-10 z-[3] h-80 w-80"></div>
 
-  <!-- About legacy -->
-  <section class="py-32">
-    <div class="mx-auto grid max-w-container-max items-center gap-24 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
-      <div class="relative">
-        <div class="aspect-[4/5] overflow-hidden rounded-xl shadow-2xl">
-          <img alt="Student in the school library" class="h-full w-full object-cover" src="{{ index site.Data.images "legacy" }}" />
+    <div class="relative z-10 mx-auto flex min-h-[calc(100svh-6rem)] max-w-container-max items-center justify-center">
+      <div class="mx-auto max-w-4xl text-center">
+        <span class="mb-4 inline-flex max-w-full rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-label-caps text-label-caps text-secondary-fixed backdrop-blur">{{ .Site.Params.hero.eyebrow }}</span>
+        <h1 class="home-hero-title text-balance font-display-lg font-bold text-white">
+          Schooling that feels calm, clear, and quietly brilliant.
+        </h1>
+        <p class="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-white/82 sm:font-body-lg sm:text-body-lg sm:leading-8">Deccan Gems School gives Hyderabad families a modern Indian learning environment: strong basics, expressive classrooms, kind discipline, and visible progress.</p>
+        <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+          <a class="btn-minimal w-full sm:w-auto" href="{{ "/admissions/" | relURL }}">Start admissions</a>
+          <a class="btn-ghost-on-dark w-full sm:w-auto" href="{{ "/academics/" | relURL }}">See learning model</a>
         </div>
-        <div class="absolute -bottom-10 -right-10 hidden h-64 w-64 overflow-hidden rounded-xl border-[12px] border-white shadow-xl md:block">
-          <img alt="Learning materials" class="h-full w-full object-cover" src="{{ index site.Data.images "legacySmall" }}" />
-        </div>
-      </div>
-      <div class="space-y-8">
-        <h2 class="font-headline-md text-headline-md leading-tight text-primary">Tradition Meets the Future of Education.</h2>
-        <p class="font-body-lg text-body-lg text-on-surface-variant">{{ .Site.Params.about.intro }}</p>
-        <div class="space-y-4">
-          <div class="group flex cursor-pointer items-center gap-4">
-            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-secondary-container text-primary transition group-hover:scale-110">
-              <span class="material-symbols-outlined">history_edu</span>
-            </div>
-            <div>
-              <h4 class="font-bold text-primary">A Community of Learners</h4>
-              <p class="text-sm text-on-surface-variant">Families, teachers, and students growing together in Sanathnagar.</p>
-            </div>
+
+        <div class="mt-6 flex items-center justify-center gap-3" aria-label="Home hero carousel controls">
+          <button class="home-carousel-arrow" type="button" aria-label="Previous slide" data-home-hero-prev>
+            <span class="material-symbols-outlined text-lg">chevron_left</span>
+          </button>
+          <div class="flex gap-2">
+            <button class="home-slider-dot is-active" type="button" aria-label="Show slide 1" data-home-hero-dot></button>
+            <button class="home-slider-dot" type="button" aria-label="Show slide 2" data-home-hero-dot></button>
+            <button class="home-slider-dot" type="button" aria-label="Show slide 3" data-home-hero-dot></button>
           </div>
-          <div class="group flex cursor-pointer items-center gap-4">
-            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-secondary-container text-primary transition group-hover:scale-110">
-              <span class="material-symbols-outlined">public</span>
-            </div>
-            <div>
-              <h4 class="font-bold text-primary">Well-Rounded Growth</h4>
-              <p class="text-sm text-on-surface-variant">Academics, arts, sports, and life skills in one calm campus rhythm.</p>
-            </div>
-          </div>
+          <button class="home-carousel-arrow" type="button" aria-label="Next slide" data-home-hero-next>
+            <span class="material-symbols-outlined text-lg">chevron_right</span>
+          </button>
         </div>
-        <a href="{{ "/about/" | relURL }}" class="inline-flex items-center gap-2 font-label-caps text-label-caps text-secondary">
-          Our story
-          <span class="material-symbols-outlined text-sm">arrow_forward</span>
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- Academic bento -->
-  <section class="bg-surface-container-low py-32">
+  <!-- 2. School Rhythm -->
+  <section class="minimal-section overflow-hidden bg-surface-bright">
     <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <div class="mb-16 space-y-4 text-center">
-        <span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary">Our Schools</span>
-        <h2 class="font-headline-md text-headline-md text-primary">Nurturing Excellence at Every Stage</h2>
+      <div class="mb-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-end">
+        <div>
+          <span class="minimal-kicker">The School Rhythm</span>
+          <h2 class="text-balance font-headline-md text-headline-md text-primary">A day built like a thoughtful learning product.</h2>
+        </div>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">Every touchpoint is intentional: how children enter class, ask questions, practice skills, present ideas, and return home with clarity.</p>
       </div>
-      <div class="grid h-auto grid-cols-1 gap-bento-gap md:h-[600px] md:grid-cols-12">
-        <div class="bento-card group relative overflow-hidden rounded-xl bg-white md:col-span-8">
-          <img alt="Primary classroom" class="h-full w-full object-cover" src="{{ index site.Data.images "curriculumPrimary" }}" />
-          <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/80 to-transparent p-8">
-            <h3 class="mb-2 font-headline-sm text-white">Pre-Primary &amp; Primary</h3>
-            <p class="max-w-md text-white/80">Play-based and inquiry-driven learning that builds curiosity, language, and social confidence.</p>
-          </div>
-        </div>
-        <div class="bento-card flex flex-col justify-between rounded-xl border border-outline-variant/30 bg-white p-8 md:col-span-4">
-          <div class="space-y-4">
-            <span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1">psychology</span>
-            <h3 class="font-headline-sm text-primary">Middle School</h3>
-            <p class="text-on-surface-variant">Developing critical thinking and independence during the crucial formative years.</p>
-          </div>
-          <a class="group flex items-center gap-2 font-bold text-secondary" href="{{ "/academics/" | relURL }}">
-            Explore curriculum
-            <span class="material-symbols-outlined transition group-hover:translate-x-2">arrow_forward</span>
-          </a>
-        </div>
-        <div class="bento-card flex flex-col justify-between rounded-xl bg-secondary p-8 text-on-secondary md:col-span-4">
-          <div class="space-y-4">
-            <h3 class="font-headline-sm">Upper School</h3>
-            <p class="text-on-secondary/80">Deeper subject mastery, study habits, and preparation for the next chapter.</p>
-          </div>
-          <a href="{{ "/academics/" | relURL }}" class="rounded-full bg-white py-3 text-center font-sans text-button text-secondary transition hover:bg-secondary-container">View pathways</a>
-        </div>
-        <div class="bento-card relative overflow-hidden rounded-xl bg-white md:col-span-8">
-          <img alt="Senior students collaborating" class="h-full w-full object-cover" src="{{ index site.Data.images "curriculumMiddle" }}" />
+
+      <div class="grid gap-bento-gap lg:grid-cols-12">
+        <article class="home-rhythm-card lg:col-span-4">
+          <span class="number-pill">01</span>
+          <h3 class="mt-6 font-headline-sm text-headline-sm text-primary">Enter With Ease</h3>
+          <p class="mt-4 text-on-surface-variant">Morning routines, assembly moments, and teacher check-ins help children settle before learning begins.</p>
+        </article>
+        <article class="home-rhythm-card bg-primary text-white lg:col-span-4">
+          <span class="number-pill">02</span>
+          <h3 class="mt-6 font-headline-sm text-headline-sm text-white">Learn With Focus</h3>
+          <p class="mt-4 text-on-primary-container">Lessons move from concept to practice to expression, keeping learning structured but never dull.</p>
+        </article>
+        <article class="home-rhythm-card lg:col-span-4">
+          <span class="number-pill">03</span>
+          <h3 class="mt-6 font-headline-sm text-headline-sm text-primary">Leave With Clarity</h3>
+          <p class="mt-4 text-on-surface-variant">Parents see progress through conversations, notebooks, routines, and confident student behaviour.</p>
+        </article>
+      </div>
+
+      <div class="mt-6 overflow-hidden rounded-full border border-outline-variant/20 bg-white py-3 shadow-bento">
+        <div class="home-marquee flex w-max gap-8 whitespace-nowrap px-5 font-label-caps text-label-caps text-secondary">
+          {{ range seq 1 2 }}
+            <span>Reading circles</span><span>Math practice</span><span>Creative projects</span><span>Indian values</span><span>Parent clarity</span><span>Sports discipline</span>
+          {{ end }}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Campus showcase -->
-  <section class="bg-primary py-32 text-on-primary">
-    <div class="mx-auto grid max-w-container-max items-center gap-24 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
-      <div class="space-y-8">
-        <span class="font-label-caps text-label-caps tracking-widest text-secondary-fixed">CAMPUS LIFE</span>
-        <h2 class="font-headline-md text-headline-md">Immerse Yourself in Our World.</h2>
-        <p class="font-body-lg text-body-lg text-on-primary-container">From morning assemblies to creative clubs and sports, our campus offers a calm, structured day with room for exploration and joy.</p>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="rounded-xl border border-white/10 p-6 transition hover:bg-white/10">
-            <span class="material-symbols-outlined mb-4 text-secondary-fixed">sports_soccer</span>
-            <h4 class="font-bold">Sports &amp; Play</h4>
-          </div>
-          <div class="rounded-xl border border-white/10 p-6 transition hover:bg-white/10">
-            <span class="material-symbols-outlined mb-4 text-secondary-fixed">theater_comedy</span>
-            <h4 class="font-bold">Arts &amp; Culture</h4>
-          </div>
+  <!-- 3. Learning Canvas -->
+  <section class="minimal-section">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <span class="minimal-kicker">Learning Canvas</span>
+          <h2 class="font-headline-md text-headline-md text-primary">Four ways students become visible learners.</h2>
         </div>
-        <a href="{{ "/campus/" | relURL }}" class="inline-flex items-center gap-2 font-label-caps text-label-caps text-secondary-fixed">
-          Explore campus life
-          <span class="material-symbols-outlined text-sm">arrow_forward</span>
-        </a>
+        <a class="btn-minimal-dark" href="{{ "/academics/" | relURL }}">Explore academics</a>
       </div>
-      <a href="{{ "/campus/" | relURL }}" class="group relative block cursor-pointer">
-        <div class="aspect-video overflow-hidden rounded-2xl shadow-2xl">
-          <img alt="Aerial view of school campus" class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="{{ index site.Data.images "campusAerial" }}" />
-        </div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="flex h-20 w-20 items-center justify-center rounded-full bg-white text-primary shadow-2xl transition group-hover:scale-110">
-            <span class="material-symbols-outlined text-4xl">play_arrow</span>
+
+      <div class="grid gap-bento-gap lg:grid-cols-12">
+        <article class="relative overflow-hidden rounded-[2rem] bg-primary p-6 text-white shadow-2xl lg:col-span-5 lg:row-span-2">
+          <img alt="Indian classroom discussion" class="absolute inset-0 h-full w-full object-cover opacity-25" src="{{ index $images "homeCommunity" }}" />
+          <div class="relative z-10 flex min-h-[520px] flex-col justify-end">
+            <span class="material-symbols-outlined mb-8 text-5xl text-secondary-fixed">auto_awesome</span>
+            <h3 class="font-headline-md text-headline-md text-white">Confidence is designed, not accidental.</h3>
+            <p class="mt-4 text-on-primary-container">Students read, reason, speak, make, and reflect every week.</p>
           </div>
+        </article>
+
+        <div class="grid gap-bento-gap sm:grid-cols-2 lg:col-span-7">
+          {{ range slice
+            (dict "icon" "menu_book" "title" "Read Deeply" "text" "Stories, handwriting, vocabulary, and expressive reading build language confidence.")
+            (dict "icon" "calculate" "title" "Think Clearly" "text" "Math and science are taught through patterns, examples, and guided practice.")
+            (dict "icon" "record_voice_over" "title" "Speak Boldly" "text" "Assemblies and classroom sharing help children form thoughts in public.")
+            (dict "icon" "palette" "title" "Make Meaning" "text" "Art, culture, activities, and projects turn learning into memory.")
+          }}
+            <article class="minimal-card">
+              <span class="material-symbols-outlined text-4xl text-secondary">{{ .icon }}</span>
+              <h3 class="mt-8 font-headline-sm text-headline-sm text-primary">{{ .title }}</h3>
+              <p class="mt-3 text-on-surface-variant">{{ .text }}</p>
+            </article>
+          {{ end }}
         </div>
-      </a>
+      </div>
     </div>
   </section>
 
-  <!-- Principal message -->
-  <section class="bg-white py-32">
-    <div class="mx-auto max-w-[1000px] px-margin-mobile md:px-margin-desktop">
-      <div class="grid items-start gap-16 md:grid-cols-[1fr_2fr]">
-        <div class="space-y-4">
-          <div class="aspect-[3/4] overflow-hidden rounded-xl grayscale">
-            <img alt="{{ .Site.Params.principal.name }}" class="h-full w-full object-cover" src="{{ index site.Data.images "principal" }}" />
-          </div>
-          <div class="text-center">
-            <h4 class="font-bold text-primary">{{ .Site.Params.principal.name }}</h4>
-            <p class="font-label-caps text-label-caps text-sm text-on-surface-variant">{{ .Site.Params.principal.title }}</p>
+  <!-- 4. Parent View -->
+  <section class="minimal-section bg-primary text-on-primary">
+    <div class="mx-auto grid max-w-container-max items-center gap-10 px-margin-mobile lg:grid-cols-[0.9fr_1.1fr] md:px-margin-desktop">
+      <div>
+        <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">Parent View</span>
+        <h2 class="font-headline-md text-headline-md text-white">A school experience parents can understand quickly.</h2>
+        <p class="mt-6 text-on-primary-container">The Home page now communicates the school like a modern experience: what happens, why it matters, and how families can take the next step.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {{ range slice
+          (dict "label" "What my child learns" "value" "Basics + expression")
+          (dict "label" "How the day feels" "value" "Calm and active")
+          (dict "label" "How parents know" "value" "Clear conversations")
+          (dict "label" "Why it matters" "value" "Confidence with values")
+        }}
+          <article class="home-dark-tile">
+            <p class="font-label-caps text-label-caps text-secondary-fixed">{{ .label }}</p>
+            <h3 class="mt-8 font-headline-sm text-headline-sm text-white">{{ .value }}</h3>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Visit CTA -->
+  <section class="minimal-section px-margin-mobile md:px-margin-desktop">
+    <div class="relative mx-auto max-w-container-max overflow-hidden rounded-[2rem] bg-white p-5 shadow-2xl md:p-8">
+      <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-secondary-fixed/30 blur-3xl md:block"></div>
+      <div class="relative grid gap-6 lg:grid-cols-[1fr_0.75fr] lg:items-center">
+        <div class="rounded-[1.5rem] bg-primary p-6 text-white md:p-8">
+          <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">Admissions Open</span>
+          <h2 class="font-headline-md text-headline-md text-white">Visit once. Watch how the school feels.</h2>
+          <p class="mt-5 max-w-2xl text-on-primary-container">Meet the team, understand the routine, see the learning spaces, and ask the practical questions that matter to your family.</p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a class="btn-minimal" href="{{ "/contact/" | relURL }}">Book a visit</a>
+            <a class="btn-ghost-on-dark" href="{{ "/admissions/" | relURL }}">Admission details</a>
           </div>
         </div>
-        <div class="relative">
-          <span class="material-symbols-outlined absolute -left-8 -top-12 text-8xl text-secondary-fixed-dim opacity-40">format_quote</span>
-          <div class="relative space-y-6">
-            <h3 class="font-headline-md text-headline-sm italic leading-snug text-primary">"{{ .Site.Params.principal.quote }}"</h3>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">{{ .Site.Params.principal.bio }}</p>
-            <div class="pt-8">
-              <img alt="Principal signature" class="h-16 w-auto opacity-30" src="{{ index site.Data.images "legacySmall" }}" />
+        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          {{ range slice "Bring your questions" "Meet admissions" "Plan next step" }}
+            <div class="minimal-card p-5">
+              <span class="material-symbols-outlined text-secondary">check_circle</span>
+              <p class="mt-4 font-bold text-primary">{{ . }}</p>
             </div>
-          </div>
+          {{ end }}
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Why choose us -->
-  <section class="bg-surface-bright py-32">
-    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <div class="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
-        <div class="max-w-2xl space-y-4">
-          <span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary">The Deccan Gems Advantage</span>
-          <h2 class="font-headline-md text-headline-md text-primary">Why Discerning Families Choose Us</h2>
-        </div>
-        <a href="{{ "/about/" | relURL }}" class="border-b-2 border-primary pb-1 font-sans text-button text-primary transition hover:border-secondary hover:text-secondary">Learn about our approach</a>
-      </div>
-      <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
-        <div class="space-y-6 rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm transition hover:shadow-md">
-          <span class="material-symbols-outlined text-5xl text-secondary">workspace_premium</span>
-          <h3 class="font-headline-sm text-primary">Strong Foundations</h3>
-          <p class="text-on-surface-variant">Clear routines, attentive teaching, and steady practice in literacy, numeracy, and communication.</p>
-        </div>
-        <div class="space-y-6 rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm transition hover:shadow-md">
-          <span class="material-symbols-outlined text-5xl text-secondary">military_tech</span>
-          <h3 class="font-headline-sm text-primary">Warm Community</h3>
-          <p class="text-on-surface-variant">A neighborhood school where teachers know students and families stay closely connected.</p>
-        </div>
-        <div class="space-y-6 rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm transition hover:shadow-md">
-          <span class="material-symbols-outlined text-5xl text-secondary">verified_user</span>
-          <h3 class="font-headline-sm text-primary">Holistic Wellbeing</h3>
-          <p class="text-on-surface-variant">Creative exploration, sports, and character-building woven into every school day.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline -->
-  <section class="overflow-hidden py-32">
-    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <div class="mb-24 text-center">
-        <h2 class="font-headline-md text-headline-md text-primary">Our Journey Through Time</h2>
-      </div>
-      <div class="relative flex items-center justify-between px-4 before:absolute before:left-0 before:top-1/2 before:-z-10 before:h-[2px] before:w-full before:bg-outline-variant/20 md:px-12">
-        <div class="group space-y-4 text-center">
-          <div class="mx-auto h-6 w-6 rounded-full border-4 border-white bg-secondary shadow-lg transition group-hover:scale-150"></div>
-          <div>
-            <span class="block font-bold text-primary">2008</span>
-            <span class="font-label-caps text-label-caps text-xs text-on-surface-variant">FOUNDATION</span>
-          </div>
-        </div>
-        <div class="group space-y-4 text-center">
-          <div class="mx-auto h-6 w-6 rounded-full border-4 border-white bg-secondary shadow-lg transition group-hover:scale-150"></div>
-          <div>
-            <span class="block font-bold text-primary">2015</span>
-            <span class="font-label-caps text-label-caps text-xs text-on-surface-variant">NEW CAMPUS</span>
-          </div>
-        </div>
-        <div class="group space-y-4 text-center">
-          <div class="mx-auto h-6 w-6 rounded-full border-4 border-white bg-secondary shadow-lg transition group-hover:scale-150"></div>
-          <div>
-            <span class="block font-bold text-primary">2020</span>
-            <span class="font-label-caps text-label-caps text-xs text-on-surface-variant">DIGITAL LEARNING</span>
-          </div>
-        </div>
-        <div class="group space-y-4 text-center">
-          <div class="mx-auto h-6 w-6 rounded-full border-4 border-white bg-secondary shadow-lg transition group-hover:scale-150"></div>
-          <div>
-            <span class="block font-bold text-primary">2026</span>
-            <span class="font-label-caps text-label-caps text-xs text-on-surface-variant">FUTURE READY</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Admissions CTA -->
-  <section class="px-margin-mobile py-24">
-    <div class="relative mx-auto max-w-container-max overflow-hidden rounded-3xl bg-primary p-12 md:p-24">
-      <div class="pointer-events-none absolute right-0 top-0 h-full w-1/2 opacity-20">
-        <img alt="" class="h-full w-full object-cover" src="{{ index site.Data.images "admissionsCta" }}" />
-      </div>
-      <div class="relative z-10 max-w-2xl">
-        <h2 class="mb-8 font-display-lg text-display-lg-mobile text-white md:text-headline-md">Ready to begin your child's journey?</h2>
-        <p class="mb-12 font-body-lg text-body-lg text-on-primary-container">Admissions enquiries and campus visits are open throughout the week. We would love to meet your family.</p>
-        <div class="flex flex-wrap gap-4">
-          <a href="{{ "/admissions/" | relURL }}" class="rounded-full bg-secondary-container px-10 py-4 font-sans text-button text-primary transition hover:bg-secondary-fixed">Start application</a>
-          <a href="{{ "/contact/" | relURL }}" class="rounded-full border border-white/20 px-10 py-4 font-sans text-button text-white transition hover:bg-white/10">Book a visit</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {{ with .Content }}
-    <section class="mx-auto max-w-container-max px-margin-mobile pb-24 md:px-margin-desktop">
-      <div class="content-panel max-w-3xl prose-school">{{ . }}</div>
-    </section>
-  {{ end }}
 {{ end }}

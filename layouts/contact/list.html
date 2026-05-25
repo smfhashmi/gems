@@ -1,197 +1,137 @@
 {{ define "main" }}
+  {{ $images := site.Data.images }}
   {{ $mapsQuery := urlquery .Site.Params.address }}
   {{ $mapsURL := printf "https://www.google.com/maps/search/?api=1&query=%s" $mapsQuery }}
 
-  <div class="pt-32">
-    <!-- Hero -->
-    <section class="mx-auto mb-24 max-w-container-max px-margin-mobile md:mb-32 md:px-margin-desktop">
+  <!-- 1. Hero -->
+  <section class="relative isolate min-h-[600px] overflow-hidden bg-primary px-margin-mobile pt-28 text-white md:px-margin-desktop md:pt-32">
+    <img alt="Indian classroom at Deccan Gems School" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "contactHero" }}" />
+    <div class="hero-primary-overlay absolute inset-0 -z-20"></div>
+    <div class="hero-grid-overlay absolute inset-0 -z-10 opacity-50"></div>
+    <div class="creative-orb creative-orb-secondary -right-16 top-20 h-72 w-72"></div>
+    <div class="creative-orb creative-orb-primary bottom-16 left-12 h-64 w-64"></div>
+    <div class="mx-auto flex min-h-[460px] max-w-container-max items-center">
       <div class="max-w-3xl">
-        <span class="mb-4 block font-label-caps text-label-caps text-secondary">Connect with us</span>
-        <h1 class="mb-6 font-display-lg text-display-lg-mobile text-primary md:text-display-lg">Begin with a simple conversation.</h1>
-        <p class="font-body-lg text-body-lg text-on-surface-variant">
-          {{ .Site.Params.contact.intro }} Whether you have questions about admissions, a campus visit, or school life, our team is here to help.
-        </p>
+        <span class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 font-label-caps text-label-caps text-secondary-fixed backdrop-blur">Contact</span>
+        <h1 class="text-balance font-display-lg text-display-lg-mobile text-white md:text-display-lg">One conversation can answer a lot.</h1>
+        <p class="mt-7 max-w-2xl font-body-lg text-body-lg leading-8 text-white/82">Ask about admissions, school visits, academics, or parent communication. We will keep it clear, kind, and practical.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Form & map -->
-    <section class="mx-auto mb-24 grid max-w-container-max grid-cols-1 items-start gap-12 px-margin-mobile lg:grid-cols-2 md:px-margin-desktop">
-      <div class="glass-card rounded-xl border border-outline-variant/20 p-10 shadow-sm">
-        <h2 class="mb-8 font-headline-md text-headline-md text-primary">Send an inquiry</h2>
-        <form class="space-y-8" action="mailto:{{ .Site.Params.email }}" method="post" enctype="text/plain">
-          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div class="relative">
-              <input class="form-float-input peer" id="contact-name" name="name" type="text" placeholder=" " required />
-              <label class="form-float-label" for="contact-name">Full name</label>
-            </div>
-            <div class="relative">
-              <input class="form-float-input peer" id="contact-email" name="email" type="email" placeholder=" " required />
-              <label class="form-float-label" for="contact-email">Email address</label>
-            </div>
-          </div>
-          <div class="relative">
-            <select class="form-float-input appearance-none" id="contact-department" name="department">
-              <option value="" disabled selected>Inquiry department</option>
-              <option value="admissions">Admissions</option>
-              <option value="office">General office</option>
-              <option value="visit">Campus visit</option>
+  <!-- 2. Contact Form -->
+  <section class="minimal-section">
+    <div class="mx-auto grid max-w-container-max gap-8 px-margin-mobile lg:grid-cols-[1.1fr_0.9fr] md:px-margin-desktop">
+      <form class="rounded-[2rem] border border-outline-variant/20 bg-white p-6 shadow-2xl md:p-8" action="https://formspree.io/f/xeedldaz" method="post">
+        <input type="hidden" name="form" value="Contact page enquiry" />
+        <span class="minimal-kicker">Write To Us</span>
+        <h2 class="mb-8 font-headline-md text-headline-md text-primary">Send a focused enquiry</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <label class="block">
+            <span class="form-label">Name</span>
+            <input class="form-input" name="name" type="text" placeholder="Full name" required />
+          </label>
+          <label class="block">
+            <span class="form-label">Email</span>
+            <input class="form-input" name="email" type="email" placeholder="you@example.com" required />
+          </label>
+          <label class="block md:col-span-2">
+            <span class="form-label">Topic</span>
+            <select class="form-input" name="topic">
+              <option>Admissions enquiry</option>
+              <option>Campus visit</option>
+              <option>Academic questions</option>
+              <option>Parent communication</option>
             </select>
-          </div>
-          <div class="relative">
-            <textarea class="form-float-input peer resize-none" id="contact-message" name="message" rows="4" placeholder=" "></textarea>
-            <label class="form-float-label" for="contact-message">How can we assist you today?</label>
-          </div>
-          <button class="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-10 py-4 font-sans text-button text-on-primary transition hover:bg-primary/90 md:w-auto" type="submit">
-            Send message
-            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-          </button>
-        </form>
-      </div>
+          </label>
+          <label class="block md:col-span-2">
+            <span class="form-label">Message</span>
+            <textarea class="form-input" name="message" rows="5" placeholder="How can we help?"></textarea>
+          </label>
+        </div>
+        <button class="mt-8 btn-minimal-dark" type="submit">Send message</button>
+      </form>
 
-      <div class="group relative h-[600px] overflow-hidden rounded-xl border border-outline-variant/10 shadow-sm">
-        <img
-          alt="Campus location"
-          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-          src="{{ index site.Data.images "contactMap" }}"
-        />
-        <div class="glass-card absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-lg p-6">
-          <div>
-            <p class="font-label-caps text-label-caps text-secondary">Campus location</p>
-            <p class="font-headline-sm text-headline-sm text-primary">{{ .Site.Params.address }}</p>
-          </div>
-          <a
-            class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-on-primary transition hover:scale-110"
-            href="{{ $mapsURL }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Get directions"
-          >
-            <span class="material-symbols-outlined">directions</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Departments -->
-    <section class="mx-auto mb-24 max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <h2 class="mb-12 text-center font-headline-md text-headline-md text-primary">Specific departments</h2>
-      <div class="grid grid-cols-1 gap-gutter md:grid-cols-3">
-        <div class="bento-hover rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm">
-          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary-fixed">
-            <span class="material-symbols-outlined text-on-secondary-fixed">school</span>
-          </div>
-          <h3 class="mb-2 font-headline-sm text-headline-sm text-primary">Admissions</h3>
-          <p class="mb-6 font-body-md text-body-md text-on-surface-variant">Enrollment inquiries and application status.</p>
-          <a class="flex items-center gap-2 font-sans text-button text-secondary transition hover:translate-x-1" href="mailto:{{ .Site.Params.email }}">
-            {{ .Site.Params.email }}
-            <span class="material-symbols-outlined text-sm">mail</span>
-          </a>
-        </div>
-        <div class="bento-hover rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm">
-          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary-fixed">
-            <span class="material-symbols-outlined text-on-secondary-fixed">business_center</span>
-          </div>
-          <h3 class="mb-2 font-headline-sm text-headline-sm text-primary">General office</h3>
-          <p class="mb-6 font-body-md text-body-md text-on-surface-variant">Administrative support and visit scheduling.</p>
-          <a class="flex items-center gap-2 font-sans text-button text-secondary transition hover:translate-x-1" href="tel:{{ .Site.Params.phone }}">
-            {{ .Site.Params.phone }}
-            <span class="material-symbols-outlined text-sm">call</span>
-          </a>
-        </div>
-        <div class="bento-hover rounded-xl border border-outline-variant/10 bg-white p-8 shadow-sm">
-          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary-fixed">
-            <span class="material-symbols-outlined text-on-secondary-fixed">groups</span>
-          </div>
-          <h3 class="mb-2 font-headline-sm text-headline-sm text-primary">Parent connect</h3>
-          <p class="mb-6 font-body-md text-body-md text-on-surface-variant">Updates, feedback, and parent–school communication.</p>
-          <a class="flex items-center gap-2 font-sans text-button text-secondary transition hover:translate-x-1" href="{{ "/admissions/" | relURL }}">
-            Admissions page
-            <span class="material-symbols-outlined text-sm">open_in_new</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Hours & social -->
-    <section class="mb-24 bg-primary py-24">
-      <div class="mx-auto grid max-w-container-max grid-cols-1 gap-24 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
-        <div>
-          <h2 class="mb-8 font-headline-md text-headline-md text-on-primary">Office &amp; visiting hours</h2>
-          <ul class="space-y-6">
-            <li class="flex items-center justify-between border-b border-white/10 pb-4">
-              <span class="font-body-lg text-body-lg text-white/70">Monday — Friday</span>
-              <span class="font-body-lg text-body-lg text-secondary-fixed">8:00 AM – 4:00 PM</span>
-            </li>
-            <li class="flex items-center justify-between border-b border-white/10 pb-4">
-              <span class="font-body-lg text-body-lg text-white/70">Saturday</span>
-              <span class="font-body-lg text-body-lg text-secondary-fixed">8:00 AM – 1:00 PM</span>
-            </li>
-            <li class="flex items-center justify-between pb-4">
-              <span class="font-body-lg text-body-lg text-white/70">Sunday</span>
-              <span class="font-body-lg text-body-lg text-error-container">Closed</span>
-            </li>
-          </ul>
-          <p class="mt-8 font-body-md text-body-md italic text-white/50">* Campus visits are welcome; we recommend calling ahead to confirm timing.</p>
-        </div>
-        <div class="flex flex-col justify-center">
-          <h2 class="mb-8 font-headline-md text-headline-md text-on-primary">Digital presence</h2>
-          <div class="flex flex-wrap gap-4">
-            <a class="group flex w-full items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-6 transition-colors duration-300 hover:bg-secondary-fixed sm:w-[calc(50%-8px)]" href="#" aria-label="Instagram">
-              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors group-hover:bg-primary">
-                <span class="material-symbols-outlined text-white group-hover:text-secondary-fixed">public</span>
-              </div>
-              <div>
-                <p class="font-label-caps text-label-caps text-white/60 group-hover:text-primary/70">Instagram</p>
-                <p class="font-sans text-button text-white group-hover:text-primary">@deccangemsschool</p>
-              </div>
+      <div class="grid gap-6">
+        <a class="minimal-card bg-primary text-on-primary" href="tel:{{ .Site.Params.phone }}">
+          <span class="material-symbols-outlined text-4xl text-secondary-fixed">call</span>
+          <p class="mt-8 font-label-caps text-label-caps text-on-primary-container">Phone</p>
+          <p class="mt-2 font-headline-sm text-headline-sm text-white">{{ .Site.Params.phone }}</p>
+        </a>
+        <a class="minimal-card" href="mailto:{{ .Site.Params.email }}">
+          <span class="material-symbols-outlined text-4xl text-secondary">mail</span>
+          <p class="mt-8 font-label-caps text-label-caps text-on-surface-variant">Email</p>
+          <p class="mt-2 break-all font-headline-sm text-headline-sm text-primary">{{ .Site.Params.email }}</p>
+        </a>
+        <div class="minimal-card">
+          <span class="material-symbols-outlined text-4xl text-secondary">share</span>
+          <p class="mt-8 font-label-caps text-label-caps text-on-surface-variant">Social Media</p>
+          <div class="mt-4 flex gap-3">
+            <a class="transition hover:-translate-y-1" style="display: flex; height: 48px; width: 48px; align-items: center; justify-content: center; border-radius: 9999px; color: #ffffff; background: radial-gradient(circle at 30% 110%, #feda75 0%, #fa7e1e 28%, #d62976 52%, #962fbf 74%, #4f5bd5 100%); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);" href="{{ .Site.Params.social.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="2" />
+                <circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2" />
+                <circle cx="17" cy="7" r="1.2" fill="currentColor" />
+              </svg>
             </a>
-            <a class="group flex w-full items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-6 transition-colors duration-300 hover:bg-secondary-fixed sm:w-[calc(50%-8px)]" href="mailto:{{ .Site.Params.email }}" aria-label="Email us">
-              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors group-hover:bg-primary">
-                <span class="material-symbols-outlined text-white group-hover:text-secondary-fixed">mail</span>
-              </div>
-              <div>
-                <p class="font-label-caps text-label-caps text-white/60 group-hover:text-primary/70">Email</p>
-                <p class="font-sans text-button text-white group-hover:text-primary">Write to us</p>
-              </div>
+            <a class="transition hover:-translate-y-1" style="display: flex; height: 48px; width: 48px; align-items: center; justify-content: center; border-radius: 9999px; color: #ffffff; background: #1877f2; box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);" href="{{ .Site.Params.social.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14.2 8.1V6.7c0-.7.5-.9 1-.9h1.7V3h-2.5C11.7 3 10 4.7 10 7.2v.9H8v3.1h2V21h3.4v-9.8h2.5l.5-3.1h-2.2Z" />
+              </svg>
             </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Visit campus -->
-    <section class="mx-auto mb-32 max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <h2 class="mb-12 text-center font-headline-md text-headline-md text-primary">Visit our campus</h2>
-      <div class="grid h-auto grid-cols-1 gap-bento-gap md:h-[600px] md:grid-cols-12 md:grid-rows-2">
-        <div class="group relative overflow-hidden rounded-xl shadow-sm md:col-span-7 md:row-span-2">
-          <img
-            alt="Deccan Gems School campus"
-            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            src="{{ index site.Data.images "contactCampus" }}"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
-          <div class="absolute bottom-10 left-10 max-w-sm text-white">
-            <h3 class="mb-2 font-headline-md text-headline-md">Main reception</h3>
-            <p class="font-body-md text-body-md text-white/80">{{ .Site.Params.address }}. Ask for the front office on arrival.</p>
-          </div>
-        </div>
-        <div class="glass-card bento-hover flex flex-col justify-center rounded-xl border border-outline-variant/10 p-8 md:col-span-5 md:row-span-1">
-          <span class="material-symbols-outlined mb-4 text-3xl text-secondary">directions_bus</span>
-          <h3 class="mb-2 font-headline-sm text-headline-sm text-primary">By public transport</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant">Sanathnagar is well connected by bus and metro. Use Google Maps for the best route from your area.</p>
-        </div>
-        <div class="bento-hover flex flex-col justify-center rounded-xl border border-secondary-fixed/50 bg-secondary-fixed/30 p-8 md:col-span-5 md:row-span-1">
-          <span class="material-symbols-outlined mb-4 text-3xl text-secondary">local_parking</span>
-          <h3 class="mb-2 font-headline-sm text-headline-sm text-primary">Parking</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant">Limited visitor parking is available near the campus. Please check in at reception on arrival.</p>
-        </div>
+  <!-- 3. Visit -->
+  <section class="minimal-section bg-surface-container-low">
+    <div class="mx-auto grid max-w-container-max items-center gap-8 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div>
+        <span class="minimal-kicker">Visit Campus</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Find us in SRT Colony, Sanathnagar.</h2>
+        <p class="mt-6 font-body-lg text-body-lg text-on-surface-variant">{{ .Site.Params.address }}. Call before visiting so we can give your family proper time and connect you with the right person.</p>
+        <a class="mt-8 btn-minimal" href="{{ $mapsURL }}" target="_blank" rel="noopener noreferrer">Open directions</a>
       </div>
-    </section>
+      <div class="image-frame">
+        <img alt="Students at Deccan Gems School" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" src="{{ index $images "contactCampus" }}" />
+      </div>
+    </div>
+  </section>
 
-    {{ with .Content }}
-      <section class="mx-auto max-w-container-max px-margin-mobile pb-24 md:px-margin-desktop">
-        <div class="content-panel max-w-3xl prose-school">{{ . }}</div>
-      </section>
-    {{ end }}
-  </div>
+  <!-- 4. Office Rhythm -->
+  <section class="minimal-section">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-12 text-center">
+        <span class="minimal-kicker">Office Rhythm</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Best times to reach us.</h2>
+      </div>
+      <div class="grid gap-bento-gap sm:grid-cols-2 lg:grid-cols-3">
+        {{ range slice
+          (dict "day" "Monday - Friday" "time" "8:00 AM - 4:00 PM" "note" "Office, admissions, and visit coordination")
+          (dict "day" "Saturday" "time" "8:00 AM - 1:00 PM" "note" "Best for scheduled parent visits")
+          (dict "day" "Sunday" "time" "Closed" "note" "Email us and we will respond next working day")
+        }}
+          <article class="minimal-card text-center">
+            <p class="font-label-caps text-label-caps text-secondary">{{ .day }}</p>
+            <h3 class="mt-4 font-headline-sm text-headline-sm text-primary">{{ .time }}</h3>
+            <p class="mt-4 text-sm text-on-surface-variant">{{ .note }}</p>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Quick Help -->
+  <section class="minimal-section bg-primary px-margin-mobile text-on-primary md:px-margin-desktop">
+    <div class="mx-auto grid max-w-container-max items-center gap-8 md:grid-cols-[1fr_auto]">
+      <div>
+        <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">Quick Help</span>
+        <h2 class="font-headline-md text-headline-md text-white">Admissions questions? Start with the guided page.</h2>
+        <p class="mt-4 max-w-2xl text-on-primary-container">It explains the flow, documents, readiness check, and enquiry form in one simple place.</p>
+      </div>
+      <a class="btn-minimal" href="{{ "/admissions/" | relURL }}">Go to admissions</a>
+    </div>
+  </section>
 {{ end }}

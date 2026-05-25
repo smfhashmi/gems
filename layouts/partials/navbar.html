@@ -1,18 +1,18 @@
 <header
   id="site-header"
-  class="site-header fixed left-4 right-4 top-4 z-50 mx-auto flex max-w-container-max items-center justify-between gap-4 rounded-full border border-white/20 bg-white/80 px-4 py-3 shadow-nav backdrop-blur-xl md:left-6 md:right-6 md:px-6"
+  class="site-header fixed left-4 right-4 top-4 z-50 mx-auto flex max-w-container-max items-center justify-between gap-4 rounded-full border border-outline-variant/20 bg-white px-4 py-3 shadow-nav md:left-6 md:right-6 md:px-6"
 >
   <a href="{{ "/" | relURL }}" class="flex min-w-0 shrink-0 items-center gap-3 transition hover:opacity-90">
     <img
       src="{{ (.Site.Params.logo | default "/images/logo.jpg") | relURL }}"
       alt="{{ .Site.Params.schoolName }}"
-      class="h-12 w-auto max-h-14 max-w-[180px] object-contain md:h-14 md:max-w-[220px]"
+      class="h-10 w-auto max-h-14 max-w-[150px] object-contain sm:h-12 sm:max-w-[180px] md:h-14 md:max-w-[220px]"
       width="220"
       height="56"
     />
   </a>
 
-  <nav class="hidden items-center gap-6 lg:gap-8 md:flex">
+  <nav class="hidden items-center gap-6 lg:flex lg:gap-8">
     {{ $current := .RelPermalink }}
     {{ range .Site.Menus.main }}
       <a
@@ -29,7 +29,7 @@
       Enquire Now
     </a>
 
-    <details class="relative md:hidden">
+    <details class="relative lg:hidden">
       <summary class="cursor-pointer list-none rounded-full border border-outline-variant/30 bg-surface-container-low px-4 py-2 font-sans text-button text-primary">
         Menu
       </summary>

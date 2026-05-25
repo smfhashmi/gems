@@ -1,4 +1,4 @@
-<footer class="w-full border-t border-outline-variant/20 bg-primary pt-24 pb-12 text-on-primary">
+<footer class="w-full border-t border-outline-variant/20 bg-primary pt-14 pb-8 text-on-primary md:pt-16">
   <div class="mx-auto grid max-w-container-max grid-cols-1 gap-gutter px-margin-mobile md:grid-cols-4 md:px-margin-desktop">
     <div class="space-y-6 md:col-span-1">
       <a href="{{ "/" | relURL }}" class="inline-block">
@@ -12,14 +12,6 @@
       </a>
       <div class="font-headline-sm text-headline-sm text-surface-bright">{{ .Site.Params.schoolName }}</div>
       <p class="max-w-xs text-sm text-surface-variant/70">{{ .Site.Params.tagline }}</p>
-      <div class="flex gap-4">
-        <a class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition hover:bg-white/5" href="mailto:{{ .Site.Params.email }}" aria-label="Email">
-          <span class="material-symbols-outlined text-sm">mail</span>
-        </a>
-        <a class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition hover:bg-white/5" href="tel:{{ .Site.Params.phone }}" aria-label="Phone">
-          <span class="material-symbols-outlined text-sm">call</span>
-        </a>
-      </div>
     </div>
 
     <div class="space-y-6">
@@ -43,21 +35,30 @@
         <a class="hover:text-secondary-fixed" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a><br />
         <a class="hover:text-secondary-fixed" href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a>
       </p>
-      <div class="rounded-lg bg-white/5 p-4">
-        <p class="text-xs text-on-primary-container">Subscribe for campus updates</p>
-        <form class="mt-2 flex gap-2" action="mailto:{{ .Site.Params.email }}" method="get">
-          <input class="w-full border-b border-white/20 bg-transparent py-2 text-sm text-on-primary placeholder:text-surface-variant/50 focus:border-secondary-fixed focus:outline-none" type="email" name="subject" placeholder="Email" />
-          <button class="material-symbols-outlined text-secondary-fixed" type="submit" aria-label="Subscribe">arrow_forward</button>
-        </form>
+      <div>
+        <p class="text-xs text-on-primary-container">Follow Deccan Gems</p>
+        <div class="mt-3 flex gap-3">
+          <a class="transition hover:-translate-y-1" style="display: flex; height: 48px; width: 48px; align-items: center; justify-content: center; border-radius: 9999px; color: #ffffff; background: radial-gradient(circle at 30% 110%, #feda75 0%, #fa7e1e 28%, #d62976 52%, #962fbf 74%, #4f5bd5 100%); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);" href="{{ .Site.Params.social.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="2" />
+              <circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2" />
+              <circle cx="17" cy="7" r="1.2" fill="currentColor" />
+            </svg>
+          </a>
+          <a class="transition hover:-translate-y-1" style="display: flex; height: 48px; width: 48px; align-items: center; justify-content: center; border-radius: 9999px; color: #ffffff; background: #1877f2; box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);" href="{{ .Site.Params.social.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M14.2 8.1V6.7c0-.7.5-.9 1-.9h1.7V3h-2.5C11.7 3 10 4.7 10 7.2v.9H8v3.1h2V21h3.4v-9.8h2.5l.5-3.1h-2.2Z" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="mx-auto mt-24 flex max-w-container-max flex-col items-center justify-between gap-4 border-t border-white/5 px-margin-mobile pt-8 text-xs text-surface-variant/50 md:flex-row md:px-margin-desktop">
+  <div class="mx-auto mt-14 flex max-w-container-max flex-col items-center justify-between gap-4 border-t border-white/5 px-margin-mobile pt-6 text-xs text-surface-variant/50 md:flex-row md:px-margin-desktop">
     <p>© {{ now.Year }} {{ .Site.Params.schoolName }}. All rights reserved.</p>
-    <div class="flex gap-8">
-      <a class="hover:text-white" href="{{ "/contact/" | relURL }}">Contact</a>
-      <a class="hover:text-white" href="{{ "/blogs/" | relURL }}">Blog</a>
+    <div class="flex flex-wrap items-center justify-center gap-6">
+      <a class="hover:text-white" href="https://two44software.com" target="_blank" rel="noopener noreferrer">Website made by Two44 Software Solutions</a>
       <button class="flex items-center gap-1 text-secondary-fixed hover:underline" type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         Back to top
         <span class="material-symbols-outlined text-xs">arrow_upward</span>

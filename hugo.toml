@@ -2,34 +2,36 @@ baseURL = 'https://deccangemsschool.example/'
 languageCode = 'en-us'
 title = 'Deccan Gems School'
 enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
 
 [params]
 logo = '/images/logo.jpg'
 schoolName = 'Deccan Gems School'
-tagline = 'Learning that sparkles with confidence, curiosity, and care.'
+tagline = 'A modern Hyderabad school for strong basics, clear values, and brave young minds.'
 address = 'SRT Colony, Sanathnagar, Hyderabad'
-phone = '+91 98765 43210'
-email = 'admissions@deccangemsschool.example'
+phone = '+91 89777 57547'
+email = 'info.dgems@gmail.com'
 hours = 'Mon - Sat, 8:00 AM - 4:00 PM'
 
 [params.hero]
 eyebrow = 'SRT COLONY, SANATHNAGAR'
-headline = 'Forging Future Leaders.'
-primaryButton = 'Discover Our Legacy'
+headline = 'Minimal Noise. Meaningful Learning.'
+primaryButton = 'Start Admissions'
 secondaryButton = 'Plan a Campus Visit'
 image = '/images/hero.jpg'
 
 [params.about]
-intro = 'Founded on the principles of holistic development, Deccan Gems School combines timeless values of character and integrity with a thoughtful curriculum designed for confident young learners in Hyderabad.'
+intro = 'Deccan Gems School is built for families who want clarity, care, and confident learning without unnecessary noise.'
 
 [params.academics]
-intro = 'Our academic program balances fundamentals, language confidence, project work, and extracurricular opportunities from the earliest years onward.'
+intro = 'Our academic program moves from strong basics to confident expression through practice, projects, conversation, and feedback.'
 
 [params.contact]
-intro = 'We welcome school visits, admissions enquiries, and parent conversations throughout the week.'
+intro = 'We welcome admissions questions, school visits, and parent conversations throughout the week.'
 
-[params.campus]
-intro = 'Beyond classrooms, students discover sports, arts, clubs, and friendships that shape character and confidence.'
+[params.social]
+instagram = 'https://www.instagram.com/deccangemsschool/'
+facebook = 'https://www.facebook.com/deccangemsschool'
 
 [params.founder]
 name = 'Mohammed Fareed Uddin'
@@ -56,29 +58,16 @@ url = '/about/'
 weight = 20
 
 [[menu.main]]
-name = 'Academics'
-url = '/academics/'
+name = 'Admissions'
+url = '/admissions/'
 weight = 30
 
 [[menu.main]]
-name = 'Campus'
-url = '/campus/'
+name = 'Academics'
+url = '/academics/'
 weight = 40
-
-[[menu.main]]
-name = 'Admissions'
-url = '/admissions/'
-weight = 50
-
-[[menu.main]]
-name = 'Gallery'
-url = '/gallery/'
-weight = 60
 
 [[menu.main]]
 name = 'Contact'
 url = '/contact/'
-weight = 70
-
-[permalinks]
-blogs = '/blogs/:slug/'
+weight = 50

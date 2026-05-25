@@ -1,352 +1,155 @@
 {{ define "main" }}
-  <!-- Hero -->
-  <header class="relative flex h-[min(921px,100vh)] w-full items-center overflow-hidden px-margin-mobile pt-32 md:px-margin-desktop">
-    <div class="absolute inset-0 z-0">
-      <img
-        alt="Bright modern school corridor"
-        class="h-full w-full object-cover"
-        src="{{ index site.Data.images "academicsHero" }}"
-      />
-      <div class="absolute inset-0 bg-gradient-to-r from-surface-bright/95 via-surface-bright/40 to-transparent"></div>
-    </div>
-    <div class="relative z-10 max-w-2xl">
-      <span class="mb-4 inline-block font-label-caps text-label-caps uppercase tracking-widest text-secondary">Academic Excellence</span>
-      <h1 class="mb-6 font-display-lg text-display-lg-mobile md:text-display-lg">Pioneering the Future of Learning.</h1>
-      <p class="mb-10 max-w-lg font-body-lg text-body-lg text-on-surface-variant">
-        {{ .Site.Params.academics.intro }}
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="#curriculum-tabs" class="rounded-full bg-primary px-8 py-4 font-sans text-button text-on-primary transition hover:shadow-lg">Explore curriculum</a>
-        <a href="{{ "/contact/" | relURL }}" class="rounded-full border border-secondary px-8 py-4 font-sans text-button text-secondary transition hover:bg-secondary/5">Plan a visit</a>
-      </div>
-    </div>
-  </header>
+  {{ $images := site.Data.images }}
 
-  <!-- Curriculum tabs -->
-  <section class="py-24" id="curriculum-tabs">
-    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <div class="mb-16 text-center">
-        <h2 class="mb-4 font-headline-md text-headline-md">A Curriculum Without Borders</h2>
-        <p class="mx-auto max-w-xl text-on-surface-variant">Our academic framework sparks curiosity, builds strong fundamentals, and prepares learners for their next steps.</p>
-      </div>
-
-      <div class="w-full" data-curriculum-tabs>
-        <div class="mb-12 flex justify-center gap-8 overflow-x-auto whitespace-nowrap border-b border-outline-variant/30 md:gap-12">
-          <button type="button" class="curriculum-tab active-tab pb-4 font-label-caps text-label-caps transition-all" data-tab="pre-primary">Pre-Primary</button>
-          <button type="button" class="curriculum-tab pb-4 font-label-caps text-label-caps text-on-surface-variant transition-all hover:text-secondary" data-tab="primary">Primary Years</button>
-          <button type="button" class="curriculum-tab pb-4 font-label-caps text-label-caps text-on-surface-variant transition-all hover:text-secondary" data-tab="middle">Middle School</button>
-          <button type="button" class="curriculum-tab pb-4 font-label-caps text-label-caps text-on-surface-variant transition-all hover:text-secondary" data-tab="enrichment">Enrichment</button>
+  <!-- 1. Hero -->
+  <section class="relative isolate min-h-[640px] overflow-hidden bg-primary px-margin-mobile pt-28 text-white md:px-margin-desktop md:pt-32">
+    <img alt="Indian classroom lecture" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "academicsHero" }}" />
+    <div class="hero-primary-overlay absolute inset-0 -z-20"></div>
+    <div class="hero-grid-overlay absolute inset-0 -z-10 opacity-50"></div>
+    <div class="creative-orb creative-orb-secondary right-0 top-24 h-72 w-72"></div>
+    <div class="creative-orb creative-orb-primary bottom-12 left-16 h-72 w-72"></div>
+    <div class="mx-auto flex min-h-[500px] max-w-container-max items-center">
+      <div class="max-w-3xl">
+        <span class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 font-label-caps text-label-caps text-secondary-fixed backdrop-blur">Academic Studio</span>
+        <h1 class="text-balance font-display-lg text-display-lg-mobile text-white md:text-display-lg">Learning that feels structured, alive, and useful.</h1>
+        <p class="mt-7 max-w-2xl font-body-lg text-body-lg leading-8 text-white/82">Our classrooms balance strong fundamentals with projects, conversation, cultural confidence, and steady feedback.</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a class="btn-minimal" href="#curriculum-tabs">Explore curriculum</a>
+          <a class="btn-ghost-on-dark" href="{{ "/contact/" | relURL }}">Ask academics team</a>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="grid grid-cols-1 items-center gap-gutter md:grid-cols-2">
-          <div class="space-y-6">
-            <h3 class="font-headline-sm text-headline-sm" id="curriculum-title">Play-Based Foundations</h3>
-            <p class="text-on-surface-variant" id="curriculum-desc">Early years focus on language, movement, social skills, and curiosity through gentle routines and joyful discovery.</p>
-            <ul class="space-y-4" id="curriculum-points">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-secondary">check_circle</span>
-                <span>Inquiry-led activities in language and numeracy</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-secondary">check_circle</span>
-                <span>Strong focus on social-emotional growth</span>
-              </li>
+  <!-- 2. Curriculum -->
+  <section class="minimal-section" id="curriculum-tabs">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-10 text-center">
+        <span class="minimal-kicker">Curriculum Studio</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Choose a stage and see how learning grows.</h2>
+      </div>
+      <div class="rounded-[2rem] border border-outline-variant/20 bg-white p-5 shadow-bento md:p-8" data-curriculum-tabs>
+        <div class="mb-8 flex gap-3 overflow-x-auto whitespace-nowrap">
+          <button type="button" class="curriculum-tab active-tab rounded-full px-5 py-3 font-label-caps text-label-caps" data-tab="pre-primary">Pre-Primary</button>
+          <button type="button" class="curriculum-tab rounded-full px-5 py-3 font-label-caps text-label-caps text-on-surface-variant" data-tab="primary">Primary</button>
+          <button type="button" class="curriculum-tab rounded-full px-5 py-3 font-label-caps text-label-caps text-on-surface-variant" data-tab="middle">Middle</button>
+          <button type="button" class="curriculum-tab rounded-full px-5 py-3 font-label-caps text-label-caps text-on-surface-variant" data-tab="enrichment">Enrichment</button>
+        </div>
+        <div class="grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-primary" id="curriculum-title">Play-Based Foundations</h3>
+            <p class="mt-4 text-on-surface-variant" id="curriculum-desc">Early years focus on language, movement, social skills, and curiosity through gentle routines and joyful discovery.</p>
+            <ul class="mt-8 space-y-4" id="curriculum-points">
+              <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span><span>Inquiry-led language and numeracy</span></li>
+              <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span><span>Rhymes, stories, movement, and social confidence</span></li>
             </ul>
           </div>
-          <div class="relative aspect-video overflow-hidden rounded-xl shadow-xl">
-            <img alt="Students learning in classroom" class="h-full w-full object-cover" id="curriculum-img" src="{{ index site.Data.images "curriculumPrePrimary" }}" />
+          <div class="image-frame p-2">
+            <img alt="Indian students learning" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" id="curriculum-img" src="{{ index $images "curriculumPrePrimary" }}" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pathways bento -->
-  <section class="bg-surface-container-low py-24">
+  <!-- 3. Method -->
+  <section class="minimal-section bg-primary text-on-primary">
     <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <h2 class="mb-12 text-center font-headline-md text-headline-md">Pathways to Success</h2>
-      <div class="grid h-auto grid-cols-1 gap-bento-gap md:h-[600px] md:grid-cols-12 md:grid-rows-2">
-        <div class="bento-card group relative flex flex-col justify-end overflow-hidden rounded-xl p-10 md:col-span-8 md:row-span-1">
-          <img alt="Senior students in lab" class="absolute inset-0 h-full w-full object-cover opacity-20 transition duration-700 group-hover:scale-105" src="{{ index site.Data.images "seniorLab" }}" />
-          <div class="relative z-10">
-            <span class="mb-2 block font-label-caps text-label-caps text-secondary">Upper classes</span>
-            <h4 class="mb-4 font-headline-sm text-headline-sm">Confidence &amp; Depth</h4>
-            <p class="max-w-lg text-on-surface-variant">Deeper subject understanding, study habits, presentations, and preparation for the next chapter.</p>
-          </div>
-        </div>
-        <div class="bento-card flex flex-col justify-between rounded-xl border-secondary/20 bg-white p-10 shadow-lg md:col-span-4 md:row-span-2">
-          <div>
-            <span class="mb-2 block font-label-caps text-label-caps text-secondary">Our edge</span>
-            <h4 class="mb-6 font-headline-sm text-headline-sm">Learning Support</h4>
-            <p class="mb-6 text-on-surface-variant">Teachers work closely with students to reinforce core skills and build confidence step by step.</p>
-          </div>
-          <div class="space-y-4">
-            <div class="flex items-center gap-4 rounded-lg border border-outline-variant/20 bg-surface-bright p-4">
-              <span class="material-symbols-outlined text-secondary">school</span>
-              <span class="font-label-caps text-label-caps">Small class sizes</span>
-            </div>
-            <div class="flex items-center gap-4 rounded-lg border border-outline-variant/20 bg-surface-bright p-4">
-              <span class="material-symbols-outlined text-secondary">groups</span>
-              <span class="font-label-caps text-label-caps">Parent partnerships</span>
-            </div>
-          </div>
-        </div>
-        <div class="bento-card rounded-xl p-10 md:col-span-4 md:row-span-1">
-          <h4 class="mb-4 font-headline-sm text-headline-sm">Middle School</h4>
-          <p class="text-on-surface-variant">Connecting academic study with projects, presentations, and real-world application.</p>
-        </div>
-        <div class="bento-card rounded-xl bg-primary p-10 text-on-primary md:col-span-4 md:row-span-1">
-          <h4 class="mb-4 font-headline-sm text-on-primary">Scholarships</h4>
-          <p class="mb-4 text-on-primary-container">Merit-based support for deserving students. Ask our admissions team for details.</p>
-          <a class="flex items-center gap-2 font-label-caps text-label-caps text-secondary-fixed" href="{{ "/admissions/" | relURL }}">
-            Apply now
-            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-          </a>
-        </div>
+      <div class="mb-10 max-w-2xl">
+        <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">The Gems Method</span>
+        <h2 class="font-headline-md text-headline-md text-white">See. Practice. Share. Create.</h2>
+      </div>
+      <div class="responsive-card-grid">
+        {{ range slice
+          (dict "icon" "visibility" "title" "See" "text" "Teachers model ideas through examples, stories, visuals, and local context.")
+          (dict "icon" "edit_note" "title" "Practice" "text" "Students build accuracy with guided work and careful correction.")
+          (dict "icon" "record_voice_over" "title" "Share" "text" "Every learner gets chances to explain, present, and listen.")
+          (dict "icon" "auto_awesome" "title" "Create" "text" "Projects turn classroom knowledge into visible confidence.")
+        }}
+          <article class="minimal-card-dark">
+            <span class="material-symbols-outlined text-4xl text-secondary-fixed">{{ .icon }}</span>
+            <h3 class="mt-8 font-headline-sm text-headline-sm text-white">{{ .title }}</h3>
+            <p class="mt-3 text-on-primary-container">{{ .text }}</p>
+          </article>
+        {{ end }}
       </div>
     </div>
   </section>
 
-  <!-- STEM -->
-  <section class="overflow-hidden py-32">
-    <div class="mx-auto flex max-w-container-max flex-col items-center gap-24 px-margin-mobile md:flex-row md:px-margin-desktop">
-      <div class="relative w-full md:w-1/2">
-        <div class="relative z-10 scale-105 overflow-hidden rounded-2xl shadow-2xl">
-          <img alt="STEM learning" class="w-full object-cover" src="{{ index site.Data.images "stemLab" }}" />
-        </div>
-        <div class="absolute -bottom-10 -right-10 -z-10 h-64 w-64 rounded-full bg-secondary/10 blur-3xl"></div>
+  <!-- 4. Beyond Books -->
+  <section class="minimal-section">
+    <div class="mx-auto grid max-w-container-max items-center gap-8 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {{ range slice
+          (dict "icon" "biotech" "title" "Science demos" "dark" false)
+          (dict "icon" "language" "title" "Language labs" "dark" true)
+          (dict "icon" "sports_cricket" "title" "Sports discipline" "dark" true)
+          (dict "icon" "palette" "title" "Art and culture" "dark" false)
+        }}
+          <div class="{{ if .dark }}bg-primary text-white{{ else }}bg-white text-primary border border-outline-variant/20{{ end }} rounded-[1.5rem] p-5 shadow-bento">
+            <span class="material-symbols-outlined text-4xl {{ if .dark }}text-secondary-fixed{{ else }}text-secondary{{ end }}">{{ .icon }}</span>
+            <p class="mt-12 font-headline-sm text-headline-sm {{ if .dark }}text-white{{ else }}text-primary{{ end }}">{{ .title }}</p>
+          </div>
+        {{ end }}
       </div>
-      <div class="w-full space-y-8 md:w-1/2">
-        <h2 class="font-headline-md text-headline-md leading-tight">Future-Ready Learning Spaces</h2>
-        <div class="grid grid-cols-1 gap-8">
-          <div class="flex gap-6">
-            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-outline-variant/10 bg-white shadow-sm">
-              <span class="material-symbols-outlined text-secondary">biotech</span>
-            </div>
-            <div>
-              <h5 class="mb-2 font-bold">Hands-On Science</h5>
-              <p class="text-on-surface-variant">Project-based science and math with experiments that make concepts tangible.</p>
-            </div>
-          </div>
-          <div class="flex gap-6">
-            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-outline-variant/10 bg-white shadow-sm">
-              <span class="material-symbols-outlined text-secondary">cast_for_education</span>
-            </div>
-            <div>
-              <h5 class="mb-2 font-bold">Digital Confidence</h5>
-              <p class="text-on-surface-variant">Classrooms equipped for presentations, research, and creative digital projects.</p>
-            </div>
-          </div>
-        </div>
+      <div>
+        <span class="minimal-kicker">Beyond Books</span>
+        <h2 class="font-headline-md text-headline-md text-primary">The best learning is visible in notebooks, voices, projects, and behaviour.</h2>
+        <p class="mt-6 font-body-lg text-body-lg text-on-surface-variant">Academics at Deccan Gems is intentionally balanced: clear classwork, confident speaking, hands-on discovery, Indian cultural pride, and daily discipline.</p>
       </div>
     </div>
   </section>
 
-  <!-- Methodology -->
-  <section class="bg-primary px-margin-mobile py-24 text-on-primary md:px-margin-desktop">
-    <div class="mx-auto mb-16 max-w-container-max text-center">
-      <h2 class="mb-4 font-headline-md text-headline-md text-on-primary">The Deccan Gems Methodology</h2>
-      <p class="mx-auto max-w-xl text-on-primary-container">A layered approach to cognitive development and character building.</p>
-    </div>
-    <div class="mx-auto grid max-w-4xl grid-cols-1 gap-12 text-center md:grid-cols-3">
-      <div class="group cursor-default">
-        <div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border-2 border-secondary transition duration-500 group-hover:scale-110 group-hover:bg-secondary">
-          <span class="material-symbols-outlined text-3xl text-secondary group-hover:text-primary">psychology</span>
-        </div>
-        <h4 class="mb-4 font-headline-sm text-headline-sm text-on-primary">Think</h4>
-        <p class="text-sm text-on-primary-container">Critical inquiry and problem solving across all subjects.</p>
+  <!-- 5. Academic FAQ -->
+  <section class="minimal-section bg-surface-container-low">
+    <div class="mx-auto grid max-w-container-max gap-8 px-margin-mobile lg:grid-cols-[0.9fr_1.1fr] md:px-margin-desktop">
+      <div>
+        <span class="minimal-kicker">Parent Questions</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Clear answers before you visit.</h2>
       </div>
-      <div class="group cursor-default">
-        <div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border-2 border-secondary transition duration-500 group-hover:scale-110 group-hover:bg-secondary">
-          <span class="material-symbols-outlined text-3xl text-secondary group-hover:text-primary">handshake</span>
-        </div>
-        <h4 class="mb-4 font-headline-sm text-headline-sm text-on-primary">Collaborate</h4>
-        <p class="text-sm text-on-primary-container">Teamwork, communication, and respect in every classroom.</p>
-      </div>
-      <div class="group cursor-default">
-        <div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border-2 border-secondary transition duration-500 group-hover:scale-110 group-hover:bg-secondary">
-          <span class="material-symbols-outlined text-3xl text-secondary group-hover:text-primary">rocket_launch</span>
-        </div>
-        <h4 class="mb-4 font-headline-sm text-headline-sm text-on-primary">Innovate</h4>
-        <p class="text-sm text-on-primary-container">Turning knowledge into creative projects and real-world application.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Faculty -->
-  <section class="py-24">
-    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <div class="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
-        <div class="max-w-xl">
-          <h2 class="mb-4 font-headline-md text-headline-md">Dedicated Educators</h2>
-          <p class="text-on-surface-variant">Experienced teachers committed to mentorship, clear communication, and steady academic growth.</p>
-        </div>
-        <a href="{{ "/about/" | relURL }}" class="hidden border-b border-secondary pb-1 font-label-caps text-label-caps text-secondary md:block">Meet our team</a>
-      </div>
-      <div class="grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-4">
-        <div class="group">
-          <div class="relative mb-6 aspect-[3/4] overflow-hidden rounded-xl">
-            <img alt="Mrs. Lakshmi Rao" class="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0" src="{{ index site.Data.images "teacher1" }}" />
-            <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/60 to-transparent p-6 opacity-0 transition-opacity group-hover:opacity-100">
-              <span class="font-label-caps text-[10px] text-on-primary">M.Ed, English</span>
-            </div>
-          </div>
-          <h5 class="mb-1 font-headline-sm text-headline-sm">Mrs. Lakshmi Rao</h5>
-          <p class="font-label-caps text-label-caps text-secondary">Head of Languages</p>
-        </div>
-        <div class="group">
-          <div class="relative mb-6 aspect-[3/4] overflow-hidden rounded-xl">
-            <img alt="Mr. Arjun Mehta" class="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0" src="{{ index site.Data.images "teacher2" }}" />
-            <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/60 to-transparent p-6 opacity-0 transition-opacity group-hover:opacity-100">
-              <span class="font-label-caps text-[10px] text-on-primary">B.Sc, Mathematics</span>
-            </div>
-          </div>
-          <h5 class="mb-1 font-headline-sm text-headline-sm">Mr. Arjun Mehta</h5>
-          <p class="font-label-caps text-label-caps text-secondary">Mathematics Lead</p>
-        </div>
-        <div class="group hidden md:block">
-          <div class="relative mb-6 aspect-[3/4] overflow-hidden rounded-xl">
-            <img alt="Mrs. Ananya Krishnan" class="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0" src="{{ index site.Data.images "teacher3" }}" />
-            <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/60 to-transparent p-6 opacity-0 transition-opacity group-hover:opacity-100">
-              <span class="font-label-caps text-[10px] text-on-primary">B.Ed, Science</span>
-            </div>
-          </div>
-          <h5 class="mb-1 font-headline-sm text-headline-sm">Mrs. Ananya Krishnan</h5>
-          <p class="font-label-caps text-label-caps text-secondary">Science Coordinator</p>
-        </div>
-        <div class="group hidden md:block">
-          <div class="relative mb-6 aspect-[3/4] overflow-hidden rounded-xl">
-            <img alt="Mr. Rahul Verma" class="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0" src="{{ index site.Data.images "teacher4" }}" />
-            <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/60 to-transparent p-6 opacity-0 transition-opacity group-hover:opacity-100">
-              <span class="font-label-caps text-[10px] text-on-primary">M.A, Fine Arts</span>
-            </div>
-          </div>
-          <h5 class="mb-1 font-headline-sm text-headline-sm">Mr. Rahul Verma</h5>
-          <p class="font-label-caps text-label-caps text-secondary">Arts &amp; Activities</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Achievements carousel -->
-  <section class="overflow-hidden bg-surface-container py-24">
-    <div class="mx-auto mb-16 max-w-container-max px-margin-mobile md:px-margin-desktop">
-      <h2 class="text-center font-headline-md text-headline-md">Celebrating Excellence</h2>
-    </div>
-    <div class="achievement-track flex gap-bento-gap">
-      <div class="achievement-card">
-        <span class="material-symbols-outlined text-4xl text-secondary">workspace_premium</span>
-        <div>
-          <h6 class="mb-2 text-lg font-bold">Strong Board Results</h6>
-          <p class="text-sm text-on-surface-variant">Consistent performance and steady improvement across grade levels.</p>
-        </div>
-      </div>
-      <div class="achievement-card">
-        <span class="material-symbols-outlined text-4xl text-secondary">language</span>
-        <div>
-          <h6 class="mb-2 text-lg font-bold">Debate &amp; Elocution</h6>
-          <p class="text-sm text-on-surface-variant">Students excel in inter-school communication and public speaking events.</p>
-        </div>
-      </div>
-      <div class="achievement-card">
-        <span class="material-symbols-outlined text-4xl text-secondary">architecture</span>
-        <div>
-          <h6 class="mb-2 text-lg font-bold">Science Fair Winners</h6>
-          <p class="text-sm text-on-surface-variant">Hands-on projects recognized at district-level science exhibitions.</p>
-        </div>
-      </div>
-      <div class="achievement-card">
-        <span class="material-symbols-outlined text-4xl text-secondary">biotech</span>
-        <div>
-          <h6 class="mb-2 text-lg font-bold">Sports Championships</h6>
-          <p class="text-sm text-on-surface-variant">Active participation and medals in athletics and team sports.</p>
-        </div>
-      </div>
-      <!-- duplicate for seamless scroll -->
-      <div class="achievement-card" aria-hidden="true">
-        <span class="material-symbols-outlined text-4xl text-secondary">workspace_premium</span>
-        <div>
-          <h6 class="mb-2 text-lg font-bold">Strong Board Results</h6>
-          <p class="text-sm text-on-surface-variant">Consistent performance and steady improvement across grade levels.</p>
-        </div>
-      </div>
-      <div class="achievement-card" aria-hidden="true">
-        <span class="material-symbols-outlined text-4xl text-secondary">language</span>
-        <div>
-          <h6 class="mb-2 text-lg font-bold">Debate &amp; Elocution</h6>
-          <p class="text-sm text-on-surface-variant">Students excel in inter-school communication and public speaking events.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="py-24">
-    <div class="mx-auto max-w-3xl px-margin-mobile md:px-margin-desktop">
-      <h2 class="mb-12 text-center font-headline-md text-headline-md">Academic FAQs</h2>
       <div class="space-y-4" data-faq-accordion>
-        <div class="border-b border-outline-variant/30 pb-4">
-          <button type="button" class="faq-trigger group flex w-full items-center justify-between py-4 text-left focus:outline-none" aria-expanded="false">
-            <span class="font-bold text-on-surface">What is the student-to-teacher ratio?</span>
-            <span class="material-symbols-outlined text-secondary transition-transform">add</span>
-          </button>
-          <div class="faq-panel hidden pb-4 pr-12 text-on-surface-variant">
-            We maintain a ratio of approximately 12:1, allowing personalized attention and steady progress for every learner.
+        {{ range $index, $item := slice
+          (dict "q" "How do you support weak basics?" "a" "Teachers revisit literacy and numeracy daily, use small-group practice, and keep parents informed about progress.")
+          (dict "q" "What makes the academic approach modern?" "a" "Students learn through explanation, practice, projects, speaking opportunities, and digital confidence where useful.")
+          (dict "q" "Are activities part of academics?" "a" "Yes. Sports, art, assemblies, and clubs build discipline, teamwork, confidence, and expression.")
+        }}
+          <div class="minimal-card p-6">
+            <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 text-left" aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
+              <span class="font-bold text-primary">{{ $item.q }}</span>
+              <span class="material-symbols-outlined text-secondary">{{ if eq $index 0 }}remove{{ else }}add{{ end }}</span>
+            </button>
+            <div class="faq-panel {{ if ne $index 0 }}hidden{{ end }} pt-4 text-on-surface-variant">{{ $item.a }}</div>
           </div>
-        </div>
-        <div class="border-b border-outline-variant/30 pb-4">
-          <button type="button" class="faq-trigger group flex w-full items-center justify-between py-4 text-left focus:outline-none" aria-expanded="false">
-            <span class="font-bold text-on-surface">How does the school support different learning needs?</span>
-            <span class="material-symbols-outlined text-secondary transition-transform">add</span>
-          </button>
-          <div class="faq-panel hidden pb-4 pr-12 text-on-surface-variant">
-            Teachers provide differentiated instruction, regular feedback to families, and extra support when students need more practice or challenge.
-          </div>
-        </div>
-        <div class="border-b border-outline-variant/30 pb-4">
-          <button type="button" class="faq-trigger group flex w-full items-center justify-between py-4 text-left focus:outline-none" aria-expanded="false">
-            <span class="font-bold text-on-surface">What extracurricular activities are offered?</span>
-            <span class="material-symbols-outlined text-secondary transition-transform">add</span>
-          </button>
-          <div class="faq-panel hidden pb-4 pr-12 text-on-surface-variant">
-            Students participate in sports, arts, cultural events, assemblies, and clubs that build teamwork, creativity, and confidence beyond the classroom.
-          </div>
-        </div>
+        {{ end }}
       </div>
     </div>
   </section>
-
-  {{ with .Content }}
-    <section class="mx-auto max-w-container-max px-margin-mobile pb-24 md:px-margin-desktop">
-      <div class="content-panel max-w-3xl prose-school">{{ . }}</div>
-    </section>
-  {{ end }}
 
   <script type="application/json" id="curriculum-data">
   {
     "pre-primary": {
       "title": "Play-Based Foundations",
       "desc": "Early years focus on language, movement, social skills, and curiosity through gentle routines and joyful discovery.",
-      "img": "{{ index site.Data.images "curriculumPrePrimary" }}",
-      "points": ["Inquiry-led activities in language and numeracy", "Strong focus on social-emotional growth"]
+      "img": "{{ index $images "curriculumPrePrimary" }}",
+      "points": ["Inquiry-led language and numeracy", "Rhymes, stories, movement, and social confidence"]
     },
     "primary": {
-      "title": "Strong Core Skills",
-      "desc": "Reading, writing, numeracy, and hands-on projects taught with care, consistency, and clear routines.",
-      "img": "{{ index site.Data.images "curriculumPrimary" }}",
-      "points": ["Foundational literacy and numeracy", "Project work and creative expression"]
+      "title": "Core Skills With Confidence",
+      "desc": "Reading, writing, numeracy, EVS, and creativity are taught with clear routines and regular feedback.",
+      "img": "{{ index $images "curriculumPrimary" }}",
+      "points": ["Foundational literacy and numeracy", "Class projects and confident speaking"]
     },
     "middle": {
-      "title": "Broadening Perspectives",
-      "desc": "Middle years connect classroom learning with projects, presentations, and growing independence.",
-      "img": "{{ index site.Data.images "curriculumMiddle" }}",
+      "title": "Independent Thinking",
+      "desc": "Middle years connect classroom learning with experiments, presentations, and growing study independence.",
+      "img": "{{ index $images "curriculumMiddle" }}",
       "points": ["Critical thinking across subjects", "Study habits and self-directed learning"]
     },
     "enrichment": {
-      "title": "Beyond the Classroom",
-      "desc": "Sports, arts, assemblies, and clubs ensure students explore talents and build teamwork outside core lessons.",
-      "img": "{{ index site.Data.images "curriculumEnrichment" }}",
-      "points": ["Sports and physical education", "Arts, music, and cultural celebrations"]
+      "title": "Expression Beyond Marks",
+      "desc": "Sports, art, assemblies, and clubs help students discover talent and build teamwork.",
+      "img": "{{ index $images "curriculumEnrichment" }}",
+      "points": ["Sports and physical education", "Arts, music, culture, and leadership"]
     }
   }
   </script>
