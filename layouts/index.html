@@ -1,147 +1,176 @@
 {{ define "main" }}
-  <section class="mx-auto w-full max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-8 lg:pt-16">
-    <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-      <div class="space-y-8">
-        <span class="section-label">{{ .Site.Params.hero.eyebrow }}</span>
-        <div class="space-y-6">
-          <h1 class="hero-title">{{ .Site.Params.hero.headline }}</h1>
-          <p class="hero-lead">{{ .Site.Params.hero.lead }}</p>
+  {{ $images := site.Data.images }}
+
+  <!-- 1. Hero -->
+  <section class="relative isolate min-h-[100svh] overflow-hidden bg-primary px-margin-mobile pb-8 pt-24 text-white sm:pb-10 sm:pt-28 md:px-margin-desktop lg:pb-0 lg:pt-32" data-home-hero-slider>
+    <div
+      class="home-hero-carousel-track"
+      style="position:absolute; inset:0; z-index:0; display:flex; width:100%; height:100%;"
+      data-home-hero-track
+    >
+      <img alt="Indian students learning in class" class="home-hero-carousel-slide" style="min-width:100%; width:100%; height:100%; object-fit:cover; object-position:center;" src="{{ index $images "hero" }}" data-home-hero-slide />
+      <img alt="School children studying together" class="home-hero-carousel-slide" style="min-width:100%; width:100%; height:100%; object-fit:cover; object-position:center;" src="{{ index $images "homeLearning" }}" data-home-hero-slide />
+      <img alt="Children in a classroom discussion" class="home-hero-carousel-slide" style="min-width:100%; width:100%; height:100%; object-fit:cover; object-position:center;" src="{{ index $images "homeCommunity" }}" data-home-hero-slide />
+    </div>
+    <div class="hero-primary-overlay absolute inset-0 z-[1]"></div>
+    <div class="hero-grid-overlay absolute inset-0 z-[2] opacity-50"></div>
+    <div class="creative-orb creative-orb-secondary -right-24 top-20 z-[3] h-72 w-72"></div>
+    <div class="creative-orb creative-orb-primary bottom-20 left-10 z-[3] h-80 w-80"></div>
+
+    <div class="relative z-10 mx-auto flex min-h-[calc(100svh-6rem)] max-w-container-max items-center justify-center">
+      <div class="mx-auto max-w-4xl text-center">
+        <span class="mb-4 inline-flex max-w-full rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-label-caps text-label-caps text-secondary-fixed backdrop-blur">{{ .Site.Params.hero.eyebrow }}</span>
+        <h1 class="home-hero-title text-balance font-display-lg font-bold text-white">
+          Schooling that feels calm, clear, and quietly brilliant.
+        </h1>
+        <p class="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-white/82 sm:font-body-lg sm:text-body-lg sm:leading-8">Deccan Gems School gives Hyderabad families a modern Indian learning environment: strong basics, expressive classrooms, kind discipline, and visible progress.</p>
+        <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+          <a class="btn-minimal w-full sm:w-auto" href="{{ "/admissions/" | relURL }}">Start admissions</a>
+          <a class="btn-ghost-on-dark w-full sm:w-auto" href="{{ "/academics/" | relURL }}">See learning model</a>
         </div>
-        <div class="flex flex-wrap gap-4">
-          <a href="{{ "/academics/" | relURL }}" class="btn-primary">{{ .Site.Params.hero.primaryButton }}</a>
-          <a href="{{ "/blogs/" | relURL }}" class="btn-secondary">{{ .Site.Params.hero.secondaryButton }}</a>
-        </div>
-        <div class="grid gap-4 sm:grid-cols-3">
-          <div class="stat-card">
-            <p class="text-sm font-semibold text-brand-200">Balanced curriculum</p>
-            <p class="mt-2 text-sm leading-6 text-slate-300">Academics, arts, sports, and life skills woven together.</p>
+
+        <div class="mt-6 flex items-center justify-center gap-3" aria-label="Home hero carousel controls">
+          <button class="home-carousel-arrow" type="button" aria-label="Previous slide" data-home-hero-prev>
+            <span class="material-symbols-outlined text-lg">chevron_left</span>
+          </button>
+          <div class="flex gap-2">
+            <button class="home-slider-dot is-active" type="button" aria-label="Show slide 1" data-home-hero-dot></button>
+            <button class="home-slider-dot" type="button" aria-label="Show slide 2" data-home-hero-dot></button>
+            <button class="home-slider-dot" type="button" aria-label="Show slide 3" data-home-hero-dot></button>
           </div>
-          <div class="stat-card">
-            <p class="text-sm font-semibold text-brand-200">Warm community</p>
-            <p class="mt-2 text-sm leading-6 text-slate-300">Friendly communication between teachers, students, and families.</p>
-          </div>
-          <div class="stat-card">
-            <p class="text-sm font-semibold text-brand-200">Future-ready learning</p>
-            <p class="mt-2 text-sm leading-6 text-slate-300">Projects and digital confidence from the earliest years.</p>
-          </div>
-        </div>
-      </div>
-      <div class="site-panel p-4 md:p-6">
-        <div class="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,185,129,0.15),rgba(8,16,26,0.75))] p-6">
-          <div class="grid gap-4 md:grid-cols-2">
-            <div class="rounded-3xl bg-slate-950/50 p-5">
-              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Location</p>
-              <p class="mt-3 text-lg font-semibold text-white">SRT Colony</p>
-              <p class="text-sm text-slate-300">Sanathnagar, Hyderabad</p>
-            </div>
-            <div class="rounded-3xl bg-slate-950/50 p-5">
-              <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Admission help</p>
-              <p class="mt-3 text-lg font-semibold text-white">Parent-friendly guidance</p>
-              <p class="text-sm text-slate-300">Simple steps, clear answers, and a warm campus visit.</p>
-            </div>
-          </div>
-          <div class="mt-4 rounded-3xl border border-white/10 bg-white/5 p-5">
-            <p class="text-xs uppercase tracking-[0.3em] text-brand-200">Our promise</p>
-            <p class="mt-3 max-w-xl text-2xl font-semibold leading-tight text-white">
-              We build strong basics, gentle confidence, and curiosity that lasts well beyond the classroom.
-            </p>
-          </div>
+          <button class="home-carousel-arrow" type="button" aria-label="Next slide" data-home-hero-next>
+            <span class="material-symbols-outlined text-lg">chevron_right</span>
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <div class="grid gap-6 md:grid-cols-3">
-      <article class="info-card">
-        <p class="section-label">About</p>
-        <h2 class="mt-5 text-3xl">A school that feels personal</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.about.intro }}</p>
-        <a href="{{ "/about/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Learn more about us</a>
-      </article>
-      <article class="info-card">
-        <p class="section-label">Academics</p>
-        <h2 class="mt-5 text-3xl">Clear learning pathways</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.academics.intro }}</p>
-        <a href="{{ "/academics/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">See our programs</a>
-      </article>
-      <article class="info-card">
-        <p class="section-label">Contact</p>
-        <h2 class="mt-5 text-3xl">Easy to reach</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">{{ .Site.Params.contact.intro }}</p>
-        <a href="{{ "/contact/" | relURL }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Plan a visit</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-      <div class="content-panel">
-        <p class="section-label">Campus life</p>
-        <h2 class="mt-5 text-4xl">A balanced day for every learner</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          From morning routines to classroom projects, our students move through the day with structure, encouragement, and room to explore.
-        </p>
-        <ul class="mt-6 space-y-4 text-sm text-slate-300">
-          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-400"></span>Foundational literacy and numeracy through gentle, consistent practice.</li>
-          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-sun-400"></span>Creative lessons, assemblies, and activities that build expression and teamwork.</li>
-          <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300"></span>Clear communication for parents and regular support from teachers.</li>
-        </ul>
-      </div>
-      <div class="grid gap-6 sm:grid-cols-2">
-        <div class="info-card">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Pre-primary</p>
-          <h3 class="mt-4 text-2xl">Play-based beginnings</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-300">Early learning focused on language, movement, social skills, and curiosity.</p>
-        </div>
-        <div class="info-card">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Primary</p>
-          <h3 class="mt-4 text-2xl">Strong core skills</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-300">Reading, writing, numeracy, and hands-on projects taught with care and consistency.</p>
-        </div>
-        <div class="info-card">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Upper classes</p>
-          <h3 class="mt-4 text-2xl">Confidence and depth</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-300">Deeper subject understanding, study habits, presentations, and independent thinking.</p>
-        </div>
-        <div class="info-card">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Activities</p>
-          <h3 class="mt-4 text-2xl">Beyond the textbook</h3>
-          <p class="mt-3 text-sm leading-7 text-slate-300">Sports, arts, cultural events, and celebrations that make school memorable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <div class="content-panel">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+  <!-- 2. School Rhythm -->
+  <section class="minimal-section overflow-hidden bg-surface-bright">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-end">
         <div>
-          <p class="section-label">Blog</p>
-          <h2 class="mt-5 text-4xl">Updates, ideas, and school moments</h2>
+          <span class="minimal-kicker">The School Rhythm</span>
+          <h2 class="text-balance font-headline-md text-headline-md text-primary">A day built like a thoughtful learning product.</h2>
         </div>
-        <a href="{{ "/blogs/" | relURL }}" class="text-sm font-bold text-brand-200 hover:text-brand-100">Visit the blog archive</a>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">Every touchpoint is intentional: how children enter class, ask questions, practice skills, present ideas, and return home with clarity.</p>
       </div>
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
-        {{ range first 2 (where .Site.RegularPages "Section" "blogs") }}
-          <article class="blog-card">
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">{{ .Date.Format "02 Jan 2006" }}</p>
-            <h3 class="mt-4 text-2xl">{{ .Title }}</h3>
-            <p class="mt-3 text-sm leading-7 text-slate-300">{{ .Summary }}</p>
-            <a href="{{ .RelPermalink }}" class="mt-6 inline-flex text-sm font-bold text-brand-200 hover:text-brand-100">Read post</a>
+
+      <div class="grid gap-bento-gap lg:grid-cols-12">
+        <article class="home-rhythm-card lg:col-span-4">
+          <span class="number-pill">01</span>
+          <h3 class="mt-6 font-headline-sm text-headline-sm text-primary">Enter With Ease</h3>
+          <p class="mt-4 text-on-surface-variant">Morning routines, assembly moments, and teacher check-ins help children settle before learning begins.</p>
+        </article>
+        <article class="home-rhythm-card bg-primary text-white lg:col-span-4">
+          <span class="number-pill">02</span>
+          <h3 class="mt-6 font-headline-sm text-headline-sm text-white">Learn With Focus</h3>
+          <p class="mt-4 text-on-primary-container">Lessons move from concept to practice to expression, keeping learning structured but never dull.</p>
+        </article>
+        <article class="home-rhythm-card lg:col-span-4">
+          <span class="number-pill">03</span>
+          <h3 class="mt-6 font-headline-sm text-headline-sm text-primary">Leave With Clarity</h3>
+          <p class="mt-4 text-on-surface-variant">Parents see progress through conversations, notebooks, routines, and confident student behaviour.</p>
+        </article>
+      </div>
+
+      <div class="mt-6 overflow-hidden rounded-full border border-outline-variant/20 bg-white py-3 shadow-bento">
+        <div class="home-marquee flex w-max gap-8 whitespace-nowrap px-5 font-label-caps text-label-caps text-secondary">
+          {{ range seq 1 2 }}
+            <span>Reading circles</span><span>Math practice</span><span>Creative projects</span><span>Indian values</span><span>Parent clarity</span><span>Sports discipline</span>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Learning Canvas -->
+  <section class="minimal-section">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <span class="minimal-kicker">Learning Canvas</span>
+          <h2 class="font-headline-md text-headline-md text-primary">Four ways students become visible learners.</h2>
+        </div>
+        <a class="btn-minimal-dark" href="{{ "/academics/" | relURL }}">Explore academics</a>
+      </div>
+
+      <div class="grid gap-bento-gap lg:grid-cols-12">
+        <article class="relative overflow-hidden rounded-[2rem] bg-primary p-6 text-white shadow-2xl lg:col-span-5 lg:row-span-2">
+          <img alt="Indian classroom discussion" class="absolute inset-0 h-full w-full object-cover opacity-25" src="{{ index $images "homeCommunity" }}" />
+          <div class="relative z-10 flex min-h-[520px] flex-col justify-end">
+            <span class="material-symbols-outlined mb-8 text-5xl text-secondary-fixed">auto_awesome</span>
+            <h3 class="font-headline-md text-headline-md text-white">Confidence is designed, not accidental.</h3>
+            <p class="mt-4 text-on-primary-container">Students read, reason, speak, make, and reflect every week.</p>
+          </div>
+        </article>
+
+        <div class="grid gap-bento-gap sm:grid-cols-2 lg:col-span-7">
+          {{ range slice
+            (dict "icon" "menu_book" "title" "Read Deeply" "text" "Stories, handwriting, vocabulary, and expressive reading build language confidence.")
+            (dict "icon" "calculate" "title" "Think Clearly" "text" "Math and science are taught through patterns, examples, and guided practice.")
+            (dict "icon" "record_voice_over" "title" "Speak Boldly" "text" "Assemblies and classroom sharing help children form thoughts in public.")
+            (dict "icon" "palette" "title" "Make Meaning" "text" "Art, culture, activities, and projects turn learning into memory.")
+          }}
+            <article class="minimal-card">
+              <span class="material-symbols-outlined text-4xl text-secondary">{{ .icon }}</span>
+              <h3 class="mt-8 font-headline-sm text-headline-sm text-primary">{{ .title }}</h3>
+              <p class="mt-3 text-on-surface-variant">{{ .text }}</p>
+            </article>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Parent View -->
+  <section class="minimal-section bg-primary text-on-primary">
+    <div class="mx-auto grid max-w-container-max items-center gap-10 px-margin-mobile lg:grid-cols-[0.9fr_1.1fr] md:px-margin-desktop">
+      <div>
+        <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">Parent View</span>
+        <h2 class="font-headline-md text-headline-md text-white">A school experience parents can understand quickly.</h2>
+        <p class="mt-6 text-on-primary-container">The Home page now communicates the school like a modern experience: what happens, why it matters, and how families can take the next step.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {{ range slice
+          (dict "label" "What my child learns" "value" "Basics + expression")
+          (dict "label" "How the day feels" "value" "Calm and active")
+          (dict "label" "How parents know" "value" "Clear conversations")
+          (dict "label" "Why it matters" "value" "Confidence with values")
+        }}
+          <article class="home-dark-tile">
+            <p class="font-label-caps text-label-caps text-secondary-fixed">{{ .label }}</p>
+            <h3 class="mt-8 font-headline-sm text-headline-sm text-white">{{ .value }}</h3>
           </article>
         {{ end }}
       </div>
     </div>
   </section>
 
-  {{ with .Content }}
-    <section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <div class="content-panel max-w-3xl">
-        <div class="max-w-none text-slate-300 [&>p]:leading-8">
-          {{ . }}
+  <!-- 5. Visit CTA -->
+  <section class="minimal-section px-margin-mobile md:px-margin-desktop">
+    <div class="relative mx-auto max-w-container-max overflow-hidden rounded-[2rem] bg-white p-5 shadow-2xl md:p-8">
+      <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-secondary-fixed/30 blur-3xl md:block"></div>
+      <div class="relative grid gap-6 lg:grid-cols-[1fr_0.75fr] lg:items-center">
+        <div class="rounded-[1.5rem] bg-primary p-6 text-white md:p-8">
+          <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">Admissions Open</span>
+          <h2 class="font-headline-md text-headline-md text-white">Visit once. Watch how the school feels.</h2>
+          <p class="mt-5 max-w-2xl text-on-primary-container">Meet the team, understand the routine, see the learning spaces, and ask the practical questions that matter to your family.</p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a class="btn-minimal" href="{{ "/contact/" | relURL }}">Book a visit</a>
+            <a class="btn-ghost-on-dark" href="{{ "/admissions/" | relURL }}">Admission details</a>
+          </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          {{ range slice "Bring your questions" "Meet admissions" "Plan next step" }}
+            <div class="minimal-card p-5">
+              <span class="material-symbols-outlined text-secondary">check_circle</span>
+              <p class="mt-4 font-bold text-primary">{{ . }}</p>
+            </div>
+          {{ end }}
         </div>
       </div>
-    </section>
-  {{ end }}
+    </div>
+  </section>
 {{ end }}

@@ -1,0 +1,156 @@
+{{ define "main" }}
+  {{ $images := site.Data.images }}
+
+  <!-- 1. Hero -->
+  <section class="relative isolate min-h-[640px] overflow-hidden bg-primary px-margin-mobile pt-28 text-white md:px-margin-desktop md:pt-32">
+    <img alt="Indian classroom lecture" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "academicsHero" }}" />
+    <div class="hero-primary-overlay absolute inset-0 -z-20"></div>
+    <div class="hero-grid-overlay absolute inset-0 -z-10 opacity-50"></div>
+    <div class="creative-orb creative-orb-secondary right-0 top-24 h-72 w-72"></div>
+    <div class="creative-orb creative-orb-primary bottom-12 left-16 h-72 w-72"></div>
+    <div class="mx-auto flex min-h-[500px] max-w-container-max items-center">
+      <div class="max-w-3xl">
+        <span class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 font-label-caps text-label-caps text-secondary-fixed backdrop-blur">Academic Studio</span>
+        <h1 class="text-balance font-display-lg text-display-lg-mobile text-white md:text-display-lg">Learning that feels structured, alive, and useful.</h1>
+        <p class="mt-7 max-w-2xl font-body-lg text-body-lg leading-8 text-white/82">Our classrooms balance strong fundamentals with projects, conversation, cultural confidence, and steady feedback.</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a class="btn-minimal" href="#curriculum-tabs">Explore curriculum</a>
+          <a class="btn-ghost-on-dark" href="{{ "/contact/" | relURL }}">Ask academics team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Curriculum -->
+  <section class="minimal-section" id="curriculum-tabs">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-10 text-center">
+        <span class="minimal-kicker">Curriculum Studio</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Choose a stage and see how learning grows.</h2>
+      </div>
+      <div class="rounded-[2rem] border border-outline-variant/20 bg-white p-5 shadow-bento md:p-8" data-curriculum-tabs>
+        <div class="mb-8 flex gap-3 overflow-x-auto whitespace-nowrap">
+          <button type="button" class="curriculum-tab active-tab rounded-full px-5 py-3 font-label-caps text-label-caps" data-tab="pre-primary">Pre-Primary</button>
+          <button type="button" class="curriculum-tab rounded-full px-5 py-3 font-label-caps text-label-caps text-on-surface-variant" data-tab="primary">Primary</button>
+          <button type="button" class="curriculum-tab rounded-full px-5 py-3 font-label-caps text-label-caps text-on-surface-variant" data-tab="middle">Middle</button>
+          <button type="button" class="curriculum-tab rounded-full px-5 py-3 font-label-caps text-label-caps text-on-surface-variant" data-tab="enrichment">Enrichment</button>
+        </div>
+        <div class="grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-primary" id="curriculum-title">Play-Based Foundations</h3>
+            <p class="mt-4 text-on-surface-variant" id="curriculum-desc">Early years focus on language, movement, social skills, and curiosity through gentle routines and joyful discovery.</p>
+            <ul class="mt-8 space-y-4" id="curriculum-points">
+              <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span><span>Inquiry-led language and numeracy</span></li>
+              <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span><span>Rhymes, stories, movement, and social confidence</span></li>
+            </ul>
+          </div>
+          <div class="image-frame p-2">
+            <img alt="Indian students learning" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" id="curriculum-img" src="{{ index $images "curriculumPrePrimary" }}" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Method -->
+  <section class="minimal-section bg-primary text-on-primary">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-10 max-w-2xl">
+        <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">The Gems Method</span>
+        <h2 class="font-headline-md text-headline-md text-white">See. Practice. Share. Create.</h2>
+      </div>
+      <div class="responsive-card-grid">
+        {{ range slice
+          (dict "icon" "visibility" "title" "See" "text" "Teachers model ideas through examples, stories, visuals, and local context.")
+          (dict "icon" "edit_note" "title" "Practice" "text" "Students build accuracy with guided work and careful correction.")
+          (dict "icon" "record_voice_over" "title" "Share" "text" "Every learner gets chances to explain, present, and listen.")
+          (dict "icon" "auto_awesome" "title" "Create" "text" "Projects turn classroom knowledge into visible confidence.")
+        }}
+          <article class="minimal-card-dark">
+            <span class="material-symbols-outlined text-4xl text-secondary-fixed">{{ .icon }}</span>
+            <h3 class="mt-8 font-headline-sm text-headline-sm text-white">{{ .title }}</h3>
+            <p class="mt-3 text-on-primary-container">{{ .text }}</p>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Beyond Books -->
+  <section class="minimal-section">
+    <div class="mx-auto grid max-w-container-max items-center gap-8 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {{ range slice
+          (dict "icon" "biotech" "title" "Science demos" "dark" false)
+          (dict "icon" "language" "title" "Language labs" "dark" true)
+          (dict "icon" "sports_cricket" "title" "Sports discipline" "dark" true)
+          (dict "icon" "palette" "title" "Art and culture" "dark" false)
+        }}
+          <div class="{{ if .dark }}bg-primary text-white{{ else }}bg-white text-primary border border-outline-variant/20{{ end }} rounded-[1.5rem] p-5 shadow-bento">
+            <span class="material-symbols-outlined text-4xl {{ if .dark }}text-secondary-fixed{{ else }}text-secondary{{ end }}">{{ .icon }}</span>
+            <p class="mt-12 font-headline-sm text-headline-sm {{ if .dark }}text-white{{ else }}text-primary{{ end }}">{{ .title }}</p>
+          </div>
+        {{ end }}
+      </div>
+      <div>
+        <span class="minimal-kicker">Beyond Books</span>
+        <h2 class="font-headline-md text-headline-md text-primary">The best learning is visible in notebooks, voices, projects, and behaviour.</h2>
+        <p class="mt-6 font-body-lg text-body-lg text-on-surface-variant">Academics at Deccan Gems is intentionally balanced: clear classwork, confident speaking, hands-on discovery, Indian cultural pride, and daily discipline.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Academic FAQ -->
+  <section class="minimal-section bg-surface-container-low">
+    <div class="mx-auto grid max-w-container-max gap-8 px-margin-mobile lg:grid-cols-[0.9fr_1.1fr] md:px-margin-desktop">
+      <div>
+        <span class="minimal-kicker">Parent Questions</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Clear answers before you visit.</h2>
+      </div>
+      <div class="space-y-4" data-faq-accordion>
+        {{ range $index, $item := slice
+          (dict "q" "How do you support weak basics?" "a" "Teachers revisit literacy and numeracy daily, use small-group practice, and keep parents informed about progress.")
+          (dict "q" "What makes the academic approach modern?" "a" "Students learn through explanation, practice, projects, speaking opportunities, and digital confidence where useful.")
+          (dict "q" "Are activities part of academics?" "a" "Yes. Sports, art, assemblies, and clubs build discipline, teamwork, confidence, and expression.")
+        }}
+          <div class="minimal-card p-6">
+            <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 text-left" aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
+              <span class="font-bold text-primary">{{ $item.q }}</span>
+              <span class="material-symbols-outlined text-secondary">{{ if eq $index 0 }}remove{{ else }}add{{ end }}</span>
+            </button>
+            <div class="faq-panel {{ if ne $index 0 }}hidden{{ end }} pt-4 text-on-surface-variant">{{ $item.a }}</div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="curriculum-data">
+  {
+    "pre-primary": {
+      "title": "Play-Based Foundations",
+      "desc": "Early years focus on language, movement, social skills, and curiosity through gentle routines and joyful discovery.",
+      "img": "{{ index $images "curriculumPrePrimary" }}",
+      "points": ["Inquiry-led language and numeracy", "Rhymes, stories, movement, and social confidence"]
+    },
+    "primary": {
+      "title": "Core Skills With Confidence",
+      "desc": "Reading, writing, numeracy, EVS, and creativity are taught with clear routines and regular feedback.",
+      "img": "{{ index $images "curriculumPrimary" }}",
+      "points": ["Foundational literacy and numeracy", "Class projects and confident speaking"]
+    },
+    "middle": {
+      "title": "Independent Thinking",
+      "desc": "Middle years connect classroom learning with experiments, presentations, and growing study independence.",
+      "img": "{{ index $images "curriculumMiddle" }}",
+      "points": ["Critical thinking across subjects", "Study habits and self-directed learning"]
+    },
+    "enrichment": {
+      "title": "Expression Beyond Marks",
+      "desc": "Sports, art, assemblies, and clubs help students discover talent and build teamwork.",
+      "img": "{{ index $images "curriculumEnrichment" }}",
+      "points": ["Sports and physical education", "Arts, music, culture, and leadership"]
+    }
+  }
+  </script>
+{{ end }}

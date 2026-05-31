@@ -2,30 +2,49 @@ baseURL = 'https://deccangemsschool.example/'
 languageCode = 'en-us'
 title = 'Deccan Gems School'
 enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
 
 [params]
+logo = '/images/logo.jpg'
 schoolName = 'Deccan Gems School'
-tagline = 'Learning that sparkles with confidence, curiosity, and care.'
+tagline = 'A modern Hyderabad school for strong basics, clear values, and brave young minds.'
 address = 'SRT Colony, Sanathnagar, Hyderabad'
-phone = '+91 98765 43210'
-email = 'admissions@deccangemsschool.example'
+phone = '+91 89777 57547'
+email = 'info.dgems@gmail.com'
 hours = 'Mon - Sat, 8:00 AM - 4:00 PM'
 
 [params.hero]
-eyebrow = 'SRT Colony, Sanathnagar, Hyderabad'
-headline = 'A warm, modern school community for ambitious young learners.'
-lead = 'Deccan Gems School blends strong academics, creative exploration, and character-building into a calm, family-friendly campus experience.'
-primaryButton = 'Explore Academics'
-secondaryButton = 'Read the Blog'
+eyebrow = 'SRT COLONY, SANATHNAGAR'
+headline = 'Minimal Noise. Meaningful Learning.'
+primaryButton = 'Start Admissions'
+secondaryButton = 'Plan a Campus Visit'
+image = '/images/hero.jpg'
 
 [params.about]
-intro = 'We design each day around clear routines, attentive teaching, and joyful learning so every child is seen, supported, and stretched.'
+intro = 'Deccan Gems School is built for families who want clarity, care, and confident learning without unnecessary noise.'
 
 [params.academics]
-intro = 'Our academic program balances fundamentals, language confidence, project work, and extracurricular opportunities from the earliest years onward.'
+intro = 'Our academic program moves from strong basics to confident expression through practice, projects, conversation, and feedback.'
 
 [params.contact]
-intro = 'We welcome school visits, admissions enquiries, and parent conversations throughout the week.'
+intro = 'We welcome admissions questions, school visits, and parent conversations throughout the week.'
+
+[params.social]
+instagram = 'https://www.instagram.com/deccangemsschool/'
+facebook = 'https://www.facebook.com/deccangemsschool'
+
+[params.founder]
+name = 'Mohammed Fareed Uddin'
+title = 'Founder'
+image = '/images/founder.jpeg'
+quote = 'When we started Deccan Gems School, our aim was simple: give every child in our community a place to learn with dignity, discipline, and joy. That promise guides us still.'
+bio = 'Mohammed Fareed Uddin founded Deccan Gems School to serve families in Sanathnagar with steady academics, strong values, and a school culture built on trust.'
+
+[params.principal]
+name = 'Mrs. Priya Reddy'
+title = 'School Principal'
+quote = 'Education at Deccan Gems is not just about the curriculum; it is about the whole child. We nurture thinkers, dreamers, and doers who will grow with confidence and care.'
+bio = 'Our mission is to provide an environment where every student feels seen, heard, and challenged. We focus on empathy, adaptability, and strong foundations alongside academic mastery.'
 
 [menu]
 [[menu.main]]
@@ -39,19 +58,16 @@ url = '/about/'
 weight = 20
 
 [[menu.main]]
+name = 'Admissions'
+url = '/admissions/'
+weight = 30
+
+[[menu.main]]
 name = 'Academics'
 url = '/academics/'
-weight = 30
+weight = 40
 
 [[menu.main]]
 name = 'Contact'
 url = '/contact/'
-weight = 40
-
-[[menu.main]]
-name = 'Blogs'
-url = '/blogs/'
 weight = 50
-
-[permalinks]
-blogs = '/blogs/:slug/'

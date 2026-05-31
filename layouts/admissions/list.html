@@ -1,0 +1,137 @@
+{{ define "main" }}
+  {{ $images := site.Data.images }}
+
+  <!-- 1. Hero -->
+  <section class="relative isolate min-h-[640px] overflow-hidden bg-primary px-margin-mobile pt-28 text-white md:px-margin-desktop md:pt-32">
+    <img alt="Indian students in class" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "admissionsHero" }}" />
+    <div class="hero-primary-overlay absolute inset-0 -z-20"></div>
+    <div class="hero-grid-overlay absolute inset-0 -z-10 opacity-50"></div>
+    <div class="creative-orb creative-orb-secondary -right-20 top-24 h-80 w-80"></div>
+    <div class="creative-orb creative-orb-primary bottom-16 left-10 h-64 w-64"></div>
+    <div class="mx-auto flex min-h-[500px] max-w-container-max items-center">
+      <div class="max-w-3xl">
+        <span class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 font-label-caps text-label-caps text-secondary-fixed backdrop-blur">Admissions 2026-27</span>
+        <h1 class="text-balance font-display-lg text-display-lg-mobile text-white md:text-display-lg">A clean, calm path from enquiry to first day.</h1>
+        <p class="mt-7 max-w-2xl font-body-lg text-body-lg leading-8 text-white/82">No confusion, no pressure. Meet us, understand the fit, complete the essentials, and begin your child's Deccan Gems journey with clarity.</p>
+        <a class="mt-8 btn-minimal" href="#admission-enquiry">Begin enquiry</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Process -->
+  <section class="minimal-section">
+    <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div class="mb-10 text-center">
+        <span class="minimal-kicker">Admission Flow</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Four steps. One helpful team.</h2>
+      </div>
+      <div class="responsive-card-grid">
+        {{ range slice
+          (dict "n" "01" "icon" "chat" "title" "Enquire" "text" "Tell us the grade, age, and what you want for your child.")
+          (dict "n" "02" "icon" "location_on" "title" "Visit" "text" "Walk through the school and meet the admissions team.")
+          (dict "n" "03" "icon" "psychology" "title" "Understand Fit" "text" "A gentle interaction helps us place the child thoughtfully.")
+          (dict "n" "04" "icon" "verified" "title" "Confirm" "text" "Submit documents, complete formalities, and receive onboarding details.")
+        }}
+          <article class="minimal-card relative overflow-hidden">
+            <span class="absolute right-5 top-4 font-display-lg text-6xl text-secondary/10">{{ .n }}</span>
+            <span class="material-symbols-outlined text-4xl text-secondary">{{ .icon }}</span>
+            <h3 class="mt-6 font-headline-sm text-headline-sm text-primary">{{ .title }}</h3>
+            <p class="mt-3 text-on-surface-variant">{{ .text }}</p>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Readiness -->
+  <section class="minimal-section bg-surface-container-low">
+    <div class="mx-auto grid max-w-container-max items-center gap-8 px-margin-mobile lg:grid-cols-2 md:px-margin-desktop">
+      <div>
+        <span class="minimal-kicker">Ready Checklist</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Bring the basics. We will guide the rest.</h2>
+        <p class="mt-6 font-body-lg text-body-lg text-on-surface-variant">Grade placement depends on age, previous schooling, interaction, and seat availability. The admissions desk will confirm the latest details for your child's class.</p>
+      </div>
+      <div class="grid gap-4">
+        {{ range slice
+          (dict "label" "Pre-Primary" "detail" "Birth certificate, child photos, parent details")
+          (dict "label" "Primary" "detail" "Previous report card if applicable, address proof")
+          (dict "label" "Middle School" "detail" "Report card, transfer certificate, interaction")
+          (dict "label" "All Families" "detail" "A campus conversation to understand expectations")
+        }}
+          <div class="minimal-card mobile-stack-card p-5">
+            <p class="font-bold text-primary">{{ .label }}</p>
+            <p class="max-w-xs text-sm text-on-surface-variant sm:text-right">{{ .detail }}</p>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Parent Support -->
+  <section class="minimal-section">
+    <div class="mx-auto grid max-w-container-max items-center gap-8 px-margin-mobile md:grid-cols-2 md:px-margin-desktop">
+      <div class="image-frame">
+        <img alt="Indian students learning together" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" src="{{ index $images "admissionsSupport" }}" />
+      </div>
+      <div>
+        <span class="minimal-kicker">For Parents</span>
+        <h2 class="font-headline-md text-headline-md text-primary">Transparent guidance without overwhelming forms.</h2>
+        <p class="mt-6 font-body-lg text-body-lg text-on-surface-variant">We keep the admission conversation practical: school routine, grade expectations, fee guidance, transport questions, sibling support, and how your child will settle in.</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <div class="minimal-card p-5">
+            <span class="material-symbols-outlined text-secondary">payments</span>
+            <p class="mt-3 font-bold text-primary">Grade-wise fee guidance</p>
+          </div>
+          <div class="minimal-card p-5">
+            <span class="material-symbols-outlined text-secondary">family_restroom</span>
+            <p class="mt-3 font-bold text-primary">Sibling and transition help</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Enquiry -->
+  <section class="minimal-section bg-primary text-on-primary" id="admission-enquiry">
+    <div class="mx-auto grid max-w-container-max gap-8 px-margin-mobile lg:grid-cols-[0.8fr_1.2fr] md:px-margin-desktop">
+      <div>
+        <span class="minimal-kicker border-white/15 bg-white/10 text-secondary-fixed">Start Here</span>
+        <h2 class="font-headline-md text-headline-md text-white">Send one note. We will help you choose the next step.</h2>
+        <p class="mt-6 text-on-primary-container">The form opens your mail app. You can also call during office hours for a faster response.</p>
+        <a class="mt-8 btn-ghost-on-dark" href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a>
+      </div>
+      <form class="rounded-[2rem] bg-white p-6 text-primary shadow-2xl md:p-8" action="https://formspree.io/f/xeedldaz" method="post">
+        <input type="hidden" name="form" value="Admissions enquiry" />
+        <div class="grid gap-6 md:grid-cols-2">
+          <label class="block">
+            <span class="form-label">Parent name</span>
+            <input class="form-input" name="parent_name" type="text" placeholder="Full name" required />
+          </label>
+          <label class="block">
+            <span class="form-label">Phone</span>
+            <input class="form-input" name="phone" type="tel" placeholder="+91..." required />
+          </label>
+          <label class="block">
+            <span class="form-label">Child name</span>
+            <input class="form-input" name="child_name" type="text" placeholder="Student name" />
+          </label>
+          <label class="block">
+            <span class="form-label">Grade</span>
+            <select class="form-input" name="grade">
+              <option>Nursery / Pre-Primary</option>
+              <option>Kindergarten</option>
+              <option>Grade 1-5</option>
+              <option>Grade 6-8</option>
+              <option>Grade 9+</option>
+            </select>
+          </label>
+        </div>
+        <label class="mt-6 block">
+          <span class="form-label">Message</span>
+          <textarea class="form-input" name="message" rows="4" placeholder="Preferred visit date or questions"></textarea>
+        </label>
+        <button class="mt-8 w-full btn-minimal" type="submit">Send admission enquiry</button>
+      </form>
+    </div>
+  </section>
+{{ end }}

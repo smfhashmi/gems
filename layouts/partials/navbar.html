@@ -1,31 +1,44 @@
-<header class="relative z-20">
-  <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-    <a href="{{ "/" | relURL }}" class="group flex items-center gap-3">
-      <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-brand-400/30 bg-brand-400/15 text-brand-200 shadow-glow">
-        <span class="text-lg font-black">DG</span>
-      </div>
-      <div>
-        <p class="text-lg font-extrabold tracking-wide text-white">{{ .Site.Params.schoolName }}</p>
-        <p class="text-xs uppercase tracking-[0.25em] text-slate-400">Hyderabad</p>
-      </div>
+<header
+  id="site-header"
+  class="site-header fixed left-4 right-4 top-4 z-50 mx-auto flex max-w-container-max items-center justify-between gap-4 rounded-full border border-outline-variant/20 bg-white px-4 py-3 shadow-nav md:left-6 md:right-6 md:px-6"
+>
+  <a href="{{ "/" | relURL }}" class="flex min-w-0 shrink-0 items-center gap-3 transition hover:opacity-90">
+    <img
+      src="{{ (.Site.Params.logo | default "/images/logo.jpg") | relURL }}"
+      alt="{{ .Site.Params.schoolName }}"
+      class="h-10 w-auto max-h-14 max-w-[150px] object-contain sm:h-12 sm:max-w-[180px] md:h-14 md:max-w-[220px]"
+      width="220"
+      height="56"
+    />
+  </a>
+
+  <nav class="hidden items-center gap-6 lg:flex lg:gap-8">
+    {{ $current := .RelPermalink }}
+    {{ range .Site.Menus.main }}
+      <a
+        href="{{ .URL }}"
+        class="whitespace-nowrap font-label-caps text-label-caps transition-colors{{ if eq $current .URL }} border-b-2 border-secondary font-bold text-secondary{{ else }} text-on-surface-variant hover:text-primary{{ end }}"
+      >
+        {{ .Name }}
+      </a>
+    {{ end }}
+  </nav>
+
+  <div class="flex shrink-0 items-center gap-2 md:gap-3">
+    <a href="{{ "/contact/" | relURL }}" class="hidden rounded-full bg-primary px-5 py-2 font-sans text-button text-on-primary transition hover:scale-105 sm:inline-flex md:px-6 md:py-2.5">
+      Enquire Now
     </a>
 
-    <nav class="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 p-2 backdrop-blur md:flex">
-      {{ $current := .RelPermalink }}
-      {{ range .Site.Menus.main }}
-        <a href="{{ .URL }}" class="nav-link{{ if eq $current .URL }} nav-link-active{{ end }}">{{ .Name }}</a>
-      {{ end }}
-    </nav>
-
-    <details class="relative md:hidden">
-      <summary class="cursor-pointer list-none rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white">
+    <details class="relative lg:hidden">
+      <summary class="cursor-pointer list-none rounded-full border border-outline-variant/30 bg-surface-container-low px-4 py-2 font-sans text-button text-primary">
         Menu
       </summary>
-      <div class="absolute right-0 mt-3 w-52 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-card backdrop-blur-xl">
+      <div class="absolute right-0 z-[60] mt-3 w-52 overflow-hidden rounded-2xl border border-outline-variant/20 bg-white p-2 shadow-bento">
         {{ $current := .RelPermalink }}
         {{ range .Site.Menus.main }}
-          <a href="{{ .URL }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-slate-200 hover:bg-white/10{{ if eq $current .URL }} bg-white/10 text-white{{ end }}">{{ .Name }}</a>
+          <a href="{{ .URL }}" class="block rounded-xl px-4 py-3 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low{{ if eq $current .URL }} bg-surface-container-low text-primary{{ end }}">{{ .Name }}</a>
         {{ end }}
+        <a href="{{ "/contact/" | relURL }}" class="mt-1 block rounded-xl bg-primary px-4 py-3 text-center text-sm font-semibold text-on-primary">Enquire Now</a>
       </div>
     </details>
   </div>
