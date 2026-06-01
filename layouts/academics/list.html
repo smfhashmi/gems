@@ -3,7 +3,7 @@
 
   <!-- 1. Hero -->
   <section class="relative isolate min-h-[640px] overflow-hidden bg-primary px-margin-mobile pt-28 text-white md:px-margin-desktop md:pt-32">
-    <img alt="Indian classroom lecture" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "academicsHero" }}" />
+    <img alt="Students participating actively in a classroom lesson" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "academicsHero" | relURL }}" />
     <div class="hero-primary-overlay absolute inset-0 -z-20"></div>
     <div class="hero-grid-overlay absolute inset-0 -z-10 opacity-50"></div>
     <div class="creative-orb creative-orb-secondary right-0 top-24 h-72 w-72"></div>
@@ -45,7 +45,7 @@
             </ul>
           </div>
           <div class="image-frame p-2">
-            <img alt="Indian students learning" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" id="curriculum-img" src="{{ index $images "curriculumPrePrimary" }}" />
+            <img alt="Students in the library during early-years learning" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" id="curriculum-img" src="{{ index $images "curriculumPrePrimary" | relURL }}" />
           </div>
         </div>
       </div>
