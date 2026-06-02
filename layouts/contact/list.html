@@ -5,7 +5,7 @@
 
   <!-- 1. Hero -->
   <section class="relative isolate min-h-[600px] overflow-hidden bg-primary px-margin-mobile pt-28 text-white md:px-margin-desktop md:pt-32">
-    <img alt="Indian classroom at Deccan Gems School" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "contactHero" }}" />
+    <img alt="Students laughing together at school" class="absolute inset-0 -z-30 h-full w-full object-cover" src="{{ index $images "contactHero" | relURL }}" />
     <div class="hero-primary-overlay absolute inset-0 -z-20"></div>
     <div class="hero-grid-overlay absolute inset-0 -z-10 opacity-50"></div>
     <div class="creative-orb creative-orb-secondary -right-16 top-20 h-72 w-72"></div>
@@ -95,7 +95,7 @@
         <a class="mt-8 btn-minimal" href="{{ $mapsURL }}" target="_blank" rel="noopener noreferrer">Open directions</a>
       </div>
       <div class="image-frame">
-        <img alt="Students at Deccan Gems School" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" src="{{ index $images "contactCampus" }}" />
+        <img alt="Students arriving at school by bus" class="aspect-[4/3] w-full rounded-[1.5rem] object-cover" src="{{ index $images "contactCampus" | relURL }}" />
       </div>
     </div>
   </section>
